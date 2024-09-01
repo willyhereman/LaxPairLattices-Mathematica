@@ -1,0 +1,2619 @@
+(************** Content-type: application/mathematica **************
+                     CreatedBy='Mathematica 5.0'
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used with any Mathematica-compatible
+application, such as Mathematica, MathReader or Publicon. The data
+for the notebook starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do
+one of the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the
+  application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing
+the word CacheID, otherwise Mathematica-compatible applications may
+try to use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+*******************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[    115350,       2315]*)
+(*NotebookOutlinePosition[    116015,       2338]*)
+(*  CellTagsIndexPosition[    115971,       2334]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+    \(SetDirectory["\<d:\\demolattices\>"]\)], "Input"],
+
+Cell[BoxData[
+    \("d:\\demolattices"\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(Get["\<l0710-08.m\>"]\)], "Input"],
+
+Cell[BoxData[
+    \("Loading code for computation of Lax pair of lattices (July 12, \
+2008)"\)], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("***************** MENU INTERFACE *****************  \
+(page: "\[InvisibleSpace]1\[InvisibleSpace]")"\),
+      SequenceForm[ 
+      "***************** MENU INTERFACE *****************  (page: ", 1, ")"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("---------------------------------------------------------------------"\
+\)], "Print"],
+
+Cell[BoxData[
+    \("  1) discrete potential KdV Equation (l_pKdV.m)"\)], "Print"],
+
+Cell[BoxData[
+    \("  2) discrete modified KdV Equation  (l_mKdV.m)"\)], "Print"],
+
+Cell[BoxData[
+    \("  3) discrete sine-Gordon Equation (l_sG.m)"\)], "Print"],
+
+Cell[BoxData[
+    \("  4) H1 equation (ABS classification) (l_H1.m)"\)], "Print"],
+
+Cell[BoxData[
+    \("  5) H2 equation (ABS classification) (l_H2.m)"\)], "Print"],
+
+Cell[BoxData[
+    \("  6) H3 equation (delta not 0) (ABS classification) (l_H3rhs.m)"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("  7) H3 equation (delta = 0) (ABS classification) (l_H3zero.m)"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("  8) Q1 equation (delta not 0) (ABS classification) (l_Q1rhs.m)"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("  9) Q1 equation (delta = 0) (ABS classification) (l_Q1zero.m)"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("  10) Q2 equation (delta not 0) (ABS classification) (l_Q2rhs.m)"\)], \
+"Print"],
+
+Cell[BoxData[
+    \(" nn) Next Page"\)], "Print"],
+
+Cell[BoxData[
+    \(" tt) Your System"\)], "Print"],
+
+Cell[BoxData[
+    \(" qq) Exit the Program"\)], "Print"],
+
+Cell[BoxData[
+    \("---------------------------------------------------------------------"\
+\)], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("***************** MENU INTERFACE *****************  \
+(page: "\[InvisibleSpace]2\[InvisibleSpace]")"\),
+      SequenceForm[ 
+      "***************** MENU INTERFACE *****************  (page: ", 2, ")"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("---------------------------------------------------------------------"\
+\)], "Print"],
+
+Cell[BoxData[
+    \("  11) Q2 equation (delta = 0) (ABS classification) (l_Q2zero.m)"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("  12) Q3 equation (delta not 0) (ABS classification) (l_Q3rhs.m)"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("  13) Q3 equation (delta = 0) (ABS classification) (l_Q3zero.m)"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("  14) A1 equation (delta not 0) (ABS classification) (l_A1rhs.m)"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("  15) A1 equation (delta = 0) (ABS classification) (l_A1zero.m)"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("  16) A2 equation (ABS classification) (l_A2.m)"\)], "Print"],
+
+Cell[BoxData[
+    \("  17) (alpha,beta) equation (l_abeq.m)"\)], "Print"],
+
+Cell[BoxData[
+    \(" nn) Next Page"\)], "Print"],
+
+Cell[BoxData[
+    \(" tt) Your System"\)], "Print"],
+
+Cell[BoxData[
+    \(" qq) Exit the Program"\)], "Print"],
+
+Cell[BoxData[
+    \("---------------------------------------------------------------------"\
+\)], "Print"],
+
+Cell[BoxData[
+    \("********************************************************************"\)\
+], "Print"],
+
+Cell[BoxData[
+    \("         WELCOME TO THE MATHEMATICA PROGRAM              "\)], "Print"],
+
+Cell[BoxData[
+    \("                  by WILLY HEREMAN                       "\)], "Print"],
+
+Cell[BoxData[
+    \("     FOR THE COMPUTATION OF LAX PAIRS OF NONLINEAR       "\)], "Print"],
+
+Cell[BoxData[
+    \("  PARTIAL DIFFERENCE EQUATIONS IN 2D (ON QUAD-GRAPHS)    "\)], "Print"],
+
+Cell[BoxData[
+    \(" Collaborators: Reinout Quispel and Peter van der Kamp   "\)], "Print"],
+
+Cell[BoxData[
+    \("           First released on July 12, 2008               "\)], "Print"],
+
+Cell[BoxData[
+    \("                    Copyright 2008                       "\)], "Print"],
+
+Cell[BoxData[
+    \("********************************************************************"\)\
+], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("Working with the discrete "\[InvisibleSpace]abeq\
+\[InvisibleSpace]" equation:"\),
+      SequenceForm[ "Working with the discrete ", abeq, " equation:"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \(\((\((\(-alpha\) + p)\)\ x - \((beta + 
+                    p)\)\ x1)\)\ \((\(-\((alpha + 
+                      p)\)\)\ x12 + \((\(-beta\) + 
+                    p)\)\ x2)\) - \((\((\(-beta\) + q)\)\ x1 - \((alpha + 
+                    q)\)\ x12)\)\ \((\((\(-alpha\) + q)\)\ x - \((beta + 
+                    q)\)\ x2)\) \[Equal] 0\)], "Print"],
+
+Cell[BoxData[
+    \("********************** CONTROL SETTINGS *************************"\)], \
+"Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("LaxPairGiven (L and M are given in data file) is set \
+to "\[InvisibleSpace]False\),
+      SequenceForm[ 
+      "LaxPairGiven (L and M are given in data file) is set to ", False],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("t and s are given in data file (byhand) is set to: "\
+\[InvisibleSpace]False\),
+      SequenceForm[ 
+      "t and s are given in data file (byhand) is set to: ", False],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("Determinant method to compute t and s is set to: "\
+\[InvisibleSpace]True\),
+      SequenceForm[ 
+      "Determinant method to compute t and s is set to: ", True],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("Test consistency on cube is set to \
+"\[InvisibleSpace]True\),
+      SequenceForm[ "Test consistency on cube is set to ", True],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("Use of powerexpand is set to "\[InvisibleSpace]False\
+\),
+      SequenceForm[ "Use of powerexpand is set to ", False],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("Use of rootrules is set to "\[InvisibleSpace]True\),
+      SequenceForm[ "Use of rootrules is set to ", True],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("Computation of matrix N is set to: \
+"\[InvisibleSpace]False\),
+      SequenceForm[ "Computation of matrix N is set to: ", False],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("Application of gauge transformation is set to: "\
+\[InvisibleSpace]False\),
+      SequenceForm[ "Application of gauge transformation is set to: ", False],
+      
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("******************* START OF THE COMPUTATION ************************"\
+\)], "Print"],
+
+Cell[BoxData[
+    \("Working with lattice defined on front (F), latticefront:"\)], "Print"],
+
+Cell[BoxData[
+    \(\((\((\(-alpha\) + p)\)\ x - \((beta + 
+                    p)\)\ x1)\)\ \((\(-\((alpha + 
+                      p)\)\)\ x12 + \((\(-beta\) + 
+                    p)\)\ x2)\) - \((\((\(-beta\) + q)\)\ x1 - \((alpha + 
+                    q)\)\ x12)\)\ \((\((\(-alpha\) + q)\)\ x - \((beta + 
+                    q)\)\ x2)\) \[Equal] 0\)], "Print"],
+
+Cell[BoxData[
+    \("Lattice on ground (G), latticeground:"\)], "Print"],
+
+Cell[BoxData[
+    \(\(-\((\((\(-beta\) + k)\)\ x1 - \((alpha + 
+                      k)\)\ x13)\)\)\ \((\((\(-alpha\) + k)\)\ x - \((beta + 
+                    k)\)\ x3)\) + \((\((\(-alpha\) + p)\)\ x - \((beta + 
+                    p)\)\ x1)\)\ \((\(-\((alpha + 
+                      p)\)\)\ x13 + \((\(-beta\) + p)\)\ x3)\) \[Equal] 
+      0\)], "Print"],
+
+Cell[BoxData[
+    \("Lattice on left face (L), latticeleftface:"\)], "Print"],
+
+Cell[BoxData[
+    \(\(-\((\((\(-beta\) + k)\)\ x2 - \((alpha + 
+                      k)\)\ x23)\)\)\ \((\((\(-alpha\) + k)\)\ x - \((beta + 
+                    k)\)\ x3)\) + \((\((\(-alpha\) + q)\)\ x - \((beta + 
+                    q)\)\ x2)\)\ \((\(-\((alpha + 
+                      q)\)\)\ x23 + \((\(-beta\) + q)\)\ x3)\) \[Equal] 
+      0\)], "Print"],
+
+Cell[BoxData[
+    \("**************** TESTING CONSISTENCY AROUND THE CUBE ****************"\
+\)], "Print"],
+
+Cell[BoxData[
+    \("Computation  x12 ="\)], "Print"],
+
+Cell[BoxData[
+    \(\((\(-alpha\)\ beta\ x\ x1 + alpha\ q\ x\ x1 + beta\ q\ x\ x1 - 
+          q\^2\ x\ x1 + alpha\ beta\ x\ x2 - alpha\ p\ x\ x2 - 
+          beta\ p\ x\ x2 + p\^2\ x\ x2 - p\^2\ x1\ x2 + 
+          q\^2\ x1\ x2)\)/\((p\^2\ x - q\^2\ x - alpha\ beta\ x1 - 
+          alpha\ p\ x1 - beta\ p\ x1 - p\^2\ x1 + alpha\ beta\ x2 + 
+          alpha\ q\ x2 + beta\ q\ x2 + q\^2\ x2)\)\)], "Print"],
+
+Cell[BoxData[
+    \("Computation  x13 = "\)], "Print"],
+
+Cell[BoxData[
+    \(\((alpha\ beta\ x\ x1 - alpha\ k\ x\ x1 - beta\ k\ x\ x1 + 
+          k\^2\ x\ x1 - alpha\ beta\ x\ x3 + alpha\ p\ x\ x3 + 
+          beta\ p\ x\ x3 - p\^2\ x\ x3 - k\^2\ x1\ x3 + 
+          p\^2\ x1\ x3)\)/\((k\^2\ x - p\^2\ x + alpha\ beta\ x1 + 
+          alpha\ p\ x1 + beta\ p\ x1 + p\^2\ x1 - alpha\ beta\ x3 - 
+          alpha\ k\ x3 - beta\ k\ x3 - k\^2\ x3)\)\)], "Print"],
+
+Cell[BoxData[
+    \("Computation  x23 = "\)], "Print"],
+
+Cell[BoxData[
+    \(\((alpha\ beta\ x\ x2 - alpha\ k\ x\ x2 - beta\ k\ x\ x2 + 
+          k\^2\ x\ x2 - alpha\ beta\ x\ x3 + alpha\ q\ x\ x3 + 
+          beta\ q\ x\ x3 - q\^2\ x\ x3 - k\^2\ x2\ x3 + 
+          q\^2\ x2\ x3)\)/\((k\^2\ x - q\^2\ x + alpha\ beta\ x2 + 
+          alpha\ q\ x2 + beta\ q\ x2 + q\^2\ x2 - alpha\ beta\ x3 - 
+          alpha\ k\ x3 - beta\ k\ x3 - k\^2\ x3)\)\)], "Print"],
+
+Cell[BoxData[
+    \("*****************************************************************"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("After factoring, computation of x123 using x23 (x123choice1), x123 \
+="\)], "Print"],
+
+Cell[BoxData[
+    \(\(-\(\((\(-alpha\)\ beta\ p\^2\ x1\ x2 + alpha\ k\ p\^2\ x1\ x2 + 
+            beta\ k\ p\^2\ x1\ x2 - k\^2\ p\^2\ x1\ x2 + 
+            alpha\ beta\ q\^2\ x1\ x2 - alpha\ k\ q\^2\ x1\ x2 - 
+            beta\ k\ q\^2\ x1\ x2 + k\^2\ q\^2\ x1\ x2 - 
+            alpha\ beta\ k\^2\ x1\ x3 + alpha\ beta\ p\^2\ x1\ x3 + 
+            alpha\ k\^2\ q\ x1\ x3 + beta\ k\^2\ q\ x1\ x3 - 
+            alpha\ p\^2\ q\ x1\ x3 - beta\ p\^2\ q\ x1\ x3 - 
+            k\^2\ q\^2\ x1\ x3 + p\^2\ q\^2\ x1\ x3 + 
+            alpha\ beta\ k\^2\ x2\ x3 - alpha\ k\^2\ p\ x2\ x3 - 
+            beta\ k\^2\ p\ x2\ x3 + k\^2\ p\^2\ x2\ x3 - 
+            alpha\ beta\ q\^2\ x2\ x3 + alpha\ p\ q\^2\ x2\ x3 + 
+            beta\ p\ q\^2\ x2\ x3 - 
+            p\^2\ q\^2\ x2\ x3)\)/\((alpha\ beta\ k\^2\ x1 + 
+            alpha\ k\^2\ p\ x1 + beta\ k\^2\ p\ x1 + k\^2\ p\^2\ x1 - 
+            alpha\ beta\ q\^2\ x1 - alpha\ p\ q\^2\ x1 - beta\ p\ q\^2\ x1 - 
+            p\^2\ q\^2\ x1 - alpha\ beta\ k\^2\ x2 + alpha\ beta\ p\^2\ x2 - 
+            alpha\ k\^2\ q\ x2 - beta\ k\^2\ q\ x2 + alpha\ p\^2\ q\ x2 + 
+            beta\ p\^2\ q\ x2 - k\^2\ q\^2\ x2 + p\^2\ q\^2\ x2 - 
+            alpha\ beta\ p\^2\ x3 - alpha\ k\ p\^2\ x3 - beta\ k\ p\^2\ x3 - 
+            k\^2\ p\^2\ x3 + alpha\ beta\ q\^2\ x3 + alpha\ k\ q\^2\ x3 + 
+            beta\ k\ q\^2\ x3 + k\^2\ q\^2\ x3)\)\)\)\)], "Print"],
+
+Cell[BoxData[
+    \("After factoring, computation of x123 using x13, (x123choice2), x123 ="\
+\)], "Print"],
+
+Cell[BoxData[
+    \(\(-\(\((alpha\ beta\ p\^2\ x1\ x2 - alpha\ k\ p\^2\ x1\ x2 - 
+            beta\ k\ p\^2\ x1\ x2 + k\^2\ p\^2\ x1\ x2 - 
+            alpha\ beta\ q\^2\ x1\ x2 + alpha\ k\ q\^2\ x1\ x2 + 
+            beta\ k\ q\^2\ x1\ x2 - k\^2\ q\^2\ x1\ x2 + 
+            alpha\ beta\ k\^2\ x1\ x3 - alpha\ beta\ p\^2\ x1\ x3 - 
+            alpha\ k\^2\ q\ x1\ x3 - beta\ k\^2\ q\ x1\ x3 + 
+            alpha\ p\^2\ q\ x1\ x3 + beta\ p\^2\ q\ x1\ x3 + 
+            k\^2\ q\^2\ x1\ x3 - p\^2\ q\^2\ x1\ x3 - 
+            alpha\ beta\ k\^2\ x2\ x3 + alpha\ k\^2\ p\ x2\ x3 + 
+            beta\ k\^2\ p\ x2\ x3 - k\^2\ p\^2\ x2\ x3 + 
+            alpha\ beta\ q\^2\ x2\ x3 - alpha\ p\ q\^2\ x2\ x3 - 
+            beta\ p\ q\^2\ x2\ x3 + 
+            p\^2\ q\^2\ x2\ x3)\)/\((\(-alpha\)\ beta\ k\^2\ x1 - 
+            alpha\ k\^2\ p\ x1 - beta\ k\^2\ p\ x1 - k\^2\ p\^2\ x1 + 
+            alpha\ beta\ q\^2\ x1 + alpha\ p\ q\^2\ x1 + beta\ p\ q\^2\ x1 + 
+            p\^2\ q\^2\ x1 + alpha\ beta\ k\^2\ x2 - alpha\ beta\ p\^2\ x2 + 
+            alpha\ k\^2\ q\ x2 + beta\ k\^2\ q\ x2 - alpha\ p\^2\ q\ x2 - 
+            beta\ p\^2\ q\ x2 + k\^2\ q\^2\ x2 - p\^2\ q\^2\ x2 + 
+            alpha\ beta\ p\^2\ x3 + alpha\ k\ p\^2\ x3 + beta\ k\ p\^2\ x3 + 
+            k\^2\ p\^2\ x3 - alpha\ beta\ q\^2\ x3 - alpha\ k\ q\^2\ x3 - 
+            beta\ k\ q\^2\ x3 - k\^2\ q\^2\ x3)\)\)\)\)], "Print"],
+
+Cell[BoxData[
+    \("********************************************************************"\)\
+], "Print"],
+
+Cell[BoxData[
+    \("As soon as one consistency condition is violated the computation"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("will abort, unless candidates for L and M are given in the data file."\
+\)], "Print"],
+
+Cell[BoxData[
+    \("Test if (x123choice1 - x123choice2) = 0, diffx123choice1choice2 ="\)], \
+"Print"],
+
+Cell[BoxData[
+    \(0\)], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("*** TEST RESULT = "\[InvisibleSpace]0\
+\[InvisibleSpace]" (SHOULD BE ZERO) ***"\),
+      SequenceForm[ "*** TEST RESULT = ", 0, " (SHOULD BE ZERO) ***"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("The equation is CONSISTENT around the cube!"\)], "Print"],
+
+Cell[BoxData[
+    \("************* BUILDING THE LAX PAIR (L_c and M_c) \
+*****************"\)], "Print"],
+
+Cell[BoxData[
+    \("(c refers to candidate matrix), normalization factors t and s will \
+"\)], "Print"],
+
+Cell[BoxData[
+    \("be computed below, or must be given in the data file "\)], "Print"],
+
+Cell[BoxData[
+    \("Substitution of x3 = f/g into x13, gives x13hom = "\)], "Print"],
+
+Cell[BoxData[
+    \(\((alpha\ beta\ f\ x - alpha\ f\ p\ x - beta\ f\ p\ x + f\ p\^2\ x + 
+          f\ k\^2\ x1 - f\ p\^2\ x1 - alpha\ beta\ g\ x\ x1 + 
+          alpha\ g\ k\ x\ x1 + beta\ g\ k\ x\ x1 - 
+          g\ k\^2\ x\ x1)\)/\((alpha\ beta\ f + alpha\ f\ k + beta\ f\ k + 
+          f\ k\^2 - g\ k\^2\ x + g\ p\^2\ x - alpha\ beta\ g\ x1 - 
+          alpha\ g\ p\ x1 - beta\ g\ p\ x1 - g\ p\^2\ x1)\)\)], "Print"],
+
+Cell[BoxData[
+    \("Substitution of x3 = f/g into x23, gives x23hom = "\)], "Print"],
+
+Cell[BoxData[
+    \(\((alpha\ beta\ f\ x - alpha\ f\ q\ x - beta\ f\ q\ x + f\ q\^2\ x + 
+          f\ k\^2\ x2 - f\ q\^2\ x2 - alpha\ beta\ g\ x\ x2 + 
+          alpha\ g\ k\ x\ x2 + beta\ g\ k\ x\ x2 - 
+          g\ k\^2\ x\ x2)\)/\((alpha\ beta\ f + alpha\ f\ k + beta\ f\ k + 
+          f\ k\^2 - g\ k\^2\ x + g\ q\^2\ x - alpha\ beta\ g\ x2 - 
+          alpha\ g\ q\ x2 - beta\ g\ q\ x2 - g\ q\^2\ x2)\)\)], "Print"],
+
+Cell[BoxData[
+    \("*********************************************************************"\
+\)], "Print"],
+
+Cell[BoxData[
+    \("Candidate Lax pair, matrix L (candidateL)"\)], "Print"],
+
+Cell[BoxData[
+    \("L = "\)], "Print"],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+            {\(t\ \((alpha\ beta\ x - alpha\ p\ x - beta\ p\ x + p\^2\ x + 
+                    k\^2\ x1 - 
+                    p\^2\ x1)\)\), \(\(-\((alpha - k)\)\)\ \((beta - 
+                    k)\)\ t\ x\ x1\)},
+            {\(\((alpha + k)\)\ \((beta + k)\)\ t\), \(\(-t\)\ \((k\^2\ x - 
+                    p\^2\ x + alpha\ beta\ x1 + alpha\ p\ x1 + beta\ p\ x1 + 
+                    p\^2\ x1)\)\)}
+            }], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Print"],
+
+Cell[BoxData[
+    \("*********************************************************************"\
+\)], "Print"],
+
+Cell[BoxData[
+    \("Entry L11 of candidate L (entrycandidateL11) "\)], "Print"],
+
+Cell[BoxData[
+    \("L11 = "\)], "Print"],
+
+Cell[BoxData[
+    \(t\ \((alpha\ beta\ x - alpha\ p\ x - beta\ p\ x + p\^2\ x + k\^2\ x1 - 
+          p\^2\ x1)\)\)], "Print"],
+
+Cell[BoxData[
+    \("Entry L12 of candidate L (entrycandidateL12) "\)], "Print"],
+
+Cell[BoxData[
+    \("L12 = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(-\((alpha - k)\)\)\ \((beta - k)\)\ t\ x\ x1\)], "Print"],
+
+Cell[BoxData[
+    \("Entry L21 of candidate L (entrycandidateL21) "\)], "Print"],
+
+Cell[BoxData[
+    \("L21 = "\)], "Print"],
+
+Cell[BoxData[
+    \(\((alpha + k)\)\ \((beta + k)\)\ t\)], "Print"],
+
+Cell[BoxData[
+    \("Entry L22 of candidate L (entrycandidateL22) "\)], "Print"],
+
+Cell[BoxData[
+    \("L22 = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(-t\)\ \((k\^2\ x - p\^2\ x + alpha\ beta\ x1 + alpha\ p\ x1 + 
+          beta\ p\ x1 + p\^2\ x1)\)\)], "Print"],
+
+Cell[BoxData[
+    \("*********************************************************************"\
+\)], "Print"],
+
+Cell[BoxData[
+    \("Candidate Lax pair, matrix M (candidateM)"\)], "Print"],
+
+Cell[BoxData[
+    \("M = "\)], "Print"],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+            {\(s\ \((alpha\ beta\ x - alpha\ q\ x - beta\ q\ x + q\^2\ x + 
+                    k\^2\ x2 - 
+                    q\^2\ x2)\)\), \(\(-\((alpha - k)\)\)\ \((beta - 
+                    k)\)\ s\ x\ x2\)},
+            {\(\((alpha + k)\)\ \((beta + k)\)\ s\), \(\(-s\)\ \((k\^2\ x - 
+                    q\^2\ x + alpha\ beta\ x2 + alpha\ q\ x2 + beta\ q\ x2 + 
+                    q\^2\ x2)\)\)}
+            }], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Print"],
+
+Cell[BoxData[
+    \("*********************************************************************"\
+\)], "Print"],
+
+Cell[BoxData[
+    \("Entry M11 of candidate M (entrycandidateM11) "\)], "Print"],
+
+Cell[BoxData[
+    \("M11 = "\)], "Print"],
+
+Cell[BoxData[
+    \(s\ \((alpha\ beta\ x - alpha\ q\ x - beta\ q\ x + q\^2\ x + k\^2\ x2 - 
+          q\^2\ x2)\)\)], "Print"],
+
+Cell[BoxData[
+    \("Entry M12 of candidate M (entrycandidateM12) "\)], "Print"],
+
+Cell[BoxData[
+    \("M12 = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(-\((alpha - k)\)\)\ \((beta - k)\)\ s\ x\ x2\)], "Print"],
+
+Cell[BoxData[
+    \("Entry M21 of candidate M (entrycandidateM21) "\)], "Print"],
+
+Cell[BoxData[
+    \("M21 = "\)], "Print"],
+
+Cell[BoxData[
+    \(\((alpha + k)\)\ \((beta + k)\)\ s\)], "Print"],
+
+Cell[BoxData[
+    \("Entry M22 of candidate M (entrycandidateM22) "\)], "Print"],
+
+Cell[BoxData[
+    \("M22 = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(-s\)\ \((k\^2\ x - q\^2\ x + alpha\ beta\ x2 + alpha\ q\ x2 + 
+          beta\ q\ x2 + q\^2\ x2)\)\)], "Print"],
+
+Cell[BoxData[
+    \("*******************************************************************"\)]\
+, "Print"],
+
+Cell[BoxData[
+    \("************ COMPUTATION OF THE LAX PAIR CONTINUES \
+***************"\)], "Print"],
+
+Cell[BoxData[
+    \("************ COMPUTATION OF CONSTRAINTS FOR t AND s \
+***************"\)], "Print"],
+
+Cell[BoxData[
+    \("The subsequent computations might be slow for complicated lattices, in \
+particular, if square roots are present!"\)], "Print"],
+
+Cell[BoxData[
+    \("Compatibility equation, (1-1) element ON LATTICE,"\)], "Print"],
+
+Cell[BoxData[
+    \("compatibilityeq11onlattice = "\)], "Print"],
+
+Cell[BoxData[
+    \(\((\((\(-alpha\)\ beta\ k\^2\ x1 + alpha\ beta\ p\^2\ x1 + 
+                alpha\ k\^2\ q\ x1 + beta\ k\^2\ q\ x1 - alpha\ p\^2\ q\ x1 - 
+                beta\ p\^2\ q\ x1 - k\^2\ q\^2\ x1 + p\^2\ q\^2\ x1 + 
+                alpha\ beta\ k\^2\ x2 - alpha\ k\^2\ p\ x2 - 
+                beta\ k\^2\ p\ x2 + k\^2\ p\^2\ x2 - alpha\ beta\ q\^2\ x2 + 
+                alpha\ p\ q\^2\ x2 + beta\ p\ q\^2\ x2 - 
+                p\^2\ q\^2\ x2)\)\ \((alpha\ beta\ s1\ t\ x\^2 - 
+                alpha\ p\ s1\ t\ x\^2 - beta\ p\ s1\ t\ x\^2 + 
+                p\^2\ s1\ t\ x\^2 - alpha\ beta\ s\ t2\ x\^2 + 
+                alpha\ q\ s\ t2\ x\^2 + beta\ q\ s\ t2\ x\^2 - 
+                q\^2\ s\ t2\ x\^2 + alpha\^2\ s1\ t\ x\ x1 + 
+                beta\^2\ s1\ t\ x\ x1 - 2\ p\^2\ s1\ t\ x\ x1 + 
+                alpha\ beta\ s1\ t\ x1\^2 + alpha\ p\ s1\ t\ x1\^2 + 
+                beta\ p\ s1\ t\ x1\^2 + p\^2\ s1\ t\ x1\^2 - 
+                alpha\^2\ s\ t2\ x\ x2 - beta\^2\ s\ t2\ x\ x2 + 
+                2\ q\^2\ s\ t2\ x\ x2 - alpha\ beta\ s\ t2\ x2\^2 - 
+                alpha\ q\ s\ t2\ x2\^2 - beta\ q\ s\ t2\ x2\^2 - 
+                q\^2\ s\ t2\ x2\^2)\))\)/\((\(-p\^2\)\ x + q\^2\ x + 
+            alpha\ beta\ x1 + alpha\ p\ x1 + beta\ p\ x1 + p\^2\ x1 - 
+            alpha\ beta\ x2 - alpha\ q\ x2 - beta\ q\ x2 - 
+            q\^2\ x2)\) \[Equal] 0\)], "Print"],
+
+Cell[BoxData[
+    \("Compatibility equation, (1-2) element ON LATTICE, "\)], "Print"],
+
+Cell[BoxData[
+    \("compatibilityeq12onlattice = "\)], "Print"],
+
+Cell[BoxData[
+    \(\((\((alpha - k)\)\ \((\(-beta\) + k)\)\ \((p - q)\)\ \((p + 
+                q)\)\ x1\ x2\ \((alpha\ beta\ s1\ t\ x\^2 - 
+                alpha\ p\ s1\ t\ x\^2 - beta\ p\ s1\ t\ x\^2 + 
+                p\^2\ s1\ t\ x\^2 - alpha\ beta\ s\ t2\ x\^2 + 
+                alpha\ q\ s\ t2\ x\^2 + beta\ q\ s\ t2\ x\^2 - 
+                q\^2\ s\ t2\ x\^2 + alpha\^2\ s1\ t\ x\ x1 + 
+                beta\^2\ s1\ t\ x\ x1 - 2\ p\^2\ s1\ t\ x\ x1 + 
+                alpha\ beta\ s1\ t\ x1\^2 + alpha\ p\ s1\ t\ x1\^2 + 
+                beta\ p\ s1\ t\ x1\^2 + p\^2\ s1\ t\ x1\^2 - 
+                alpha\^2\ s\ t2\ x\ x2 - beta\^2\ s\ t2\ x\ x2 + 
+                2\ q\^2\ s\ t2\ x\ x2 - alpha\ beta\ s\ t2\ x2\^2 - 
+                alpha\ q\ s\ t2\ x2\^2 - beta\ q\ s\ t2\ x2\^2 - 
+                q\^2\ s\ t2\ x2\^2)\))\)/\((\(-p\^2\)\ x + q\^2\ x + 
+            alpha\ beta\ x1 + alpha\ p\ x1 + beta\ p\ x1 + p\^2\ x1 - 
+            alpha\ beta\ x2 - alpha\ q\ x2 - beta\ q\ x2 - 
+            q\^2\ x2)\) \[Equal] 0\)], "Print"],
+
+Cell[BoxData[
+    \("Compatibility equation, (2-1) element ON LATTICE, "\)], "Print"],
+
+Cell[BoxData[
+    \("compatibilityeq21onlattice = "\)], "Print"],
+
+Cell[BoxData[
+    \(\((\((alpha + k)\)\ \((beta + k)\)\ \((p - q)\)\ \((p + 
+                q)\)\ \((alpha\ beta\ s1\ t\ x\^2 - alpha\ p\ s1\ t\ x\^2 - 
+                beta\ p\ s1\ t\ x\^2 + p\^2\ s1\ t\ x\^2 - 
+                alpha\ beta\ s\ t2\ x\^2 + alpha\ q\ s\ t2\ x\^2 + 
+                beta\ q\ s\ t2\ x\^2 - q\^2\ s\ t2\ x\^2 + 
+                alpha\^2\ s1\ t\ x\ x1 + beta\^2\ s1\ t\ x\ x1 - 
+                2\ p\^2\ s1\ t\ x\ x1 + alpha\ beta\ s1\ t\ x1\^2 + 
+                alpha\ p\ s1\ t\ x1\^2 + beta\ p\ s1\ t\ x1\^2 + 
+                p\^2\ s1\ t\ x1\^2 - alpha\^2\ s\ t2\ x\ x2 - 
+                beta\^2\ s\ t2\ x\ x2 + 2\ q\^2\ s\ t2\ x\ x2 - 
+                alpha\ beta\ s\ t2\ x2\^2 - alpha\ q\ s\ t2\ x2\^2 - 
+                beta\ q\ s\ t2\ x2\^2 - 
+                q\^2\ s\ t2\ x2\^2)\))\)/\((\(-p\^2\)\ x + q\^2\ x + 
+            alpha\ beta\ x1 + alpha\ p\ x1 + beta\ p\ x1 + p\^2\ x1 - 
+            alpha\ beta\ x2 - alpha\ q\ x2 - beta\ q\ x2 - 
+            q\^2\ x2)\) \[Equal] 0\)], "Print"],
+
+Cell[BoxData[
+    \("Compatibility equation, (2-2) element ON LATTICE, "\)], "Print"],
+
+Cell[BoxData[
+    \("compatibilityeq22onlattice = "\)], "Print"],
+
+Cell[BoxData[
+    \(\((\((\(-alpha\)\ beta\ k\^2\ x1 + alpha\ beta\ p\^2\ x1 + 
+                alpha\ k\^2\ q\ x1 + beta\ k\^2\ q\ x1 - alpha\ p\^2\ q\ x1 - 
+                beta\ p\^2\ q\ x1 - k\^2\ q\^2\ x1 + p\^2\ q\^2\ x1 + 
+                alpha\ beta\ k\^2\ x2 - alpha\ k\^2\ p\ x2 - 
+                beta\ k\^2\ p\ x2 + k\^2\ p\^2\ x2 - alpha\ beta\ q\^2\ x2 + 
+                alpha\ p\ q\^2\ x2 + beta\ p\ q\^2\ x2 - 
+                p\^2\ q\^2\ x2)\)\ \((alpha\ beta\ s1\ t\ x\^2 - 
+                alpha\ p\ s1\ t\ x\^2 - beta\ p\ s1\ t\ x\^2 + 
+                p\^2\ s1\ t\ x\^2 - alpha\ beta\ s\ t2\ x\^2 + 
+                alpha\ q\ s\ t2\ x\^2 + beta\ q\ s\ t2\ x\^2 - 
+                q\^2\ s\ t2\ x\^2 + alpha\^2\ s1\ t\ x\ x1 + 
+                beta\^2\ s1\ t\ x\ x1 - 2\ p\^2\ s1\ t\ x\ x1 + 
+                alpha\ beta\ s1\ t\ x1\^2 + alpha\ p\ s1\ t\ x1\^2 + 
+                beta\ p\ s1\ t\ x1\^2 + p\^2\ s1\ t\ x1\^2 - 
+                alpha\^2\ s\ t2\ x\ x2 - beta\^2\ s\ t2\ x\ x2 + 
+                2\ q\^2\ s\ t2\ x\ x2 - alpha\ beta\ s\ t2\ x2\^2 - 
+                alpha\ q\ s\ t2\ x2\^2 - beta\ q\ s\ t2\ x2\^2 - 
+                q\^2\ s\ t2\ x2\^2)\))\)/\((\(-p\^2\)\ x + q\^2\ x + 
+            alpha\ beta\ x1 + alpha\ p\ x1 + beta\ p\ x1 + p\^2\ x1 - 
+            alpha\ beta\ x2 - alpha\ q\ x2 - beta\ q\ x2 - 
+            q\^2\ x2)\) \[Equal] 0\)], "Print"],
+
+Cell[BoxData[
+    \("********************************************************************"\)\
+], "Print"],
+
+Cell[BoxData[
+    \("Compatibility testing of elements of matrix equation L2.M - M1.L = \
+0"\)], "Print"],
+
+Cell[BoxData[
+    \("Fraction (t2 s)/(t s1) (fractiononlatticeeq11, from "\)], "Print"],
+
+Cell[BoxData[
+    \("compatibilityeq11 and EVALUATED ON LATTICE)"\)], "Print"],
+
+Cell[BoxData[
+    \("(t2 s)/(t s1) = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(\((beta\ x - p\ x + alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ \
+x1 + p\ x1)\)\)\/\(\((beta\ x - q\ x + alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ \
+x + beta\ x2 + q\ x2)\)\)\)], "Print"],
+
+Cell[BoxData[
+    \("Fraction (t2 s)/(t s1) (fractiononlatticeeq12, from "\)], "Print"],
+
+Cell[BoxData[
+    \("compatibilityeq12 and EVALUATED ON LATTICE)"\)], "Print"],
+
+Cell[BoxData[
+    \("(t2 s)/(t s1) = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(\((beta\ x - p\ x + alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ \
+x1 + p\ x1)\)\)\/\(\((beta\ x - q\ x + alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ \
+x + beta\ x2 + q\ x2)\)\)\)], "Print"],
+
+Cell[BoxData[
+    \("Fraction (t2 s)/(t s1) (fractiononlatticeeq21, from "\)], "Print"],
+
+Cell[BoxData[
+    \("compatibilityeq21 and EVALUATED ON LATTICE)"\)], "Print"],
+
+Cell[BoxData[
+    \("(t2 s)/(t s1) = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(\((beta\ x - p\ x + alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ \
+x1 + p\ x1)\)\)\/\(\((beta\ x - q\ x + alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ \
+x + beta\ x2 + q\ x2)\)\)\)], "Print"],
+
+Cell[BoxData[
+    \("Fraction (t2 s)/(t s1) (fractiononlatticeeq22, from "\)], "Print"],
+
+Cell[BoxData[
+    \("compatibilityeq22 and EVALUATED ON LATTICE)"\)], "Print"],
+
+Cell[BoxData[
+    \("(t2 s)/(t s1) = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(\((beta\ x - p\ x + alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ \
+x1 + p\ x1)\)\)\/\(\((beta\ x - q\ x + alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ \
+x + beta\ x2 + q\ x2)\)\)\)], "Print"],
+
+Cell[BoxData[
+    \("******************************************************************"\)],\
+ "Print"],
+
+Cell[BoxData[
+    \("************* CRUCIAL STEP: COMPUTATION OF t AND s \
+****************"\)], "Print"],
+
+Cell[BoxData[
+    \("The subsequent computations might be slow for complicated lattices, in \
+particular, if square roots are present!"\)], "Print"],
+
+Cell[BoxData[
+    \("*********************************************************************"\
+\)], "Print"],
+
+Cell[BoxData[
+    \("Determinant of matrix Lc, det(matrixLc) = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(-\((k - p)\)\)\ \((k + p)\)\ \((beta\ x - p\ x + alpha\ x1 + 
+          p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ x1)\)\)], "Print"],
+
+Cell[BoxData[
+    \("Determinant of matrix Mc, det(matrixMc) = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(-\((k - q)\)\)\ \((k + q)\)\ \((beta\ x - q\ x + alpha\ x2 + 
+          q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\)], "Print"],
+
+Cell[BoxData[
+    \("*********************************************************************"\
+\)], "Print"],
+
+Cell[BoxData[
+    \("The subsequent computations might be slow for complicated lattices, in \
+particular, if square roots are present!"\)], "Print"],
+
+Cell[BoxData[
+    \("-----> Using algorithm (detmethod)! Coefficient t (tcondition)"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("t = "\)], "Print"],
+
+Cell[BoxData[
+    \(1\/\@\(\(-\((k - p)\)\)\ \((k + p)\)\ \((beta\ x - p\ x + alpha\ x1 + p\
+\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ x1)\)\)\)], "Print"],
+
+Cell[BoxData[
+    \("*******************************************************************"\)]\
+, "Print"],
+
+Cell[BoxData[
+    \("------> Using algorithm (detmethod)! Coefficient s (scondition)"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("s = "\)], "Print"],
+
+Cell[BoxData[
+    \(1\/\@\(\(-\((k - q)\)\)\ \((k + q)\)\ \((beta\ x - q\ x + alpha\ x2 + q\
+\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\)\)], "Print"],
+
+Cell[BoxData[
+    \("*******************************************************************"\)]\
+, "Print"],
+
+Cell[BoxData[
+    \("************************* TESTING t AND s ***************************"\
+\)], "Print"],
+
+Cell[BoxData[
+    \("The subsequent computations might be slow for complicated lattices, in \
+particular, if square roots are present!"\)], "Print"],
+
+Cell[BoxData[
+    \("t and s DO NOT PASS the SYMBOLIC TEST YET."\)], "Print"],
+
+Cell[BoxData[
+    \("Either t and s do not satisfy the condition(s),"\)], "Print"],
+
+Cell[BoxData[
+    \("OR, more likely, Mathematica could not simplify the expression."\)], \
+"Print"],
+
+Cell[BoxData[
+    \("The result will be numerically tested, with 12 tests where "\)], \
+"Print"],
+
+Cell[BoxData[
+    \("the symbols are replaced by randomly selected prime numbers."\)], \
+"Print"],
+
+Cell[BoxData[
+    \("Based on t and s (given in the data file),"\)], "Print"],
+
+Cell[BoxData[
+    \("the ratio (t2*s)/(t*s1) has been computed in two ways."\)], "Print"],
+
+Cell[BoxData[
+    \("The comparison PASSES the 12 NUMERIC TESTS"\)], "Print"],
+
+Cell[BoxData[
+    \("(based on randomly selected prime numbers)."\)], "Print"],
+
+Cell[BoxData[
+    \("-----> t and s (given in the data file) appear CORRECT!"\)], "Print"],
+
+Cell[BoxData[
+    \("Further simplifications will be attempted."\)], "Print"],
+
+Cell[BoxData[
+    \("After using various rules to simplify the roots (rootrules),"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("t and s DO NOT PASS the SYMBOLIC TEST YET."\)], "Print"],
+
+Cell[BoxData[
+    \("Either t and s do not satisfy the condition(s),"\)], "Print"],
+
+Cell[BoxData[
+    \("OR, Mathematica still could not simplify the expression."\)], "Print"],
+
+Cell[BoxData[
+    \("Additional simplifications will now be attempted."\)], "Print"],
+
+Cell[BoxData[
+    \("After using powerexpand in various places,"\)], "Print"],
+
+Cell[BoxData[
+    \("t and s DO NOT PASS the SYMBOLIC TEST YET."\)], "Print"],
+
+Cell[BoxData[
+    \("Either t and s do not satisfy the condition(s),"\)], "Print"],
+
+Cell[BoxData[
+    \("OR, Mathematica could not simplify the expression."\)], "Print"],
+
+Cell[BoxData[
+    \("A final set of simplifications will now be attempted."\)], "Print"],
+
+Cell[BoxData[
+    \("After introducing absolute values in various places,"\)], "Print"],
+
+Cell[BoxData[
+    \("t and s PASS the SYMBOLIC TEST!"\)], "Print"],
+
+Cell[BoxData[
+    \("*********************************************************************"\
+\)], "Print"],
+
+Cell[BoxData[
+    \("******* START OF TEST OF THE CONSISTENCY IN SQUARED FORM *******"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("Software will verify if t2^2 = ( (t*s1)/s )^2 in two ways!"\)], "Print"],
+
+Cell[BoxData[
+    \("Based on the given s and t"\)], "Print"],
+
+Cell[BoxData[
+    \("newtestcompatibilityonlatticesquared ON LATTICE should be zero:"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("newtestcompatibilityonlatticesquared = "\)], "Print"],
+
+Cell[BoxData[
+    \(0\)], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("**** TEST RESULT = "\[InvisibleSpace]0\
+\[InvisibleSpace]" ****"\),
+      SequenceForm[ "**** TEST RESULT = ", 0, " ****"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("(SHOULD BE ZERO)"\)], "Print"],
+
+Cell[BoxData[
+    \("NEW compatibility TEST (squared) for t and s is SATISFIED!"\)], "Print"],
+
+Cell[BoxData[
+    \("*********************************************************************"\
+\)], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("Using t = "\[InvisibleSpace]1\/\@\(\(-\((k - p)\)\)\ \
+\((k + p)\)\ \((beta\ x - p\ x + alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + \
+beta\ x1 + p\ x1)\)\)\[InvisibleSpace]" and s = \
+"\[InvisibleSpace]1\/\@\(\(-\((k - q)\)\)\ \((k + q)\)\ \((beta\ x - q\ x + \
+alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\)\),
+      SequenceForm[ "Using t = ", 
+        Power[ 
+          Times[ -1, 
+            Plus[ k, 
+              Times[ -1, p]], 
+            Plus[ k, p], 
+            Plus[ 
+              Times[ beta, x], 
+              Times[ -1, p, x], 
+              Times[ alpha, x1], 
+              Times[ p, x1]], 
+            Plus[ 
+              Times[ alpha, x], 
+              Times[ -1, p, x], 
+              Times[ beta, x1], 
+              Times[ p, x1]]], 
+          Rational[ -1, 2]], " and s = ", 
+        Power[ 
+          Times[ -1, 
+            Plus[ k, 
+              Times[ -1, q]], 
+            Plus[ k, q], 
+            Plus[ 
+              Times[ beta, x], 
+              Times[ -1, q, x], 
+              Times[ alpha, x2], 
+              Times[ q, x2]], 
+            Plus[ 
+              Times[ alpha, x], 
+              Times[ -1, q, x], 
+              Times[ beta, x2], 
+              Times[ q, x2]]], 
+          Rational[ -1, 2]]],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("Lax pair, matrix L (matrixL) for t = "\
+\[InvisibleSpace]1\/\@\(\(-\((k - p)\)\)\ \((k + p)\)\ \((beta\ x - p\ x + \
+alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ x1)\)\)\
+\[InvisibleSpace]" "\),
+      SequenceForm[ "Lax pair, matrix L (matrixL) for t = ", 
+        Power[ 
+          Times[ -1, 
+            Plus[ k, 
+              Times[ -1, p]], 
+            Plus[ k, p], 
+            Plus[ 
+              Times[ beta, x], 
+              Times[ -1, p, x], 
+              Times[ alpha, x1], 
+              Times[ p, x1]], 
+            Plus[ 
+              Times[ alpha, x], 
+              Times[ -1, p, x], 
+              Times[ beta, x1], 
+              Times[ p, x1]]], 
+          Rational[ -1, 2]], " "],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("********************************************************************"\)\
+], "Print"],
+
+Cell[BoxData[
+    \("L = "\)], "Print"],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+            {\(\(alpha\ beta\ x - alpha\ p\ x - beta\ p\ x + p\^2\ x + 
+                    k\^2\ x1 - 
+                    p\^2\ x1\)\/\@\(\(-\((k - p)\)\)\ \((k + p)\)\ \((beta\ x \
+- p\ x + alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ x1)\)\)\), \
+\(\(\((alpha - k)\)\ \((\(-beta\) + 
+                        k)\)\ x\ x1\)\/\@\(\(-\((k - p)\)\)\ \((k + p)\)\ \
+\((beta\ x - p\ x + alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ \
+x1)\)\)\)},
+            {\(\(\((alpha + k)\)\ \((beta + 
+                        k)\)\)\/\@\(\(-\((k - p)\)\)\ \((k + p)\)\ \((beta\ x \
+- p\ x + alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ x1)\)\)\), \
+\(-\(\(k\^2\ x - p\^2\ x + alpha\ beta\ x1 + alpha\ p\ x1 + beta\ p\ x1 + 
+                      p\^2\ x1\)\/\@\(\(-\((k - p)\)\)\ \((k + p)\)\ \((beta\ \
+x - p\ x + alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ x1)\)\)\)\
+\)}
+            }], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Print"],
+
+Cell[BoxData[
+    \("********************************************************************"\)\
+], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("The elements of L below are for t = "\
+\[InvisibleSpace]1\/\@\(\(-\((k - p)\)\)\ \((k + p)\)\ \((beta\ x - p\ x + \
+alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ x1)\)\)\),
+      SequenceForm[ "The elements of L below are for t = ", 
+        Power[ 
+          Times[ -1, 
+            Plus[ k, 
+              Times[ -1, p]], 
+            Plus[ k, p], 
+            Plus[ 
+              Times[ beta, x], 
+              Times[ -1, p, x], 
+              Times[ alpha, x1], 
+              Times[ p, x1]], 
+            Plus[ 
+              Times[ alpha, x], 
+              Times[ -1, p, x], 
+              Times[ beta, x1], 
+              Times[ p, x1]]], 
+          Rational[ -1, 2]]],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("Entry L11 (entryL11)"\)], "Print"],
+
+Cell[BoxData[
+    \("L11 = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(alpha\ beta\ x - alpha\ p\ x - beta\ p\ x + p\^2\ x + k\^2\ x1 - p\^2\
+\ x1\)\/\@\(\(-\((k - p)\)\)\ \((k + p)\)\ \((beta\ x - p\ x + alpha\ x1 + p\ \
+x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ x1)\)\)\)], "Print"],
+
+Cell[BoxData[
+    \("Entry L12 (entryL12)"\)], "Print"],
+
+Cell[BoxData[
+    \("L12 = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(\((alpha - k)\)\ \((\(-beta\) + k)\)\ x\ x1\)\/\@\(\(-\((k - p)\)\)\ \
+\((k + p)\)\ \((beta\ x - p\ x + alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + \
+beta\ x1 + p\ x1)\)\)\)], "Print"],
+
+Cell[BoxData[
+    \("Entry L21 (entryL21)"\)], "Print"],
+
+Cell[BoxData[
+    \("L21 = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(\((alpha + k)\)\ \((beta + k)\)\)\/\@\(\(-\((k - p)\)\)\ \((k + p)\)\ \
+\((beta\ x - p\ x + alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ \
+x1)\)\)\)], "Print"],
+
+Cell[BoxData[
+    \("Entry L22 (entryL22)"\)], "Print"],
+
+Cell[BoxData[
+    \("L22 = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(-\(\(k\^2\ x - p\^2\ x + alpha\ beta\ x1 + alpha\ p\ x1 + 
+            beta\ p\ x1 + 
+            p\^2\ x1\)\/\@\(\(-\((k - p)\)\)\ \((k + p)\)\ \((beta\ x - p\ x \
++ alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ x1)\)\)\)\)\)], \
+"Print"],
+
+Cell[BoxData[
+    \("********************************************************************"\)\
+], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("Lax pair, matrix M (matrixM) for s = "\
+\[InvisibleSpace]1\/\@\(\(-\((k - q)\)\)\ \((k + q)\)\ \((beta\ x - q\ x + \
+alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\)\
+\[InvisibleSpace]" "\),
+      SequenceForm[ "Lax pair, matrix M (matrixM) for s = ", 
+        Power[ 
+          Times[ -1, 
+            Plus[ k, 
+              Times[ -1, q]], 
+            Plus[ k, q], 
+            Plus[ 
+              Times[ beta, x], 
+              Times[ -1, q, x], 
+              Times[ alpha, x2], 
+              Times[ q, x2]], 
+            Plus[ 
+              Times[ alpha, x], 
+              Times[ -1, q, x], 
+              Times[ beta, x2], 
+              Times[ q, x2]]], 
+          Rational[ -1, 2]], " "],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("********************************************************************"\)\
+], "Print"],
+
+Cell[BoxData[
+    \("M = "\)], "Print"],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+            {\(\(alpha\ beta\ x - alpha\ q\ x - beta\ q\ x + q\^2\ x + 
+                    k\^2\ x2 - 
+                    q\^2\ x2\)\/\@\(\(-\((k - q)\)\)\ \((k + q)\)\ \((beta\ x \
+- q\ x + alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\)\), \
+\(\(\((alpha - k)\)\ \((\(-beta\) + 
+                        k)\)\ x\ x2\)\/\@\(\(-\((k - q)\)\)\ \((k + q)\)\ \
+\((beta\ x - q\ x + alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ \
+x2)\)\)\)},
+            {\(\(\((alpha + k)\)\ \((beta + 
+                        k)\)\)\/\@\(\(-\((k - q)\)\)\ \((k + q)\)\ \((beta\ x \
+- q\ x + alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\)\), \
+\(-\(\(k\^2\ x - q\^2\ x + alpha\ beta\ x2 + alpha\ q\ x2 + beta\ q\ x2 + 
+                      q\^2\ x2\)\/\@\(\(-\((k - q)\)\)\ \((k + q)\)\ \((beta\ \
+x - q\ x + alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\)\)\
+\)}
+            }], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Print"],
+
+Cell[BoxData[
+    \("********************************************************************"\)\
+], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("The elements of M below are for s = "\
+\[InvisibleSpace]1\/\@\(\(-\((k - q)\)\)\ \((k + q)\)\ \((beta\ x - q\ x + \
+alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\)\),
+      SequenceForm[ "The elements of M below are for s = ", 
+        Power[ 
+          Times[ -1, 
+            Plus[ k, 
+              Times[ -1, q]], 
+            Plus[ k, q], 
+            Plus[ 
+              Times[ beta, x], 
+              Times[ -1, q, x], 
+              Times[ alpha, x2], 
+              Times[ q, x2]], 
+            Plus[ 
+              Times[ alpha, x], 
+              Times[ -1, q, x], 
+              Times[ beta, x2], 
+              Times[ q, x2]]], 
+          Rational[ -1, 2]]],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("Entry M11 (entryM11)"\)], "Print"],
+
+Cell[BoxData[
+    \("M11 = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(alpha\ beta\ x - alpha\ q\ x - beta\ q\ x + q\^2\ x + k\^2\ x2 - q\^2\
+\ x2\)\/\@\(\(-\((k - q)\)\)\ \((k + q)\)\ \((beta\ x - q\ x + alpha\ x2 + q\ \
+x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\)\)], "Print"],
+
+Cell[BoxData[
+    \("Entry M12 (entryM12)"\)], "Print"],
+
+Cell[BoxData[
+    \("M12 = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(\((alpha - k)\)\ \((\(-beta\) + k)\)\ x\ x2\)\/\@\(\(-\((k - q)\)\)\ \
+\((k + q)\)\ \((beta\ x - q\ x + alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + \
+beta\ x2 + q\ x2)\)\)\)], "Print"],
+
+Cell[BoxData[
+    \("Entry M21 (entryM21)"\)], "Print"],
+
+Cell[BoxData[
+    \("M21 = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(\((alpha + k)\)\ \((beta + k)\)\)\/\@\(\(-\((k - q)\)\)\ \((k + q)\)\ \
+\((beta\ x - q\ x + alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ \
+x2)\)\)\)], "Print"],
+
+Cell[BoxData[
+    \("Entry M22 (entryM22)"\)], "Print"],
+
+Cell[BoxData[
+    \("M22 = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(-\(\(k\^2\ x - q\^2\ x + alpha\ beta\ x2 + alpha\ q\ x2 + 
+            beta\ q\ x2 + 
+            q\^2\ x2\)\/\@\(\(-\((k - q)\)\)\ \((k + q)\)\ \((beta\ x - q\ x \
++ alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\)\)\)\)], \
+"Print"],
+
+Cell[BoxData[
+    \("******************************************************************"\)],\
+ "Print"],
+
+Cell[BoxData[
+    \("************** FINAL TEST OF THE COMPUTED LAX PAIR \
+***************"\)], "Print"],
+
+Cell[BoxData[
+    \("The subsequent computations might be slow for complicated lattices, in \
+particular, if square roots are present!"\)], "Print"],
+
+Cell[BoxData[
+    \("Compatibility matrix L2.M - M1.L, ON LATTICE"\)], "Print"],
+
+Cell[BoxData[
+    \("finalcompatibilitymatrixonlattice ="\)], "Print"],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+            {\(\(\((\(-alpha\)\ beta\ k\^2\ x1 + alpha\ beta\ p\^2\ x1 + 
+                        alpha\ k\^2\ q\ x1 + beta\ k\^2\ q\ x1 - 
+                        alpha\ p\^2\ q\ x1 - beta\ p\^2\ q\ x1 - 
+                        k\^2\ q\^2\ x1 + p\^2\ q\^2\ x1 + 
+                        alpha\ beta\ k\^2\ x2 - alpha\ k\^2\ p\ x2 - 
+                        beta\ k\^2\ p\ x2 + k\^2\ p\^2\ x2 - 
+                        alpha\ beta\ q\^2\ x2 + alpha\ p\ q\^2\ x2 + 
+                        beta\ p\ q\^2\ x2 - 
+                        p\^2\ q\^2\ x2)\)\ \((alpha\ beta\ x\^2\ \@\(\(-\((k \
+- p)\)\)\ \((k + p)\)\ \((\(-beta\)\ x + p\ x - alpha\ x1 - p\ x1)\)\ \
+\((\(-alpha\)\ x + p\ x - beta\ x1 - p\ x1)\)\)\ \@\(-\(\(\((k - q)\)\ \((k + \
+q)\)\ \((beta\ x - p\ x + alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 \
++ p\ x1)\)\ \((\(-alpha\)\ beta\ x1 - alpha\ p\ x1 + beta\ q\ x1 + p\ q\ x1 + \
+alpha\ beta\ x2 - beta\ p\ x2 + alpha\ q\ x2 - p\ q\ x2)\)\ \((\(-alpha\)\ \
+beta\ x1 - beta\ p\ x1 + alpha\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - alpha\ p\
+\ x2 + beta\ q\ x2 - p\ q\ x2)\)\)\/\((\(-p\^2\)\ x + q\^2\ x + alpha\ beta\ \
+x1 + alpha\ p\ x1 + beta\ p\ x1 + p\^2\ x1 - alpha\ beta\ x2 - alpha\ q\ x2 - \
+beta\ q\ x2 - q\^2\ x2)\)\^2\)\) - 
+                        alpha\ q\ x\^2\ \@\(\(-\((k - p)\)\)\ \((k + p)\)\ \
+\((\(-beta\)\ x + p\ x - alpha\ x1 - p\ x1)\)\ \((\(-alpha\)\ x + p\ x - beta\
+\ x1 - p\ x1)\)\)\ \@\(-\(\(\((k - q)\)\ \((k + q)\)\ \((beta\ x - p\ x + \
+alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ x1)\)\ \((\(-alpha\)\
+\ beta\ x1 - alpha\ p\ x1 + beta\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - beta\ \
+p\ x2 + alpha\ q\ x2 - p\ q\ x2)\)\ \((\(-alpha\)\ beta\ x1 - beta\ p\ x1 + \
+alpha\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - alpha\ p\ x2 + beta\ q\ x2 - p\ q\
+\ x2)\)\)\/\((\(-p\^2\)\ x + q\^2\ x + alpha\ beta\ x1 + alpha\ p\ x1 + beta\ \
+p\ x1 + p\^2\ x1 - alpha\ beta\ x2 - alpha\ q\ x2 - beta\ q\ x2 - q\^2\ x2)\)\
+\^2\)\) - 
+                        beta\ q\ x\^2\ \@\(\(-\((k - p)\)\)\ \((k + p)\)\ \((\
+\(-beta\)\ x + p\ x - alpha\ x1 - p\ x1)\)\ \((\(-alpha\)\ x + p\ x - beta\ \
+x1 - p\ x1)\)\)\ \@\(-\(\(\((k - q)\)\ \((k + q)\)\ \((beta\ x - p\ x + alpha\
+\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ x1)\)\ \((\(-alpha\)\ \
+beta\ x1 - alpha\ p\ x1 + beta\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - beta\ p\ \
+x2 + alpha\ q\ x2 - p\ q\ x2)\)\ \((\(-alpha\)\ beta\ x1 - beta\ p\ x1 + \
+alpha\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - alpha\ p\ x2 + beta\ q\ x2 - p\ q\
+\ x2)\)\)\/\((\(-p\^2\)\ x + q\^2\ x + alpha\ beta\ x1 + alpha\ p\ x1 + beta\ \
+p\ x1 + p\^2\ x1 - alpha\ beta\ x2 - alpha\ q\ x2 - beta\ q\ x2 - q\^2\ x2)\)\
+\^2\)\) + 
+                        q\^2\ x\^2\ \@\(\(-\((k - p)\)\)\ \((k + p)\)\ \
+\((\(-beta\)\ x + p\ x - alpha\ x1 - p\ x1)\)\ \((\(-alpha\)\ x + p\ x - beta\
+\ x1 - p\ x1)\)\)\ \@\(-\(\(\((k - q)\)\ \((k + q)\)\ \((beta\ x - p\ x + \
+alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ x1)\)\ \((\(-alpha\)\
+\ beta\ x1 - alpha\ p\ x1 + beta\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - beta\ \
+p\ x2 + alpha\ q\ x2 - p\ q\ x2)\)\ \((\(-alpha\)\ beta\ x1 - beta\ p\ x1 + \
+alpha\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - alpha\ p\ x2 + beta\ q\ x2 - p\ q\
+\ x2)\)\)\/\((\(-p\^2\)\ x + q\^2\ x + alpha\ beta\ x1 + alpha\ p\ x1 + beta\ \
+p\ x1 + p\^2\ x1 - alpha\ beta\ x2 - alpha\ q\ x2 - beta\ q\ x2 - q\^2\ x2)\)\
+\^2\)\) + 
+                        alpha\^2\ x\ \@\(\(-\((k - p)\)\)\ \((k + p)\)\ \
+\((\(-beta\)\ x + p\ x - alpha\ x1 - p\ x1)\)\ \((\(-alpha\)\ x + p\ x - beta\
+\ x1 - p\ x1)\)\)\ x2\ \@\(-\(\(\((k - q)\)\ \((k + q)\)\ \((beta\ x - p\ x + \
+alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ x1)\)\ \((\(-alpha\)\
+\ beta\ x1 - alpha\ p\ x1 + beta\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - beta\ \
+p\ x2 + alpha\ q\ x2 - p\ q\ x2)\)\ \((\(-alpha\)\ beta\ x1 - beta\ p\ x1 + \
+alpha\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - alpha\ p\ x2 + beta\ q\ x2 - p\ q\
+\ x2)\)\)\/\((\(-p\^2\)\ x + q\^2\ x + alpha\ beta\ x1 + alpha\ p\ x1 + beta\ \
+p\ x1 + p\^2\ x1 - alpha\ beta\ x2 - alpha\ q\ x2 - beta\ q\ x2 - q\^2\ x2)\)\
+\^2\)\) + 
+                        beta\^2\ x\ \@\(\(-\((k - p)\)\)\ \((k + p)\)\ \
+\((\(-beta\)\ x + p\ x - alpha\ x1 - p\ x1)\)\ \((\(-alpha\)\ x + p\ x - beta\
+\ x1 - p\ x1)\)\)\ x2\ \@\(-\(\(\((k - q)\)\ \((k + q)\)\ \((beta\ x - p\ x + \
+alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ x1)\)\ \((\(-alpha\)\
+\ beta\ x1 - alpha\ p\ x1 + beta\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - beta\ \
+p\ x2 + alpha\ q\ x2 - p\ q\ x2)\)\ \((\(-alpha\)\ beta\ x1 - beta\ p\ x1 + \
+alpha\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - alpha\ p\ x2 + beta\ q\ x2 - p\ q\
+\ x2)\)\)\/\((\(-p\^2\)\ x + q\^2\ x + alpha\ beta\ x1 + alpha\ p\ x1 + beta\ \
+p\ x1 + p\^2\ x1 - alpha\ beta\ x2 - alpha\ q\ x2 - beta\ q\ x2 - q\^2\ x2)\)\
+\^2\)\) - 
+                        2\ q\^2\ x\ \@\(\(-\((k - p)\)\)\ \((k + p)\)\ \
+\((\(-beta\)\ x + p\ x - alpha\ x1 - p\ x1)\)\ \((\(-alpha\)\ x + p\ x - beta\
+\ x1 - p\ x1)\)\)\ x2\ \@\(-\(\(\((k - q)\)\ \((k + q)\)\ \((beta\ x - p\ x + \
+alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ x1)\)\ \((\(-alpha\)\
+\ beta\ x1 - alpha\ p\ x1 + beta\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - beta\ \
+p\ x2 + alpha\ q\ x2 - p\ q\ x2)\)\ \((\(-alpha\)\ beta\ x1 - beta\ p\ x1 + \
+alpha\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - alpha\ p\ x2 + beta\ q\ x2 - p\ q\
+\ x2)\)\)\/\((\(-p\^2\)\ x + q\^2\ x + alpha\ beta\ x1 + alpha\ p\ x1 + beta\ \
+p\ x1 + p\^2\ x1 - alpha\ beta\ x2 - alpha\ q\ x2 - beta\ q\ x2 - q\^2\ x2)\)\
+\^2\)\) + 
+                        alpha\ beta\ \@\(\(-\((k - p)\)\)\ \((k + p)\)\ \
+\((\(-beta\)\ x + p\ x - alpha\ x1 - p\ x1)\)\ \((\(-alpha\)\ x + p\ x - beta\
+\ x1 - p\ x1)\)\)\ x2\^2\ \@\(-\(\(\((k - q)\)\ \((k + q)\)\ \((beta\ x - p\ \
+x + alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ x1)\)\ \
+\((\(-alpha\)\ beta\ x1 - alpha\ p\ x1 + beta\ q\ x1 + p\ q\ x1 + alpha\ beta\
+\ x2 - beta\ p\ x2 + alpha\ q\ x2 - p\ q\ x2)\)\ \((\(-alpha\)\ beta\ x1 - \
+beta\ p\ x1 + alpha\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - alpha\ p\ x2 + beta\
+\ q\ x2 - p\ q\ x2)\)\)\/\((\(-p\^2\)\ x + q\^2\ x + alpha\ beta\ x1 + alpha\ \
+p\ x1 + beta\ p\ x1 + p\^2\ x1 - alpha\ beta\ x2 - alpha\ q\ x2 - beta\ q\ x2 \
+- q\^2\ x2)\)\^2\)\) + 
+                        alpha\ q\ \@\(\(-\((k - p)\)\)\ \((k + p)\)\ \
+\((\(-beta\)\ x + p\ x - alpha\ x1 - p\ x1)\)\ \((\(-alpha\)\ x + p\ x - beta\
+\ x1 - p\ x1)\)\)\ x2\^2\ \@\(-\(\(\((k - q)\)\ \((k + q)\)\ \((beta\ x - p\ \
+x + alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ x1)\)\ \
+\((\(-alpha\)\ beta\ x1 - alpha\ p\ x1 + beta\ q\ x1 + p\ q\ x1 + alpha\ beta\
+\ x2 - beta\ p\ x2 + alpha\ q\ x2 - p\ q\ x2)\)\ \((\(-alpha\)\ beta\ x1 - \
+beta\ p\ x1 + alpha\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - alpha\ p\ x2 + beta\
+\ q\ x2 - p\ q\ x2)\)\)\/\((\(-p\^2\)\ x + q\^2\ x + alpha\ beta\ x1 + alpha\ \
+p\ x1 + beta\ p\ x1 + p\^2\ x1 - alpha\ beta\ x2 - alpha\ q\ x2 - beta\ q\ x2 \
+- q\^2\ x2)\)\^2\)\) + 
+                        beta\ q\ \@\(\(-\((k - p)\)\)\ \((k + p)\)\ \
+\((\(-beta\)\ x + p\ x - alpha\ x1 - p\ x1)\)\ \((\(-alpha\)\ x + p\ x - beta\
+\ x1 - p\ x1)\)\)\ x2\^2\ \@\(-\(\(\((k - q)\)\ \((k + q)\)\ \((beta\ x - p\ \
+x + alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ x1)\)\ \
+\((\(-alpha\)\ beta\ x1 - alpha\ p\ x1 + beta\ q\ x1 + p\ q\ x1 + alpha\ beta\
+\ x2 - beta\ p\ x2 + alpha\ q\ x2 - p\ q\ x2)\)\ \((\(-alpha\)\ beta\ x1 - \
+beta\ p\ x1 + alpha\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - alpha\ p\ x2 + beta\
+\ q\ x2 - p\ q\ x2)\)\)\/\((\(-p\^2\)\ x + q\^2\ x + alpha\ beta\ x1 + alpha\ \
+p\ x1 + beta\ p\ x1 + p\^2\ x1 - alpha\ beta\ x2 - alpha\ q\ x2 - beta\ q\ x2 \
+- q\^2\ x2)\)\^2\)\) + 
+                        q\^2\ \@\(\(-\((k - p)\)\)\ \((k + p)\)\ \((\(-beta\)\
+\ x + p\ x - alpha\ x1 - p\ x1)\)\ \((\(-alpha\)\ x + p\ x - beta\ x1 - p\ \
+x1)\)\)\ x2\^2\ \@\(-\(\(\((k - q)\)\ \((k + q)\)\ \((beta\ x - p\ x + alpha\ \
+x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ x1)\)\ \((\(-alpha\)\ beta\ \
+x1 - alpha\ p\ x1 + beta\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - beta\ p\ x2 + \
+alpha\ q\ x2 - p\ q\ x2)\)\ \((\(-alpha\)\ beta\ x1 - beta\ p\ x1 + alpha\ q\ \
+x1 + p\ q\ x1 + alpha\ beta\ x2 - alpha\ p\ x2 + beta\ q\ x2 - p\ q\ \
+x2)\)\)\/\((\(-p\^2\)\ x + q\^2\ x + alpha\ beta\ x1 + alpha\ p\ x1 + beta\ p\
+\ x1 + p\^2\ x1 - alpha\ beta\ x2 - alpha\ q\ x2 - beta\ q\ x2 - q\^2\ \
+x2)\)\^2\)\) - 
+                        alpha\ beta\ x\^2\ \@\(\(-\((k - q)\)\)\ \((k + q)\)\ \
+\((\(-beta\)\ x + q\ x - alpha\ x2 - q\ x2)\)\ \((\(-alpha\)\ x + q\ x - beta\
+\ x2 - q\ x2)\)\)\ \@\(-\(\(\((k - p)\)\ \((k + p)\)\ \((beta\ x - q\ x + \
+alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\ \((alpha\ \
+beta\ x1 + alpha\ p\ x1 - beta\ q\ x1 - p\ q\ x1 - alpha\ beta\ x2 + beta\ p\ \
+x2 - alpha\ q\ x2 + p\ q\ x2)\)\ \((alpha\ beta\ x1 + beta\ p\ x1 - alpha\ q\ \
+x1 - p\ q\ x1 - alpha\ beta\ x2 + alpha\ p\ x2 - beta\ q\ x2 + p\ q\ \
+x2)\)\)\/\((p\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ p\ x1 - beta\ p\ x1 \
+- p\^2\ x1 + alpha\ beta\ x2 + alpha\ q\ x2 + beta\ q\ x2 + q\^2\ \
+x2)\)\^2\)\) + 
+                        alpha\ p\ x\^2\ \@\(\(-\((k - q)\)\)\ \((k + q)\)\ \
+\((\(-beta\)\ x + q\ x - alpha\ x2 - q\ x2)\)\ \((\(-alpha\)\ x + q\ x - beta\
+\ x2 - q\ x2)\)\)\ \@\(-\(\(\((k - p)\)\ \((k + p)\)\ \((beta\ x - q\ x + \
+alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\ \((alpha\ \
+beta\ x1 + alpha\ p\ x1 - beta\ q\ x1 - p\ q\ x1 - alpha\ beta\ x2 + beta\ p\ \
+x2 - alpha\ q\ x2 + p\ q\ x2)\)\ \((alpha\ beta\ x1 + beta\ p\ x1 - alpha\ q\ \
+x1 - p\ q\ x1 - alpha\ beta\ x2 + alpha\ p\ x2 - beta\ q\ x2 + p\ q\ \
+x2)\)\)\/\((p\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ p\ x1 - beta\ p\ x1 \
+- p\^2\ x1 + alpha\ beta\ x2 + alpha\ q\ x2 + beta\ q\ x2 + q\^2\ \
+x2)\)\^2\)\) + 
+                        beta\ p\ x\^2\ \@\(\(-\((k - q)\)\)\ \((k + q)\)\ \((\
+\(-beta\)\ x + q\ x - alpha\ x2 - q\ x2)\)\ \((\(-alpha\)\ x + q\ x - beta\ \
+x2 - q\ x2)\)\)\ \@\(-\(\(\((k - p)\)\ \((k + p)\)\ \((beta\ x - q\ x + alpha\
+\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\ \((alpha\ beta\ x1 \
++ alpha\ p\ x1 - beta\ q\ x1 - p\ q\ x1 - alpha\ beta\ x2 + beta\ p\ x2 - \
+alpha\ q\ x2 + p\ q\ x2)\)\ \((alpha\ beta\ x1 + beta\ p\ x1 - alpha\ q\ x1 - \
+p\ q\ x1 - alpha\ beta\ x2 + alpha\ p\ x2 - beta\ q\ x2 + p\ q\ x2)\)\)\/\((p\
+\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ p\ x1 - beta\ p\ x1 - p\^2\ x1 + \
+alpha\ beta\ x2 + alpha\ q\ x2 + beta\ q\ x2 + q\^2\ x2)\)\^2\)\) - 
+                        p\^2\ x\^2\ \@\(\(-\((k - q)\)\)\ \((k + q)\)\ \
+\((\(-beta\)\ x + q\ x - alpha\ x2 - q\ x2)\)\ \((\(-alpha\)\ x + q\ x - beta\
+\ x2 - q\ x2)\)\)\ \@\(-\(\(\((k - p)\)\ \((k + p)\)\ \((beta\ x - q\ x + \
+alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\ \((alpha\ \
+beta\ x1 + alpha\ p\ x1 - beta\ q\ x1 - p\ q\ x1 - alpha\ beta\ x2 + beta\ p\ \
+x2 - alpha\ q\ x2 + p\ q\ x2)\)\ \((alpha\ beta\ x1 + beta\ p\ x1 - alpha\ q\ \
+x1 - p\ q\ x1 - alpha\ beta\ x2 + alpha\ p\ x2 - beta\ q\ x2 + p\ q\ \
+x2)\)\)\/\((p\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ p\ x1 - beta\ p\ x1 \
+- p\^2\ x1 + alpha\ beta\ x2 + alpha\ q\ x2 + beta\ q\ x2 + q\^2\ \
+x2)\)\^2\)\) - 
+                        alpha\^2\ x\ x1\ \@\(\(-\((k - q)\)\)\ \((k + q)\)\ \
+\((\(-beta\)\ x + q\ x - alpha\ x2 - q\ x2)\)\ \((\(-alpha\)\ x + q\ x - beta\
+\ x2 - q\ x2)\)\)\ \@\(-\(\(\((k - p)\)\ \((k + p)\)\ \((beta\ x - q\ x + \
+alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\ \((alpha\ \
+beta\ x1 + alpha\ p\ x1 - beta\ q\ x1 - p\ q\ x1 - alpha\ beta\ x2 + beta\ p\ \
+x2 - alpha\ q\ x2 + p\ q\ x2)\)\ \((alpha\ beta\ x1 + beta\ p\ x1 - alpha\ q\ \
+x1 - p\ q\ x1 - alpha\ beta\ x2 + alpha\ p\ x2 - beta\ q\ x2 + p\ q\ \
+x2)\)\)\/\((p\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ p\ x1 - beta\ p\ x1 \
+- p\^2\ x1 + alpha\ beta\ x2 + alpha\ q\ x2 + beta\ q\ x2 + q\^2\ \
+x2)\)\^2\)\) - 
+                        beta\^2\ x\ x1\ \@\(\(-\((k - q)\)\)\ \((k + q)\)\ \
+\((\(-beta\)\ x + q\ x - alpha\ x2 - q\ x2)\)\ \((\(-alpha\)\ x + q\ x - beta\
+\ x2 - q\ x2)\)\)\ \@\(-\(\(\((k - p)\)\ \((k + p)\)\ \((beta\ x - q\ x + \
+alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\ \((alpha\ \
+beta\ x1 + alpha\ p\ x1 - beta\ q\ x1 - p\ q\ x1 - alpha\ beta\ x2 + beta\ p\ \
+x2 - alpha\ q\ x2 + p\ q\ x2)\)\ \((alpha\ beta\ x1 + beta\ p\ x1 - alpha\ q\ \
+x1 - p\ q\ x1 - alpha\ beta\ x2 + alpha\ p\ x2 - beta\ q\ x2 + p\ q\ \
+x2)\)\)\/\((p\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ p\ x1 - beta\ p\ x1 \
+- p\^2\ x1 + alpha\ beta\ x2 + alpha\ q\ x2 + beta\ q\ x2 + q\^2\ \
+x2)\)\^2\)\) + 
+                        2\ p\^2\ x\ x1\ \@\(\(-\((k - q)\)\)\ \((k + q)\)\ \
+\((\(-beta\)\ x + q\ x - alpha\ x2 - q\ x2)\)\ \((\(-alpha\)\ x + q\ x - beta\
+\ x2 - q\ x2)\)\)\ \@\(-\(\(\((k - p)\)\ \((k + p)\)\ \((beta\ x - q\ x + \
+alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\ \((alpha\ \
+beta\ x1 + alpha\ p\ x1 - beta\ q\ x1 - p\ q\ x1 - alpha\ beta\ x2 + beta\ p\ \
+x2 - alpha\ q\ x2 + p\ q\ x2)\)\ \((alpha\ beta\ x1 + beta\ p\ x1 - alpha\ q\ \
+x1 - p\ q\ x1 - alpha\ beta\ x2 + alpha\ p\ x2 - beta\ q\ x2 + p\ q\ \
+x2)\)\)\/\((p\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ p\ x1 - beta\ p\ x1 \
+- p\^2\ x1 + alpha\ beta\ x2 + alpha\ q\ x2 + beta\ q\ x2 + q\^2\ \
+x2)\)\^2\)\) - 
+                        alpha\ beta\ x1\^2\ \@\(\(-\((k - q)\)\)\ \((k + q)\)\
+\ \((\(-beta\)\ x + q\ x - alpha\ x2 - q\ x2)\)\ \((\(-alpha\)\ x + q\ x - \
+beta\ x2 - q\ x2)\)\)\ \@\(-\(\(\((k - p)\)\ \((k + p)\)\ \((beta\ x - q\ x + \
+alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\ \((alpha\ \
+beta\ x1 + alpha\ p\ x1 - beta\ q\ x1 - p\ q\ x1 - alpha\ beta\ x2 + beta\ p\ \
+x2 - alpha\ q\ x2 + p\ q\ x2)\)\ \((alpha\ beta\ x1 + beta\ p\ x1 - alpha\ q\ \
+x1 - p\ q\ x1 - alpha\ beta\ x2 + alpha\ p\ x2 - beta\ q\ x2 + p\ q\ \
+x2)\)\)\/\((p\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ p\ x1 - beta\ p\ x1 \
+- p\^2\ x1 + alpha\ beta\ x2 + alpha\ q\ x2 + beta\ q\ x2 + q\^2\ \
+x2)\)\^2\)\) - 
+                        alpha\ p\ x1\^2\ \@\(\(-\((k - q)\)\)\ \((k + q)\)\ \
+\((\(-beta\)\ x + q\ x - alpha\ x2 - q\ x2)\)\ \((\(-alpha\)\ x + q\ x - beta\
+\ x2 - q\ x2)\)\)\ \@\(-\(\(\((k - p)\)\ \((k + p)\)\ \((beta\ x - q\ x + \
+alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\ \((alpha\ \
+beta\ x1 + alpha\ p\ x1 - beta\ q\ x1 - p\ q\ x1 - alpha\ beta\ x2 + beta\ p\ \
+x2 - alpha\ q\ x2 + p\ q\ x2)\)\ \((alpha\ beta\ x1 + beta\ p\ x1 - alpha\ q\ \
+x1 - p\ q\ x1 - alpha\ beta\ x2 + alpha\ p\ x2 - beta\ q\ x2 + p\ q\ \
+x2)\)\)\/\((p\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ p\ x1 - beta\ p\ x1 \
+- p\^2\ x1 + alpha\ beta\ x2 + alpha\ q\ x2 + beta\ q\ x2 + q\^2\ \
+x2)\)\^2\)\) - 
+                        beta\ p\ x1\^2\ \@\(\(-\((k - q)\)\)\ \((k + q)\)\ \
+\((\(-beta\)\ x + q\ x - alpha\ x2 - q\ x2)\)\ \((\(-alpha\)\ x + q\ x - beta\
+\ x2 - q\ x2)\)\)\ \@\(-\(\(\((k - p)\)\ \((k + p)\)\ \((beta\ x - q\ x + \
+alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\ \((alpha\ \
+beta\ x1 + alpha\ p\ x1 - beta\ q\ x1 - p\ q\ x1 - alpha\ beta\ x2 + beta\ p\ \
+x2 - alpha\ q\ x2 + p\ q\ x2)\)\ \((alpha\ beta\ x1 + beta\ p\ x1 - alpha\ q\ \
+x1 - p\ q\ x1 - alpha\ beta\ x2 + alpha\ p\ x2 - beta\ q\ x2 + p\ q\ \
+x2)\)\)\/\((p\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ p\ x1 - beta\ p\ x1 \
+- p\^2\ x1 + alpha\ beta\ x2 + alpha\ q\ x2 + beta\ q\ x2 + q\^2\ \
+x2)\)\^2\)\) - 
+                        p\^2\ x1\^2\ \@\(\(-\((k - q)\)\)\ \((k + q)\)\ \
+\((\(-beta\)\ x + q\ x - alpha\ x2 - q\ x2)\)\ \((\(-alpha\)\ x + q\ x - beta\
+\ x2 - q\ x2)\)\)\ \@\(-\(\(\((k - p)\)\ \((k + p)\)\ \((beta\ x - q\ x + \
+alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\ \((alpha\ \
+beta\ x1 + alpha\ p\ x1 - beta\ q\ x1 - p\ q\ x1 - alpha\ beta\ x2 + beta\ p\ \
+x2 - alpha\ q\ x2 + p\ q\ x2)\)\ \((alpha\ beta\ x1 + beta\ p\ x1 - alpha\ q\ \
+x1 - p\ q\ x1 - alpha\ beta\ x2 + alpha\ p\ x2 - beta\ q\ x2 + p\ q\ \
+x2)\)\)\/\((p\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ p\ x1 - beta\ p\ x1 \
+- p\^2\ x1 + alpha\ beta\ x2 + alpha\ q\ x2 + beta\ q\ x2 + q\^2\ \
+x2)\)\^2\)\))\)\)\/\(\@\(\(-\((k - p)\)\)\ \((k + p)\)\ \((\(-beta\)\ x + p\ \
+x - alpha\ x1 - p\ x1)\)\ \((\(-alpha\)\ x + p\ x - beta\ x1 - p\ x1)\)\)\ \@\
+\(\(-\((k - q)\)\)\ \((k + q)\)\ \((\(-beta\)\ x + q\ x - alpha\ x2 - q\ \
+x2)\)\ \((\(-alpha\)\ x + q\ x - beta\ x2 - q\ x2)\)\)\ \@\(-\(\(\((k - q)\)\ \
+\((k + q)\)\ \((beta\ x - p\ x + alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + \
+beta\ x1 + p\ x1)\)\ \((\(-alpha\)\ beta\ x1 - alpha\ p\ x1 + beta\ q\ x1 + p\
+\ q\ x1 + alpha\ beta\ x2 - beta\ p\ x2 + alpha\ q\ x2 - p\ q\ x2)\)\ \
+\((\(-alpha\)\ beta\ x1 - beta\ p\ x1 + alpha\ q\ x1 + p\ q\ x1 + alpha\ beta\
+\ x2 - alpha\ p\ x2 + beta\ q\ x2 - p\ q\ x2)\)\)\/\((\(-p\^2\)\ x + q\^2\ x \
++ alpha\ beta\ x1 + alpha\ p\ x1 + beta\ p\ x1 + p\^2\ x1 - alpha\ beta\ x2 - \
+alpha\ q\ x2 - beta\ q\ x2 - q\^2\ x2)\)\^2\)\)\ \@\(-\(\(\((k - p)\)\ \((k + \
+p)\)\ \((beta\ x - q\ x + alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 \
++ q\ x2)\)\ \((alpha\ beta\ x1 + alpha\ p\ x1 - beta\ q\ x1 - p\ q\ x1 - \
+alpha\ beta\ x2 + beta\ p\ x2 - alpha\ q\ x2 + p\ q\ x2)\)\ \((alpha\ beta\ \
+x1 + beta\ p\ x1 - alpha\ q\ x1 - p\ q\ x1 - alpha\ beta\ x2 + alpha\ p\ x2 - \
+beta\ q\ x2 + p\ q\ x2)\)\)\/\((p\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ \
+p\ x1 - beta\ p\ x1 - p\^2\ x1 + alpha\ beta\ x2 + alpha\ q\ x2 + beta\ q\ x2 \
++ q\^2\ x2)\)\^2\)\)\ \((p\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ p\ x1 - 
+                        beta\ p\ x1 - p\^2\ x1 + alpha\ beta\ x2 + 
+                        alpha\ q\ x2 + beta\ q\ x2 + 
+                        q\^2\ x2)\)\)\), \(\(\((alpha - k)\)\ \((\(-beta\) + 
+                        k)\)\ \((p - q)\)\ \((p + 
+                        q)\)\ x1\ x2\ \((alpha\ beta\ x\^2\ \@\(\(-\((k - \
+p)\)\)\ \((k + p)\)\ \((\(-beta\)\ x + p\ x - alpha\ x1 - p\ x1)\)\ \
+\((\(-alpha\)\ x + p\ x - beta\ x1 - p\ x1)\)\)\ \@\(-\(\(\((k - q)\)\ \((k + \
+q)\)\ \((beta\ x - p\ x + alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 \
++ p\ x1)\)\ \((\(-alpha\)\ beta\ x1 - alpha\ p\ x1 + beta\ q\ x1 + p\ q\ x1 + \
+alpha\ beta\ x2 - beta\ p\ x2 + alpha\ q\ x2 - p\ q\ x2)\)\ \((\(-alpha\)\ \
+beta\ x1 - beta\ p\ x1 + alpha\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - alpha\ p\
+\ x2 + beta\ q\ x2 - p\ q\ x2)\)\)\/\((\(-p\^2\)\ x + q\^2\ x + alpha\ beta\ \
+x1 + alpha\ p\ x1 + beta\ p\ x1 + p\^2\ x1 - alpha\ beta\ x2 - alpha\ q\ x2 - \
+beta\ q\ x2 - q\^2\ x2)\)\^2\)\) - 
+                        alpha\ q\ x\^2\ \@\(\(-\((k - p)\)\)\ \((k + p)\)\ \
+\((\(-beta\)\ x + p\ x - alpha\ x1 - p\ x1)\)\ \((\(-alpha\)\ x + p\ x - beta\
+\ x1 - p\ x1)\)\)\ \@\(-\(\(\((k - q)\)\ \((k + q)\)\ \((beta\ x - p\ x + \
+alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ x1)\)\ \((\(-alpha\)\
+\ beta\ x1 - alpha\ p\ x1 + beta\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - beta\ \
+p\ x2 + alpha\ q\ x2 - p\ q\ x2)\)\ \((\(-alpha\)\ beta\ x1 - beta\ p\ x1 + \
+alpha\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - alpha\ p\ x2 + beta\ q\ x2 - p\ q\
+\ x2)\)\)\/\((\(-p\^2\)\ x + q\^2\ x + alpha\ beta\ x1 + alpha\ p\ x1 + beta\ \
+p\ x1 + p\^2\ x1 - alpha\ beta\ x2 - alpha\ q\ x2 - beta\ q\ x2 - q\^2\ x2)\)\
+\^2\)\) - 
+                        beta\ q\ x\^2\ \@\(\(-\((k - p)\)\)\ \((k + p)\)\ \((\
+\(-beta\)\ x + p\ x - alpha\ x1 - p\ x1)\)\ \((\(-alpha\)\ x + p\ x - beta\ \
+x1 - p\ x1)\)\)\ \@\(-\(\(\((k - q)\)\ \((k + q)\)\ \((beta\ x - p\ x + alpha\
+\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ x1)\)\ \((\(-alpha\)\ \
+beta\ x1 - alpha\ p\ x1 + beta\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - beta\ p\ \
+x2 + alpha\ q\ x2 - p\ q\ x2)\)\ \((\(-alpha\)\ beta\ x1 - beta\ p\ x1 + \
+alpha\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - alpha\ p\ x2 + beta\ q\ x2 - p\ q\
+\ x2)\)\)\/\((\(-p\^2\)\ x + q\^2\ x + alpha\ beta\ x1 + alpha\ p\ x1 + beta\ \
+p\ x1 + p\^2\ x1 - alpha\ beta\ x2 - alpha\ q\ x2 - beta\ q\ x2 - q\^2\ x2)\)\
+\^2\)\) + 
+                        q\^2\ x\^2\ \@\(\(-\((k - p)\)\)\ \((k + p)\)\ \
+\((\(-beta\)\ x + p\ x - alpha\ x1 - p\ x1)\)\ \((\(-alpha\)\ x + p\ x - beta\
+\ x1 - p\ x1)\)\)\ \@\(-\(\(\((k - q)\)\ \((k + q)\)\ \((beta\ x - p\ x + \
+alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ x1)\)\ \((\(-alpha\)\
+\ beta\ x1 - alpha\ p\ x1 + beta\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - beta\ \
+p\ x2 + alpha\ q\ x2 - p\ q\ x2)\)\ \((\(-alpha\)\ beta\ x1 - beta\ p\ x1 + \
+alpha\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - alpha\ p\ x2 + beta\ q\ x2 - p\ q\
+\ x2)\)\)\/\((\(-p\^2\)\ x + q\^2\ x + alpha\ beta\ x1 + alpha\ p\ x1 + beta\ \
+p\ x1 + p\^2\ x1 - alpha\ beta\ x2 - alpha\ q\ x2 - beta\ q\ x2 - q\^2\ x2)\)\
+\^2\)\) + 
+                        alpha\^2\ x\ \@\(\(-\((k - p)\)\)\ \((k + p)\)\ \
+\((\(-beta\)\ x + p\ x - alpha\ x1 - p\ x1)\)\ \((\(-alpha\)\ x + p\ x - beta\
+\ x1 - p\ x1)\)\)\ x2\ \@\(-\(\(\((k - q)\)\ \((k + q)\)\ \((beta\ x - p\ x + \
+alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ x1)\)\ \((\(-alpha\)\
+\ beta\ x1 - alpha\ p\ x1 + beta\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - beta\ \
+p\ x2 + alpha\ q\ x2 - p\ q\ x2)\)\ \((\(-alpha\)\ beta\ x1 - beta\ p\ x1 + \
+alpha\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - alpha\ p\ x2 + beta\ q\ x2 - p\ q\
+\ x2)\)\)\/\((\(-p\^2\)\ x + q\^2\ x + alpha\ beta\ x1 + alpha\ p\ x1 + beta\ \
+p\ x1 + p\^2\ x1 - alpha\ beta\ x2 - alpha\ q\ x2 - beta\ q\ x2 - q\^2\ x2)\)\
+\^2\)\) + 
+                        beta\^2\ x\ \@\(\(-\((k - p)\)\)\ \((k + p)\)\ \
+\((\(-beta\)\ x + p\ x - alpha\ x1 - p\ x1)\)\ \((\(-alpha\)\ x + p\ x - beta\
+\ x1 - p\ x1)\)\)\ x2\ \@\(-\(\(\((k - q)\)\ \((k + q)\)\ \((beta\ x - p\ x + \
+alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ x1)\)\ \((\(-alpha\)\
+\ beta\ x1 - alpha\ p\ x1 + beta\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - beta\ \
+p\ x2 + alpha\ q\ x2 - p\ q\ x2)\)\ \((\(-alpha\)\ beta\ x1 - beta\ p\ x1 + \
+alpha\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - alpha\ p\ x2 + beta\ q\ x2 - p\ q\
+\ x2)\)\)\/\((\(-p\^2\)\ x + q\^2\ x + alpha\ beta\ x1 + alpha\ p\ x1 + beta\ \
+p\ x1 + p\^2\ x1 - alpha\ beta\ x2 - alpha\ q\ x2 - beta\ q\ x2 - q\^2\ x2)\)\
+\^2\)\) - 
+                        2\ q\^2\ x\ \@\(\(-\((k - p)\)\)\ \((k + p)\)\ \
+\((\(-beta\)\ x + p\ x - alpha\ x1 - p\ x1)\)\ \((\(-alpha\)\ x + p\ x - beta\
+\ x1 - p\ x1)\)\)\ x2\ \@\(-\(\(\((k - q)\)\ \((k + q)\)\ \((beta\ x - p\ x + \
+alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ x1)\)\ \((\(-alpha\)\
+\ beta\ x1 - alpha\ p\ x1 + beta\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - beta\ \
+p\ x2 + alpha\ q\ x2 - p\ q\ x2)\)\ \((\(-alpha\)\ beta\ x1 - beta\ p\ x1 + \
+alpha\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - alpha\ p\ x2 + beta\ q\ x2 - p\ q\
+\ x2)\)\)\/\((\(-p\^2\)\ x + q\^2\ x + alpha\ beta\ x1 + alpha\ p\ x1 + beta\ \
+p\ x1 + p\^2\ x1 - alpha\ beta\ x2 - alpha\ q\ x2 - beta\ q\ x2 - q\^2\ x2)\)\
+\^2\)\) + 
+                        alpha\ beta\ \@\(\(-\((k - p)\)\)\ \((k + p)\)\ \
+\((\(-beta\)\ x + p\ x - alpha\ x1 - p\ x1)\)\ \((\(-alpha\)\ x + p\ x - beta\
+\ x1 - p\ x1)\)\)\ x2\^2\ \@\(-\(\(\((k - q)\)\ \((k + q)\)\ \((beta\ x - p\ \
+x + alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ x1)\)\ \
+\((\(-alpha\)\ beta\ x1 - alpha\ p\ x1 + beta\ q\ x1 + p\ q\ x1 + alpha\ beta\
+\ x2 - beta\ p\ x2 + alpha\ q\ x2 - p\ q\ x2)\)\ \((\(-alpha\)\ beta\ x1 - \
+beta\ p\ x1 + alpha\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - alpha\ p\ x2 + beta\
+\ q\ x2 - p\ q\ x2)\)\)\/\((\(-p\^2\)\ x + q\^2\ x + alpha\ beta\ x1 + alpha\ \
+p\ x1 + beta\ p\ x1 + p\^2\ x1 - alpha\ beta\ x2 - alpha\ q\ x2 - beta\ q\ x2 \
+- q\^2\ x2)\)\^2\)\) + 
+                        alpha\ q\ \@\(\(-\((k - p)\)\)\ \((k + p)\)\ \
+\((\(-beta\)\ x + p\ x - alpha\ x1 - p\ x1)\)\ \((\(-alpha\)\ x + p\ x - beta\
+\ x1 - p\ x1)\)\)\ x2\^2\ \@\(-\(\(\((k - q)\)\ \((k + q)\)\ \((beta\ x - p\ \
+x + alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ x1)\)\ \
+\((\(-alpha\)\ beta\ x1 - alpha\ p\ x1 + beta\ q\ x1 + p\ q\ x1 + alpha\ beta\
+\ x2 - beta\ p\ x2 + alpha\ q\ x2 - p\ q\ x2)\)\ \((\(-alpha\)\ beta\ x1 - \
+beta\ p\ x1 + alpha\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - alpha\ p\ x2 + beta\
+\ q\ x2 - p\ q\ x2)\)\)\/\((\(-p\^2\)\ x + q\^2\ x + alpha\ beta\ x1 + alpha\ \
+p\ x1 + beta\ p\ x1 + p\^2\ x1 - alpha\ beta\ x2 - alpha\ q\ x2 - beta\ q\ x2 \
+- q\^2\ x2)\)\^2\)\) + 
+                        beta\ q\ \@\(\(-\((k - p)\)\)\ \((k + p)\)\ \
+\((\(-beta\)\ x + p\ x - alpha\ x1 - p\ x1)\)\ \((\(-alpha\)\ x + p\ x - beta\
+\ x1 - p\ x1)\)\)\ x2\^2\ \@\(-\(\(\((k - q)\)\ \((k + q)\)\ \((beta\ x - p\ \
+x + alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ x1)\)\ \
+\((\(-alpha\)\ beta\ x1 - alpha\ p\ x1 + beta\ q\ x1 + p\ q\ x1 + alpha\ beta\
+\ x2 - beta\ p\ x2 + alpha\ q\ x2 - p\ q\ x2)\)\ \((\(-alpha\)\ beta\ x1 - \
+beta\ p\ x1 + alpha\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - alpha\ p\ x2 + beta\
+\ q\ x2 - p\ q\ x2)\)\)\/\((\(-p\^2\)\ x + q\^2\ x + alpha\ beta\ x1 + alpha\ \
+p\ x1 + beta\ p\ x1 + p\^2\ x1 - alpha\ beta\ x2 - alpha\ q\ x2 - beta\ q\ x2 \
+- q\^2\ x2)\)\^2\)\) + 
+                        q\^2\ \@\(\(-\((k - p)\)\)\ \((k + p)\)\ \((\(-beta\)\
+\ x + p\ x - alpha\ x1 - p\ x1)\)\ \((\(-alpha\)\ x + p\ x - beta\ x1 - p\ \
+x1)\)\)\ x2\^2\ \@\(-\(\(\((k - q)\)\ \((k + q)\)\ \((beta\ x - p\ x + alpha\ \
+x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ x1)\)\ \((\(-alpha\)\ beta\ \
+x1 - alpha\ p\ x1 + beta\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - beta\ p\ x2 + \
+alpha\ q\ x2 - p\ q\ x2)\)\ \((\(-alpha\)\ beta\ x1 - beta\ p\ x1 + alpha\ q\ \
+x1 + p\ q\ x1 + alpha\ beta\ x2 - alpha\ p\ x2 + beta\ q\ x2 - p\ q\ \
+x2)\)\)\/\((\(-p\^2\)\ x + q\^2\ x + alpha\ beta\ x1 + alpha\ p\ x1 + beta\ p\
+\ x1 + p\^2\ x1 - alpha\ beta\ x2 - alpha\ q\ x2 - beta\ q\ x2 - q\^2\ \
+x2)\)\^2\)\) - 
+                        alpha\ beta\ x\^2\ \@\(\(-\((k - q)\)\)\ \((k + q)\)\ \
+\((\(-beta\)\ x + q\ x - alpha\ x2 - q\ x2)\)\ \((\(-alpha\)\ x + q\ x - beta\
+\ x2 - q\ x2)\)\)\ \@\(-\(\(\((k - p)\)\ \((k + p)\)\ \((beta\ x - q\ x + \
+alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\ \((alpha\ \
+beta\ x1 + alpha\ p\ x1 - beta\ q\ x1 - p\ q\ x1 - alpha\ beta\ x2 + beta\ p\ \
+x2 - alpha\ q\ x2 + p\ q\ x2)\)\ \((alpha\ beta\ x1 + beta\ p\ x1 - alpha\ q\ \
+x1 - p\ q\ x1 - alpha\ beta\ x2 + alpha\ p\ x2 - beta\ q\ x2 + p\ q\ \
+x2)\)\)\/\((p\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ p\ x1 - beta\ p\ x1 \
+- p\^2\ x1 + alpha\ beta\ x2 + alpha\ q\ x2 + beta\ q\ x2 + q\^2\ \
+x2)\)\^2\)\) + 
+                        alpha\ p\ x\^2\ \@\(\(-\((k - q)\)\)\ \((k + q)\)\ \
+\((\(-beta\)\ x + q\ x - alpha\ x2 - q\ x2)\)\ \((\(-alpha\)\ x + q\ x - beta\
+\ x2 - q\ x2)\)\)\ \@\(-\(\(\((k - p)\)\ \((k + p)\)\ \((beta\ x - q\ x + \
+alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\ \((alpha\ \
+beta\ x1 + alpha\ p\ x1 - beta\ q\ x1 - p\ q\ x1 - alpha\ beta\ x2 + beta\ p\ \
+x2 - alpha\ q\ x2 + p\ q\ x2)\)\ \((alpha\ beta\ x1 + beta\ p\ x1 - alpha\ q\ \
+x1 - p\ q\ x1 - alpha\ beta\ x2 + alpha\ p\ x2 - beta\ q\ x2 + p\ q\ \
+x2)\)\)\/\((p\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ p\ x1 - beta\ p\ x1 \
+- p\^2\ x1 + alpha\ beta\ x2 + alpha\ q\ x2 + beta\ q\ x2 + q\^2\ \
+x2)\)\^2\)\) + 
+                        beta\ p\ x\^2\ \@\(\(-\((k - q)\)\)\ \((k + q)\)\ \((\
+\(-beta\)\ x + q\ x - alpha\ x2 - q\ x2)\)\ \((\(-alpha\)\ x + q\ x - beta\ \
+x2 - q\ x2)\)\)\ \@\(-\(\(\((k - p)\)\ \((k + p)\)\ \((beta\ x - q\ x + alpha\
+\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\ \((alpha\ beta\ x1 \
++ alpha\ p\ x1 - beta\ q\ x1 - p\ q\ x1 - alpha\ beta\ x2 + beta\ p\ x2 - \
+alpha\ q\ x2 + p\ q\ x2)\)\ \((alpha\ beta\ x1 + beta\ p\ x1 - alpha\ q\ x1 - \
+p\ q\ x1 - alpha\ beta\ x2 + alpha\ p\ x2 - beta\ q\ x2 + p\ q\ x2)\)\)\/\((p\
+\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ p\ x1 - beta\ p\ x1 - p\^2\ x1 + \
+alpha\ beta\ x2 + alpha\ q\ x2 + beta\ q\ x2 + q\^2\ x2)\)\^2\)\) - 
+                        p\^2\ x\^2\ \@\(\(-\((k - q)\)\)\ \((k + q)\)\ \
+\((\(-beta\)\ x + q\ x - alpha\ x2 - q\ x2)\)\ \((\(-alpha\)\ x + q\ x - beta\
+\ x2 - q\ x2)\)\)\ \@\(-\(\(\((k - p)\)\ \((k + p)\)\ \((beta\ x - q\ x + \
+alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\ \((alpha\ \
+beta\ x1 + alpha\ p\ x1 - beta\ q\ x1 - p\ q\ x1 - alpha\ beta\ x2 + beta\ p\ \
+x2 - alpha\ q\ x2 + p\ q\ x2)\)\ \((alpha\ beta\ x1 + beta\ p\ x1 - alpha\ q\ \
+x1 - p\ q\ x1 - alpha\ beta\ x2 + alpha\ p\ x2 - beta\ q\ x2 + p\ q\ \
+x2)\)\)\/\((p\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ p\ x1 - beta\ p\ x1 \
+- p\^2\ x1 + alpha\ beta\ x2 + alpha\ q\ x2 + beta\ q\ x2 + q\^2\ \
+x2)\)\^2\)\) - 
+                        alpha\^2\ x\ x1\ \@\(\(-\((k - q)\)\)\ \((k + q)\)\ \
+\((\(-beta\)\ x + q\ x - alpha\ x2 - q\ x2)\)\ \((\(-alpha\)\ x + q\ x - beta\
+\ x2 - q\ x2)\)\)\ \@\(-\(\(\((k - p)\)\ \((k + p)\)\ \((beta\ x - q\ x + \
+alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\ \((alpha\ \
+beta\ x1 + alpha\ p\ x1 - beta\ q\ x1 - p\ q\ x1 - alpha\ beta\ x2 + beta\ p\ \
+x2 - alpha\ q\ x2 + p\ q\ x2)\)\ \((alpha\ beta\ x1 + beta\ p\ x1 - alpha\ q\ \
+x1 - p\ q\ x1 - alpha\ beta\ x2 + alpha\ p\ x2 - beta\ q\ x2 + p\ q\ \
+x2)\)\)\/\((p\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ p\ x1 - beta\ p\ x1 \
+- p\^2\ x1 + alpha\ beta\ x2 + alpha\ q\ x2 + beta\ q\ x2 + q\^2\ \
+x2)\)\^2\)\) - 
+                        beta\^2\ x\ x1\ \@\(\(-\((k - q)\)\)\ \((k + q)\)\ \
+\((\(-beta\)\ x + q\ x - alpha\ x2 - q\ x2)\)\ \((\(-alpha\)\ x + q\ x - beta\
+\ x2 - q\ x2)\)\)\ \@\(-\(\(\((k - p)\)\ \((k + p)\)\ \((beta\ x - q\ x + \
+alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\ \((alpha\ \
+beta\ x1 + alpha\ p\ x1 - beta\ q\ x1 - p\ q\ x1 - alpha\ beta\ x2 + beta\ p\ \
+x2 - alpha\ q\ x2 + p\ q\ x2)\)\ \((alpha\ beta\ x1 + beta\ p\ x1 - alpha\ q\ \
+x1 - p\ q\ x1 - alpha\ beta\ x2 + alpha\ p\ x2 - beta\ q\ x2 + p\ q\ \
+x2)\)\)\/\((p\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ p\ x1 - beta\ p\ x1 \
+- p\^2\ x1 + alpha\ beta\ x2 + alpha\ q\ x2 + beta\ q\ x2 + q\^2\ \
+x2)\)\^2\)\) + 
+                        2\ p\^2\ x\ x1\ \@\(\(-\((k - q)\)\)\ \((k + q)\)\ \
+\((\(-beta\)\ x + q\ x - alpha\ x2 - q\ x2)\)\ \((\(-alpha\)\ x + q\ x - beta\
+\ x2 - q\ x2)\)\)\ \@\(-\(\(\((k - p)\)\ \((k + p)\)\ \((beta\ x - q\ x + \
+alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\ \((alpha\ \
+beta\ x1 + alpha\ p\ x1 - beta\ q\ x1 - p\ q\ x1 - alpha\ beta\ x2 + beta\ p\ \
+x2 - alpha\ q\ x2 + p\ q\ x2)\)\ \((alpha\ beta\ x1 + beta\ p\ x1 - alpha\ q\ \
+x1 - p\ q\ x1 - alpha\ beta\ x2 + alpha\ p\ x2 - beta\ q\ x2 + p\ q\ \
+x2)\)\)\/\((p\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ p\ x1 - beta\ p\ x1 \
+- p\^2\ x1 + alpha\ beta\ x2 + alpha\ q\ x2 + beta\ q\ x2 + q\^2\ \
+x2)\)\^2\)\) - 
+                        alpha\ beta\ x1\^2\ \@\(\(-\((k - q)\)\)\ \((k + q)\)\
+\ \((\(-beta\)\ x + q\ x - alpha\ x2 - q\ x2)\)\ \((\(-alpha\)\ x + q\ x - \
+beta\ x2 - q\ x2)\)\)\ \@\(-\(\(\((k - p)\)\ \((k + p)\)\ \((beta\ x - q\ x + \
+alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\ \((alpha\ \
+beta\ x1 + alpha\ p\ x1 - beta\ q\ x1 - p\ q\ x1 - alpha\ beta\ x2 + beta\ p\ \
+x2 - alpha\ q\ x2 + p\ q\ x2)\)\ \((alpha\ beta\ x1 + beta\ p\ x1 - alpha\ q\ \
+x1 - p\ q\ x1 - alpha\ beta\ x2 + alpha\ p\ x2 - beta\ q\ x2 + p\ q\ \
+x2)\)\)\/\((p\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ p\ x1 - beta\ p\ x1 \
+- p\^2\ x1 + alpha\ beta\ x2 + alpha\ q\ x2 + beta\ q\ x2 + q\^2\ \
+x2)\)\^2\)\) - 
+                        alpha\ p\ x1\^2\ \@\(\(-\((k - q)\)\)\ \((k + q)\)\ \
+\((\(-beta\)\ x + q\ x - alpha\ x2 - q\ x2)\)\ \((\(-alpha\)\ x + q\ x - beta\
+\ x2 - q\ x2)\)\)\ \@\(-\(\(\((k - p)\)\ \((k + p)\)\ \((beta\ x - q\ x + \
+alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\ \((alpha\ \
+beta\ x1 + alpha\ p\ x1 - beta\ q\ x1 - p\ q\ x1 - alpha\ beta\ x2 + beta\ p\ \
+x2 - alpha\ q\ x2 + p\ q\ x2)\)\ \((alpha\ beta\ x1 + beta\ p\ x1 - alpha\ q\ \
+x1 - p\ q\ x1 - alpha\ beta\ x2 + alpha\ p\ x2 - beta\ q\ x2 + p\ q\ \
+x2)\)\)\/\((p\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ p\ x1 - beta\ p\ x1 \
+- p\^2\ x1 + alpha\ beta\ x2 + alpha\ q\ x2 + beta\ q\ x2 + q\^2\ \
+x2)\)\^2\)\) - 
+                        beta\ p\ x1\^2\ \@\(\(-\((k - q)\)\)\ \((k + q)\)\ \
+\((\(-beta\)\ x + q\ x - alpha\ x2 - q\ x2)\)\ \((\(-alpha\)\ x + q\ x - beta\
+\ x2 - q\ x2)\)\)\ \@\(-\(\(\((k - p)\)\ \((k + p)\)\ \((beta\ x - q\ x + \
+alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\ \((alpha\ \
+beta\ x1 + alpha\ p\ x1 - beta\ q\ x1 - p\ q\ x1 - alpha\ beta\ x2 + beta\ p\ \
+x2 - alpha\ q\ x2 + p\ q\ x2)\)\ \((alpha\ beta\ x1 + beta\ p\ x1 - alpha\ q\ \
+x1 - p\ q\ x1 - alpha\ beta\ x2 + alpha\ p\ x2 - beta\ q\ x2 + p\ q\ \
+x2)\)\)\/\((p\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ p\ x1 - beta\ p\ x1 \
+- p\^2\ x1 + alpha\ beta\ x2 + alpha\ q\ x2 + beta\ q\ x2 + q\^2\ \
+x2)\)\^2\)\) - 
+                        p\^2\ x1\^2\ \@\(\(-\((k - q)\)\)\ \((k + q)\)\ \
+\((\(-beta\)\ x + q\ x - alpha\ x2 - q\ x2)\)\ \((\(-alpha\)\ x + q\ x - beta\
+\ x2 - q\ x2)\)\)\ \@\(-\(\(\((k - p)\)\ \((k + p)\)\ \((beta\ x - q\ x + \
+alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\ \((alpha\ \
+beta\ x1 + alpha\ p\ x1 - beta\ q\ x1 - p\ q\ x1 - alpha\ beta\ x2 + beta\ p\ \
+x2 - alpha\ q\ x2 + p\ q\ x2)\)\ \((alpha\ beta\ x1 + beta\ p\ x1 - alpha\ q\ \
+x1 - p\ q\ x1 - alpha\ beta\ x2 + alpha\ p\ x2 - beta\ q\ x2 + p\ q\ \
+x2)\)\)\/\((p\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ p\ x1 - beta\ p\ x1 \
+- p\^2\ x1 + alpha\ beta\ x2 + alpha\ q\ x2 + beta\ q\ x2 + q\^2\ \
+x2)\)\^2\)\))\)\)\/\(\@\(\(-\((k - p)\)\)\ \((k + p)\)\ \((\(-beta\)\ x + p\ \
+x - alpha\ x1 - p\ x1)\)\ \((\(-alpha\)\ x + p\ x - beta\ x1 - p\ x1)\)\)\ \@\
+\(\(-\((k - q)\)\)\ \((k + q)\)\ \((\(-beta\)\ x + q\ x - alpha\ x2 - q\ \
+x2)\)\ \((\(-alpha\)\ x + q\ x - beta\ x2 - q\ x2)\)\)\ \@\(-\(\(\((k - q)\)\ \
+\((k + q)\)\ \((beta\ x - p\ x + alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + \
+beta\ x1 + p\ x1)\)\ \((\(-alpha\)\ beta\ x1 - alpha\ p\ x1 + beta\ q\ x1 + p\
+\ q\ x1 + alpha\ beta\ x2 - beta\ p\ x2 + alpha\ q\ x2 - p\ q\ x2)\)\ \
+\((\(-alpha\)\ beta\ x1 - beta\ p\ x1 + alpha\ q\ x1 + p\ q\ x1 + alpha\ beta\
+\ x2 - alpha\ p\ x2 + beta\ q\ x2 - p\ q\ x2)\)\)\/\((\(-p\^2\)\ x + q\^2\ x \
++ alpha\ beta\ x1 + alpha\ p\ x1 + beta\ p\ x1 + p\^2\ x1 - alpha\ beta\ x2 - \
+alpha\ q\ x2 - beta\ q\ x2 - q\^2\ x2)\)\^2\)\)\ \@\(-\(\(\((k - p)\)\ \((k + \
+p)\)\ \((beta\ x - q\ x + alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 \
++ q\ x2)\)\ \((alpha\ beta\ x1 + alpha\ p\ x1 - beta\ q\ x1 - p\ q\ x1 - \
+alpha\ beta\ x2 + beta\ p\ x2 - alpha\ q\ x2 + p\ q\ x2)\)\ \((alpha\ beta\ \
+x1 + beta\ p\ x1 - alpha\ q\ x1 - p\ q\ x1 - alpha\ beta\ x2 + alpha\ p\ x2 - \
+beta\ q\ x2 + p\ q\ x2)\)\)\/\((p\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ \
+p\ x1 - beta\ p\ x1 - p\^2\ x1 + alpha\ beta\ x2 + alpha\ q\ x2 + beta\ q\ x2 \
++ q\^2\ x2)\)\^2\)\)\ \((p\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ p\ x1 - 
+                        beta\ p\ x1 - p\^2\ x1 + alpha\ beta\ x2 + 
+                        alpha\ q\ x2 + beta\ q\ x2 + q\^2\ x2)\)\)\)},
+            {\(\(\((alpha + k)\)\ \((beta + k)\)\ \((p - q)\)\ \((p + 
+                        q)\)\ \((alpha\ beta\ x\^2\ \@\(\(-\((k - p)\)\)\ \
+\((k + p)\)\ \((\(-beta\)\ x + p\ x - alpha\ x1 - p\ x1)\)\ \((\(-alpha\)\ x \
++ p\ x - beta\ x1 - p\ x1)\)\)\ \@\(-\(\(\((k - q)\)\ \((k + q)\)\ \((beta\ x \
+- p\ x + alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ x1)\)\ \
+\((\(-alpha\)\ beta\ x1 - alpha\ p\ x1 + beta\ q\ x1 + p\ q\ x1 + alpha\ beta\
+\ x2 - beta\ p\ x2 + alpha\ q\ x2 - p\ q\ x2)\)\ \((\(-alpha\)\ beta\ x1 - \
+beta\ p\ x1 + alpha\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - alpha\ p\ x2 + beta\
+\ q\ x2 - p\ q\ x2)\)\)\/\((\(-p\^2\)\ x + q\^2\ x + alpha\ beta\ x1 + alpha\ \
+p\ x1 + beta\ p\ x1 + p\^2\ x1 - alpha\ beta\ x2 - alpha\ q\ x2 - beta\ q\ x2 \
+- q\^2\ x2)\)\^2\)\) - 
+                        alpha\ q\ x\^2\ \@\(\(-\((k - p)\)\)\ \((k + p)\)\ \
+\((\(-beta\)\ x + p\ x - alpha\ x1 - p\ x1)\)\ \((\(-alpha\)\ x + p\ x - beta\
+\ x1 - p\ x1)\)\)\ \@\(-\(\(\((k - q)\)\ \((k + q)\)\ \((beta\ x - p\ x + \
+alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ x1)\)\ \((\(-alpha\)\
+\ beta\ x1 - alpha\ p\ x1 + beta\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - beta\ \
+p\ x2 + alpha\ q\ x2 - p\ q\ x2)\)\ \((\(-alpha\)\ beta\ x1 - beta\ p\ x1 + \
+alpha\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - alpha\ p\ x2 + beta\ q\ x2 - p\ q\
+\ x2)\)\)\/\((\(-p\^2\)\ x + q\^2\ x + alpha\ beta\ x1 + alpha\ p\ x1 + beta\ \
+p\ x1 + p\^2\ x1 - alpha\ beta\ x2 - alpha\ q\ x2 - beta\ q\ x2 - q\^2\ x2)\)\
+\^2\)\) - 
+                        beta\ q\ x\^2\ \@\(\(-\((k - p)\)\)\ \((k + p)\)\ \((\
+\(-beta\)\ x + p\ x - alpha\ x1 - p\ x1)\)\ \((\(-alpha\)\ x + p\ x - beta\ \
+x1 - p\ x1)\)\)\ \@\(-\(\(\((k - q)\)\ \((k + q)\)\ \((beta\ x - p\ x + alpha\
+\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ x1)\)\ \((\(-alpha\)\ \
+beta\ x1 - alpha\ p\ x1 + beta\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - beta\ p\ \
+x2 + alpha\ q\ x2 - p\ q\ x2)\)\ \((\(-alpha\)\ beta\ x1 - beta\ p\ x1 + \
+alpha\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - alpha\ p\ x2 + beta\ q\ x2 - p\ q\
+\ x2)\)\)\/\((\(-p\^2\)\ x + q\^2\ x + alpha\ beta\ x1 + alpha\ p\ x1 + beta\ \
+p\ x1 + p\^2\ x1 - alpha\ beta\ x2 - alpha\ q\ x2 - beta\ q\ x2 - q\^2\ x2)\)\
+\^2\)\) + 
+                        q\^2\ x\^2\ \@\(\(-\((k - p)\)\)\ \((k + p)\)\ \
+\((\(-beta\)\ x + p\ x - alpha\ x1 - p\ x1)\)\ \((\(-alpha\)\ x + p\ x - beta\
+\ x1 - p\ x1)\)\)\ \@\(-\(\(\((k - q)\)\ \((k + q)\)\ \((beta\ x - p\ x + \
+alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ x1)\)\ \((\(-alpha\)\
+\ beta\ x1 - alpha\ p\ x1 + beta\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - beta\ \
+p\ x2 + alpha\ q\ x2 - p\ q\ x2)\)\ \((\(-alpha\)\ beta\ x1 - beta\ p\ x1 + \
+alpha\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - alpha\ p\ x2 + beta\ q\ x2 - p\ q\
+\ x2)\)\)\/\((\(-p\^2\)\ x + q\^2\ x + alpha\ beta\ x1 + alpha\ p\ x1 + beta\ \
+p\ x1 + p\^2\ x1 - alpha\ beta\ x2 - alpha\ q\ x2 - beta\ q\ x2 - q\^2\ x2)\)\
+\^2\)\) + 
+                        alpha\^2\ x\ \@\(\(-\((k - p)\)\)\ \((k + p)\)\ \
+\((\(-beta\)\ x + p\ x - alpha\ x1 - p\ x1)\)\ \((\(-alpha\)\ x + p\ x - beta\
+\ x1 - p\ x1)\)\)\ x2\ \@\(-\(\(\((k - q)\)\ \((k + q)\)\ \((beta\ x - p\ x + \
+alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ x1)\)\ \((\(-alpha\)\
+\ beta\ x1 - alpha\ p\ x1 + beta\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - beta\ \
+p\ x2 + alpha\ q\ x2 - p\ q\ x2)\)\ \((\(-alpha\)\ beta\ x1 - beta\ p\ x1 + \
+alpha\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - alpha\ p\ x2 + beta\ q\ x2 - p\ q\
+\ x2)\)\)\/\((\(-p\^2\)\ x + q\^2\ x + alpha\ beta\ x1 + alpha\ p\ x1 + beta\ \
+p\ x1 + p\^2\ x1 - alpha\ beta\ x2 - alpha\ q\ x2 - beta\ q\ x2 - q\^2\ x2)\)\
+\^2\)\) + 
+                        beta\^2\ x\ \@\(\(-\((k - p)\)\)\ \((k + p)\)\ \
+\((\(-beta\)\ x + p\ x - alpha\ x1 - p\ x1)\)\ \((\(-alpha\)\ x + p\ x - beta\
+\ x1 - p\ x1)\)\)\ x2\ \@\(-\(\(\((k - q)\)\ \((k + q)\)\ \((beta\ x - p\ x + \
+alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ x1)\)\ \((\(-alpha\)\
+\ beta\ x1 - alpha\ p\ x1 + beta\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - beta\ \
+p\ x2 + alpha\ q\ x2 - p\ q\ x2)\)\ \((\(-alpha\)\ beta\ x1 - beta\ p\ x1 + \
+alpha\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - alpha\ p\ x2 + beta\ q\ x2 - p\ q\
+\ x2)\)\)\/\((\(-p\^2\)\ x + q\^2\ x + alpha\ beta\ x1 + alpha\ p\ x1 + beta\ \
+p\ x1 + p\^2\ x1 - alpha\ beta\ x2 - alpha\ q\ x2 - beta\ q\ x2 - q\^2\ x2)\)\
+\^2\)\) - 
+                        2\ q\^2\ x\ \@\(\(-\((k - p)\)\)\ \((k + p)\)\ \
+\((\(-beta\)\ x + p\ x - alpha\ x1 - p\ x1)\)\ \((\(-alpha\)\ x + p\ x - beta\
+\ x1 - p\ x1)\)\)\ x2\ \@\(-\(\(\((k - q)\)\ \((k + q)\)\ \((beta\ x - p\ x + \
+alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ x1)\)\ \((\(-alpha\)\
+\ beta\ x1 - alpha\ p\ x1 + beta\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - beta\ \
+p\ x2 + alpha\ q\ x2 - p\ q\ x2)\)\ \((\(-alpha\)\ beta\ x1 - beta\ p\ x1 + \
+alpha\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - alpha\ p\ x2 + beta\ q\ x2 - p\ q\
+\ x2)\)\)\/\((\(-p\^2\)\ x + q\^2\ x + alpha\ beta\ x1 + alpha\ p\ x1 + beta\ \
+p\ x1 + p\^2\ x1 - alpha\ beta\ x2 - alpha\ q\ x2 - beta\ q\ x2 - q\^2\ x2)\)\
+\^2\)\) + 
+                        alpha\ beta\ \@\(\(-\((k - p)\)\)\ \((k + p)\)\ \
+\((\(-beta\)\ x + p\ x - alpha\ x1 - p\ x1)\)\ \((\(-alpha\)\ x + p\ x - beta\
+\ x1 - p\ x1)\)\)\ x2\^2\ \@\(-\(\(\((k - q)\)\ \((k + q)\)\ \((beta\ x - p\ \
+x + alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ x1)\)\ \
+\((\(-alpha\)\ beta\ x1 - alpha\ p\ x1 + beta\ q\ x1 + p\ q\ x1 + alpha\ beta\
+\ x2 - beta\ p\ x2 + alpha\ q\ x2 - p\ q\ x2)\)\ \((\(-alpha\)\ beta\ x1 - \
+beta\ p\ x1 + alpha\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - alpha\ p\ x2 + beta\
+\ q\ x2 - p\ q\ x2)\)\)\/\((\(-p\^2\)\ x + q\^2\ x + alpha\ beta\ x1 + alpha\ \
+p\ x1 + beta\ p\ x1 + p\^2\ x1 - alpha\ beta\ x2 - alpha\ q\ x2 - beta\ q\ x2 \
+- q\^2\ x2)\)\^2\)\) + 
+                        alpha\ q\ \@\(\(-\((k - p)\)\)\ \((k + p)\)\ \
+\((\(-beta\)\ x + p\ x - alpha\ x1 - p\ x1)\)\ \((\(-alpha\)\ x + p\ x - beta\
+\ x1 - p\ x1)\)\)\ x2\^2\ \@\(-\(\(\((k - q)\)\ \((k + q)\)\ \((beta\ x - p\ \
+x + alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ x1)\)\ \
+\((\(-alpha\)\ beta\ x1 - alpha\ p\ x1 + beta\ q\ x1 + p\ q\ x1 + alpha\ beta\
+\ x2 - beta\ p\ x2 + alpha\ q\ x2 - p\ q\ x2)\)\ \((\(-alpha\)\ beta\ x1 - \
+beta\ p\ x1 + alpha\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - alpha\ p\ x2 + beta\
+\ q\ x2 - p\ q\ x2)\)\)\/\((\(-p\^2\)\ x + q\^2\ x + alpha\ beta\ x1 + alpha\ \
+p\ x1 + beta\ p\ x1 + p\^2\ x1 - alpha\ beta\ x2 - alpha\ q\ x2 - beta\ q\ x2 \
+- q\^2\ x2)\)\^2\)\) + 
+                        beta\ q\ \@\(\(-\((k - p)\)\)\ \((k + p)\)\ \
+\((\(-beta\)\ x + p\ x - alpha\ x1 - p\ x1)\)\ \((\(-alpha\)\ x + p\ x - beta\
+\ x1 - p\ x1)\)\)\ x2\^2\ \@\(-\(\(\((k - q)\)\ \((k + q)\)\ \((beta\ x - p\ \
+x + alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ x1)\)\ \
+\((\(-alpha\)\ beta\ x1 - alpha\ p\ x1 + beta\ q\ x1 + p\ q\ x1 + alpha\ beta\
+\ x2 - beta\ p\ x2 + alpha\ q\ x2 - p\ q\ x2)\)\ \((\(-alpha\)\ beta\ x1 - \
+beta\ p\ x1 + alpha\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - alpha\ p\ x2 + beta\
+\ q\ x2 - p\ q\ x2)\)\)\/\((\(-p\^2\)\ x + q\^2\ x + alpha\ beta\ x1 + alpha\ \
+p\ x1 + beta\ p\ x1 + p\^2\ x1 - alpha\ beta\ x2 - alpha\ q\ x2 - beta\ q\ x2 \
+- q\^2\ x2)\)\^2\)\) + 
+                        q\^2\ \@\(\(-\((k - p)\)\)\ \((k + p)\)\ \((\(-beta\)\
+\ x + p\ x - alpha\ x1 - p\ x1)\)\ \((\(-alpha\)\ x + p\ x - beta\ x1 - p\ \
+x1)\)\)\ x2\^2\ \@\(-\(\(\((k - q)\)\ \((k + q)\)\ \((beta\ x - p\ x + alpha\ \
+x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ x1)\)\ \((\(-alpha\)\ beta\ \
+x1 - alpha\ p\ x1 + beta\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - beta\ p\ x2 + \
+alpha\ q\ x2 - p\ q\ x2)\)\ \((\(-alpha\)\ beta\ x1 - beta\ p\ x1 + alpha\ q\ \
+x1 + p\ q\ x1 + alpha\ beta\ x2 - alpha\ p\ x2 + beta\ q\ x2 - p\ q\ \
+x2)\)\)\/\((\(-p\^2\)\ x + q\^2\ x + alpha\ beta\ x1 + alpha\ p\ x1 + beta\ p\
+\ x1 + p\^2\ x1 - alpha\ beta\ x2 - alpha\ q\ x2 - beta\ q\ x2 - q\^2\ \
+x2)\)\^2\)\) - 
+                        alpha\ beta\ x\^2\ \@\(\(-\((k - q)\)\)\ \((k + q)\)\ \
+\((\(-beta\)\ x + q\ x - alpha\ x2 - q\ x2)\)\ \((\(-alpha\)\ x + q\ x - beta\
+\ x2 - q\ x2)\)\)\ \@\(-\(\(\((k - p)\)\ \((k + p)\)\ \((beta\ x - q\ x + \
+alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\ \((alpha\ \
+beta\ x1 + alpha\ p\ x1 - beta\ q\ x1 - p\ q\ x1 - alpha\ beta\ x2 + beta\ p\ \
+x2 - alpha\ q\ x2 + p\ q\ x2)\)\ \((alpha\ beta\ x1 + beta\ p\ x1 - alpha\ q\ \
+x1 - p\ q\ x1 - alpha\ beta\ x2 + alpha\ p\ x2 - beta\ q\ x2 + p\ q\ \
+x2)\)\)\/\((p\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ p\ x1 - beta\ p\ x1 \
+- p\^2\ x1 + alpha\ beta\ x2 + alpha\ q\ x2 + beta\ q\ x2 + q\^2\ \
+x2)\)\^2\)\) + 
+                        alpha\ p\ x\^2\ \@\(\(-\((k - q)\)\)\ \((k + q)\)\ \
+\((\(-beta\)\ x + q\ x - alpha\ x2 - q\ x2)\)\ \((\(-alpha\)\ x + q\ x - beta\
+\ x2 - q\ x2)\)\)\ \@\(-\(\(\((k - p)\)\ \((k + p)\)\ \((beta\ x - q\ x + \
+alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\ \((alpha\ \
+beta\ x1 + alpha\ p\ x1 - beta\ q\ x1 - p\ q\ x1 - alpha\ beta\ x2 + beta\ p\ \
+x2 - alpha\ q\ x2 + p\ q\ x2)\)\ \((alpha\ beta\ x1 + beta\ p\ x1 - alpha\ q\ \
+x1 - p\ q\ x1 - alpha\ beta\ x2 + alpha\ p\ x2 - beta\ q\ x2 + p\ q\ \
+x2)\)\)\/\((p\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ p\ x1 - beta\ p\ x1 \
+- p\^2\ x1 + alpha\ beta\ x2 + alpha\ q\ x2 + beta\ q\ x2 + q\^2\ \
+x2)\)\^2\)\) + 
+                        beta\ p\ x\^2\ \@\(\(-\((k - q)\)\)\ \((k + q)\)\ \((\
+\(-beta\)\ x + q\ x - alpha\ x2 - q\ x2)\)\ \((\(-alpha\)\ x + q\ x - beta\ \
+x2 - q\ x2)\)\)\ \@\(-\(\(\((k - p)\)\ \((k + p)\)\ \((beta\ x - q\ x + alpha\
+\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\ \((alpha\ beta\ x1 \
++ alpha\ p\ x1 - beta\ q\ x1 - p\ q\ x1 - alpha\ beta\ x2 + beta\ p\ x2 - \
+alpha\ q\ x2 + p\ q\ x2)\)\ \((alpha\ beta\ x1 + beta\ p\ x1 - alpha\ q\ x1 - \
+p\ q\ x1 - alpha\ beta\ x2 + alpha\ p\ x2 - beta\ q\ x2 + p\ q\ x2)\)\)\/\((p\
+\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ p\ x1 - beta\ p\ x1 - p\^2\ x1 + \
+alpha\ beta\ x2 + alpha\ q\ x2 + beta\ q\ x2 + q\^2\ x2)\)\^2\)\) - 
+                        p\^2\ x\^2\ \@\(\(-\((k - q)\)\)\ \((k + q)\)\ \
+\((\(-beta\)\ x + q\ x - alpha\ x2 - q\ x2)\)\ \((\(-alpha\)\ x + q\ x - beta\
+\ x2 - q\ x2)\)\)\ \@\(-\(\(\((k - p)\)\ \((k + p)\)\ \((beta\ x - q\ x + \
+alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\ \((alpha\ \
+beta\ x1 + alpha\ p\ x1 - beta\ q\ x1 - p\ q\ x1 - alpha\ beta\ x2 + beta\ p\ \
+x2 - alpha\ q\ x2 + p\ q\ x2)\)\ \((alpha\ beta\ x1 + beta\ p\ x1 - alpha\ q\ \
+x1 - p\ q\ x1 - alpha\ beta\ x2 + alpha\ p\ x2 - beta\ q\ x2 + p\ q\ \
+x2)\)\)\/\((p\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ p\ x1 - beta\ p\ x1 \
+- p\^2\ x1 + alpha\ beta\ x2 + alpha\ q\ x2 + beta\ q\ x2 + q\^2\ \
+x2)\)\^2\)\) - 
+                        alpha\^2\ x\ x1\ \@\(\(-\((k - q)\)\)\ \((k + q)\)\ \
+\((\(-beta\)\ x + q\ x - alpha\ x2 - q\ x2)\)\ \((\(-alpha\)\ x + q\ x - beta\
+\ x2 - q\ x2)\)\)\ \@\(-\(\(\((k - p)\)\ \((k + p)\)\ \((beta\ x - q\ x + \
+alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\ \((alpha\ \
+beta\ x1 + alpha\ p\ x1 - beta\ q\ x1 - p\ q\ x1 - alpha\ beta\ x2 + beta\ p\ \
+x2 - alpha\ q\ x2 + p\ q\ x2)\)\ \((alpha\ beta\ x1 + beta\ p\ x1 - alpha\ q\ \
+x1 - p\ q\ x1 - alpha\ beta\ x2 + alpha\ p\ x2 - beta\ q\ x2 + p\ q\ \
+x2)\)\)\/\((p\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ p\ x1 - beta\ p\ x1 \
+- p\^2\ x1 + alpha\ beta\ x2 + alpha\ q\ x2 + beta\ q\ x2 + q\^2\ \
+x2)\)\^2\)\) - 
+                        beta\^2\ x\ x1\ \@\(\(-\((k - q)\)\)\ \((k + q)\)\ \
+\((\(-beta\)\ x + q\ x - alpha\ x2 - q\ x2)\)\ \((\(-alpha\)\ x + q\ x - beta\
+\ x2 - q\ x2)\)\)\ \@\(-\(\(\((k - p)\)\ \((k + p)\)\ \((beta\ x - q\ x + \
+alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\ \((alpha\ \
+beta\ x1 + alpha\ p\ x1 - beta\ q\ x1 - p\ q\ x1 - alpha\ beta\ x2 + beta\ p\ \
+x2 - alpha\ q\ x2 + p\ q\ x2)\)\ \((alpha\ beta\ x1 + beta\ p\ x1 - alpha\ q\ \
+x1 - p\ q\ x1 - alpha\ beta\ x2 + alpha\ p\ x2 - beta\ q\ x2 + p\ q\ \
+x2)\)\)\/\((p\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ p\ x1 - beta\ p\ x1 \
+- p\^2\ x1 + alpha\ beta\ x2 + alpha\ q\ x2 + beta\ q\ x2 + q\^2\ \
+x2)\)\^2\)\) + 
+                        2\ p\^2\ x\ x1\ \@\(\(-\((k - q)\)\)\ \((k + q)\)\ \
+\((\(-beta\)\ x + q\ x - alpha\ x2 - q\ x2)\)\ \((\(-alpha\)\ x + q\ x - beta\
+\ x2 - q\ x2)\)\)\ \@\(-\(\(\((k - p)\)\ \((k + p)\)\ \((beta\ x - q\ x + \
+alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\ \((alpha\ \
+beta\ x1 + alpha\ p\ x1 - beta\ q\ x1 - p\ q\ x1 - alpha\ beta\ x2 + beta\ p\ \
+x2 - alpha\ q\ x2 + p\ q\ x2)\)\ \((alpha\ beta\ x1 + beta\ p\ x1 - alpha\ q\ \
+x1 - p\ q\ x1 - alpha\ beta\ x2 + alpha\ p\ x2 - beta\ q\ x2 + p\ q\ \
+x2)\)\)\/\((p\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ p\ x1 - beta\ p\ x1 \
+- p\^2\ x1 + alpha\ beta\ x2 + alpha\ q\ x2 + beta\ q\ x2 + q\^2\ \
+x2)\)\^2\)\) - 
+                        alpha\ beta\ x1\^2\ \@\(\(-\((k - q)\)\)\ \((k + q)\)\
+\ \((\(-beta\)\ x + q\ x - alpha\ x2 - q\ x2)\)\ \((\(-alpha\)\ x + q\ x - \
+beta\ x2 - q\ x2)\)\)\ \@\(-\(\(\((k - p)\)\ \((k + p)\)\ \((beta\ x - q\ x + \
+alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\ \((alpha\ \
+beta\ x1 + alpha\ p\ x1 - beta\ q\ x1 - p\ q\ x1 - alpha\ beta\ x2 + beta\ p\ \
+x2 - alpha\ q\ x2 + p\ q\ x2)\)\ \((alpha\ beta\ x1 + beta\ p\ x1 - alpha\ q\ \
+x1 - p\ q\ x1 - alpha\ beta\ x2 + alpha\ p\ x2 - beta\ q\ x2 + p\ q\ \
+x2)\)\)\/\((p\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ p\ x1 - beta\ p\ x1 \
+- p\^2\ x1 + alpha\ beta\ x2 + alpha\ q\ x2 + beta\ q\ x2 + q\^2\ \
+x2)\)\^2\)\) - 
+                        alpha\ p\ x1\^2\ \@\(\(-\((k - q)\)\)\ \((k + q)\)\ \
+\((\(-beta\)\ x + q\ x - alpha\ x2 - q\ x2)\)\ \((\(-alpha\)\ x + q\ x - beta\
+\ x2 - q\ x2)\)\)\ \@\(-\(\(\((k - p)\)\ \((k + p)\)\ \((beta\ x - q\ x + \
+alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\ \((alpha\ \
+beta\ x1 + alpha\ p\ x1 - beta\ q\ x1 - p\ q\ x1 - alpha\ beta\ x2 + beta\ p\ \
+x2 - alpha\ q\ x2 + p\ q\ x2)\)\ \((alpha\ beta\ x1 + beta\ p\ x1 - alpha\ q\ \
+x1 - p\ q\ x1 - alpha\ beta\ x2 + alpha\ p\ x2 - beta\ q\ x2 + p\ q\ \
+x2)\)\)\/\((p\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ p\ x1 - beta\ p\ x1 \
+- p\^2\ x1 + alpha\ beta\ x2 + alpha\ q\ x2 + beta\ q\ x2 + q\^2\ \
+x2)\)\^2\)\) - 
+                        beta\ p\ x1\^2\ \@\(\(-\((k - q)\)\)\ \((k + q)\)\ \
+\((\(-beta\)\ x + q\ x - alpha\ x2 - q\ x2)\)\ \((\(-alpha\)\ x + q\ x - beta\
+\ x2 - q\ x2)\)\)\ \@\(-\(\(\((k - p)\)\ \((k + p)\)\ \((beta\ x - q\ x + \
+alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\ \((alpha\ \
+beta\ x1 + alpha\ p\ x1 - beta\ q\ x1 - p\ q\ x1 - alpha\ beta\ x2 + beta\ p\ \
+x2 - alpha\ q\ x2 + p\ q\ x2)\)\ \((alpha\ beta\ x1 + beta\ p\ x1 - alpha\ q\ \
+x1 - p\ q\ x1 - alpha\ beta\ x2 + alpha\ p\ x2 - beta\ q\ x2 + p\ q\ \
+x2)\)\)\/\((p\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ p\ x1 - beta\ p\ x1 \
+- p\^2\ x1 + alpha\ beta\ x2 + alpha\ q\ x2 + beta\ q\ x2 + q\^2\ \
+x2)\)\^2\)\) - 
+                        p\^2\ x1\^2\ \@\(\(-\((k - q)\)\)\ \((k + q)\)\ \
+\((\(-beta\)\ x + q\ x - alpha\ x2 - q\ x2)\)\ \((\(-alpha\)\ x + q\ x - beta\
+\ x2 - q\ x2)\)\)\ \@\(-\(\(\((k - p)\)\ \((k + p)\)\ \((beta\ x - q\ x + \
+alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\ \((alpha\ \
+beta\ x1 + alpha\ p\ x1 - beta\ q\ x1 - p\ q\ x1 - alpha\ beta\ x2 + beta\ p\ \
+x2 - alpha\ q\ x2 + p\ q\ x2)\)\ \((alpha\ beta\ x1 + beta\ p\ x1 - alpha\ q\ \
+x1 - p\ q\ x1 - alpha\ beta\ x2 + alpha\ p\ x2 - beta\ q\ x2 + p\ q\ \
+x2)\)\)\/\((p\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ p\ x1 - beta\ p\ x1 \
+- p\^2\ x1 + alpha\ beta\ x2 + alpha\ q\ x2 + beta\ q\ x2 + q\^2\ \
+x2)\)\^2\)\))\)\)\/\(\@\(\(-\((k - p)\)\)\ \((k + p)\)\ \((\(-beta\)\ x + p\ \
+x - alpha\ x1 - p\ x1)\)\ \((\(-alpha\)\ x + p\ x - beta\ x1 - p\ x1)\)\)\ \@\
+\(\(-\((k - q)\)\)\ \((k + q)\)\ \((\(-beta\)\ x + q\ x - alpha\ x2 - q\ \
+x2)\)\ \((\(-alpha\)\ x + q\ x - beta\ x2 - q\ x2)\)\)\ \@\(-\(\(\((k - q)\)\ \
+\((k + q)\)\ \((beta\ x - p\ x + alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + \
+beta\ x1 + p\ x1)\)\ \((\(-alpha\)\ beta\ x1 - alpha\ p\ x1 + beta\ q\ x1 + p\
+\ q\ x1 + alpha\ beta\ x2 - beta\ p\ x2 + alpha\ q\ x2 - p\ q\ x2)\)\ \
+\((\(-alpha\)\ beta\ x1 - beta\ p\ x1 + alpha\ q\ x1 + p\ q\ x1 + alpha\ beta\
+\ x2 - alpha\ p\ x2 + beta\ q\ x2 - p\ q\ x2)\)\)\/\((\(-p\^2\)\ x + q\^2\ x \
++ alpha\ beta\ x1 + alpha\ p\ x1 + beta\ p\ x1 + p\^2\ x1 - alpha\ beta\ x2 - \
+alpha\ q\ x2 - beta\ q\ x2 - q\^2\ x2)\)\^2\)\)\ \@\(-\(\(\((k - p)\)\ \((k + \
+p)\)\ \((beta\ x - q\ x + alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 \
++ q\ x2)\)\ \((alpha\ beta\ x1 + alpha\ p\ x1 - beta\ q\ x1 - p\ q\ x1 - \
+alpha\ beta\ x2 + beta\ p\ x2 - alpha\ q\ x2 + p\ q\ x2)\)\ \((alpha\ beta\ \
+x1 + beta\ p\ x1 - alpha\ q\ x1 - p\ q\ x1 - alpha\ beta\ x2 + alpha\ p\ x2 - \
+beta\ q\ x2 + p\ q\ x2)\)\)\/\((p\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ \
+p\ x1 - beta\ p\ x1 - p\^2\ x1 + alpha\ beta\ x2 + alpha\ q\ x2 + beta\ q\ x2 \
++ q\^2\ x2)\)\^2\)\)\ \((p\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ p\ x1 - 
+                        beta\ p\ x1 - p\^2\ x1 + alpha\ beta\ x2 + 
+                        alpha\ q\ x2 + beta\ q\ x2 + 
+                        q\^2\ x2)\)\)\), \(-\(\(\((alpha\ beta\ k\^2\ x1 + 
+                          alpha\ k\^2\ p\ x1 + beta\ k\^2\ p\ x1 + 
+                          k\^2\ p\^2\ x1 - alpha\ beta\ q\^2\ x1 - 
+                          alpha\ p\ q\^2\ x1 - beta\ p\ q\^2\ x1 - 
+                          p\^2\ q\^2\ x1 - alpha\ beta\ k\^2\ x2 + 
+                          alpha\ beta\ p\^2\ x2 - alpha\ k\^2\ q\ x2 - 
+                          beta\ k\^2\ q\ x2 + alpha\ p\^2\ q\ x2 + 
+                          beta\ p\^2\ q\ x2 - k\^2\ q\^2\ x2 + 
+                          p\^2\ q\^2\ x2)\)\ \((alpha\ beta\ x\^2\ \
+\@\(\(-\((k - p)\)\)\ \((k + p)\)\ \((\(-beta\)\ x + p\ x - alpha\ x1 - p\ \
+x1)\)\ \((\(-alpha\)\ x + p\ x - beta\ x1 - p\ x1)\)\)\ \@\(-\(\(\((k - q)\)\ \
+\((k + q)\)\ \((beta\ x - p\ x + alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + \
+beta\ x1 + p\ x1)\)\ \((\(-alpha\)\ beta\ x1 - alpha\ p\ x1 + beta\ q\ x1 + p\
+\ q\ x1 + alpha\ beta\ x2 - beta\ p\ x2 + alpha\ q\ x2 - p\ q\ x2)\)\ \
+\((\(-alpha\)\ beta\ x1 - beta\ p\ x1 + alpha\ q\ x1 + p\ q\ x1 + alpha\ beta\
+\ x2 - alpha\ p\ x2 + beta\ q\ x2 - p\ q\ x2)\)\)\/\((\(-p\^2\)\ x + q\^2\ x \
++ alpha\ beta\ x1 + alpha\ p\ x1 + beta\ p\ x1 + p\^2\ x1 - alpha\ beta\ x2 - \
+alpha\ q\ x2 - beta\ q\ x2 - q\^2\ x2)\)\^2\)\) - 
+                          alpha\ q\ x\^2\ \@\(\(-\((k - p)\)\)\ \((k + p)\)\ \
+\((\(-beta\)\ x + p\ x - alpha\ x1 - p\ x1)\)\ \((\(-alpha\)\ x + p\ x - beta\
+\ x1 - p\ x1)\)\)\ \@\(-\(\(\((k - q)\)\ \((k + q)\)\ \((beta\ x - p\ x + \
+alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ x1)\)\ \((\(-alpha\)\
+\ beta\ x1 - alpha\ p\ x1 + beta\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - beta\ \
+p\ x2 + alpha\ q\ x2 - p\ q\ x2)\)\ \((\(-alpha\)\ beta\ x1 - beta\ p\ x1 + \
+alpha\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - alpha\ p\ x2 + beta\ q\ x2 - p\ q\
+\ x2)\)\)\/\((\(-p\^2\)\ x + q\^2\ x + alpha\ beta\ x1 + alpha\ p\ x1 + beta\ \
+p\ x1 + p\^2\ x1 - alpha\ beta\ x2 - alpha\ q\ x2 - beta\ q\ x2 - q\^2\ x2)\)\
+\^2\)\) - 
+                          beta\ q\ x\^2\ \@\(\(-\((k - p)\)\)\ \((k + p)\)\ \
+\((\(-beta\)\ x + p\ x - alpha\ x1 - p\ x1)\)\ \((\(-alpha\)\ x + p\ x - beta\
+\ x1 - p\ x1)\)\)\ \@\(-\(\(\((k - q)\)\ \((k + q)\)\ \((beta\ x - p\ x + \
+alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ x1)\)\ \((\(-alpha\)\
+\ beta\ x1 - alpha\ p\ x1 + beta\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - beta\ \
+p\ x2 + alpha\ q\ x2 - p\ q\ x2)\)\ \((\(-alpha\)\ beta\ x1 - beta\ p\ x1 + \
+alpha\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - alpha\ p\ x2 + beta\ q\ x2 - p\ q\
+\ x2)\)\)\/\((\(-p\^2\)\ x + q\^2\ x + alpha\ beta\ x1 + alpha\ p\ x1 + beta\ \
+p\ x1 + p\^2\ x1 - alpha\ beta\ x2 - alpha\ q\ x2 - beta\ q\ x2 - q\^2\ x2)\)\
+\^2\)\) + 
+                          q\^2\ x\^2\ \@\(\(-\((k - p)\)\)\ \((k + p)\)\ \
+\((\(-beta\)\ x + p\ x - alpha\ x1 - p\ x1)\)\ \((\(-alpha\)\ x + p\ x - beta\
+\ x1 - p\ x1)\)\)\ \@\(-\(\(\((k - q)\)\ \((k + q)\)\ \((beta\ x - p\ x + \
+alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ x1)\)\ \((\(-alpha\)\
+\ beta\ x1 - alpha\ p\ x1 + beta\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - beta\ \
+p\ x2 + alpha\ q\ x2 - p\ q\ x2)\)\ \((\(-alpha\)\ beta\ x1 - beta\ p\ x1 + \
+alpha\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - alpha\ p\ x2 + beta\ q\ x2 - p\ q\
+\ x2)\)\)\/\((\(-p\^2\)\ x + q\^2\ x + alpha\ beta\ x1 + alpha\ p\ x1 + beta\ \
+p\ x1 + p\^2\ x1 - alpha\ beta\ x2 - alpha\ q\ x2 - beta\ q\ x2 - q\^2\ x2)\)\
+\^2\)\) + 
+                          alpha\^2\ x\ \@\(\(-\((k - p)\)\)\ \((k + p)\)\ \((\
+\(-beta\)\ x + p\ x - alpha\ x1 - p\ x1)\)\ \((\(-alpha\)\ x + p\ x - beta\ \
+x1 - p\ x1)\)\)\ x2\ \@\(-\(\(\((k - q)\)\ \((k + q)\)\ \((beta\ x - p\ x + \
+alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ x1)\)\ \((\(-alpha\)\
+\ beta\ x1 - alpha\ p\ x1 + beta\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - beta\ \
+p\ x2 + alpha\ q\ x2 - p\ q\ x2)\)\ \((\(-alpha\)\ beta\ x1 - beta\ p\ x1 + \
+alpha\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - alpha\ p\ x2 + beta\ q\ x2 - p\ q\
+\ x2)\)\)\/\((\(-p\^2\)\ x + q\^2\ x + alpha\ beta\ x1 + alpha\ p\ x1 + beta\ \
+p\ x1 + p\^2\ x1 - alpha\ beta\ x2 - alpha\ q\ x2 - beta\ q\ x2 - q\^2\ x2)\)\
+\^2\)\) + 
+                          beta\^2\ x\ \@\(\(-\((k - p)\)\)\ \((k + p)\)\ \
+\((\(-beta\)\ x + p\ x - alpha\ x1 - p\ x1)\)\ \((\(-alpha\)\ x + p\ x - beta\
+\ x1 - p\ x1)\)\)\ x2\ \@\(-\(\(\((k - q)\)\ \((k + q)\)\ \((beta\ x - p\ x + \
+alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ x1)\)\ \((\(-alpha\)\
+\ beta\ x1 - alpha\ p\ x1 + beta\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - beta\ \
+p\ x2 + alpha\ q\ x2 - p\ q\ x2)\)\ \((\(-alpha\)\ beta\ x1 - beta\ p\ x1 + \
+alpha\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - alpha\ p\ x2 + beta\ q\ x2 - p\ q\
+\ x2)\)\)\/\((\(-p\^2\)\ x + q\^2\ x + alpha\ beta\ x1 + alpha\ p\ x1 + beta\ \
+p\ x1 + p\^2\ x1 - alpha\ beta\ x2 - alpha\ q\ x2 - beta\ q\ x2 - q\^2\ x2)\)\
+\^2\)\) - 
+                          2\ q\^2\ x\ \@\(\(-\((k - p)\)\)\ \((k + p)\)\ \
+\((\(-beta\)\ x + p\ x - alpha\ x1 - p\ x1)\)\ \((\(-alpha\)\ x + p\ x - beta\
+\ x1 - p\ x1)\)\)\ x2\ \@\(-\(\(\((k - q)\)\ \((k + q)\)\ \((beta\ x - p\ x + \
+alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ x1)\)\ \((\(-alpha\)\
+\ beta\ x1 - alpha\ p\ x1 + beta\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - beta\ \
+p\ x2 + alpha\ q\ x2 - p\ q\ x2)\)\ \((\(-alpha\)\ beta\ x1 - beta\ p\ x1 + \
+alpha\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - alpha\ p\ x2 + beta\ q\ x2 - p\ q\
+\ x2)\)\)\/\((\(-p\^2\)\ x + q\^2\ x + alpha\ beta\ x1 + alpha\ p\ x1 + beta\ \
+p\ x1 + p\^2\ x1 - alpha\ beta\ x2 - alpha\ q\ x2 - beta\ q\ x2 - q\^2\ x2)\)\
+\^2\)\) + 
+                          alpha\ beta\ \@\(\(-\((k - p)\)\)\ \((k + p)\)\ \((\
+\(-beta\)\ x + p\ x - alpha\ x1 - p\ x1)\)\ \((\(-alpha\)\ x + p\ x - beta\ \
+x1 - p\ x1)\)\)\ x2\^2\ \@\(-\(\(\((k - q)\)\ \((k + q)\)\ \((beta\ x - p\ x \
++ alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ x1)\)\ \((\(-alpha\
+\)\ beta\ x1 - alpha\ p\ x1 + beta\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - beta\
+\ p\ x2 + alpha\ q\ x2 - p\ q\ x2)\)\ \((\(-alpha\)\ beta\ x1 - beta\ p\ x1 + \
+alpha\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - alpha\ p\ x2 + beta\ q\ x2 - p\ q\
+\ x2)\)\)\/\((\(-p\^2\)\ x + q\^2\ x + alpha\ beta\ x1 + alpha\ p\ x1 + beta\ \
+p\ x1 + p\^2\ x1 - alpha\ beta\ x2 - alpha\ q\ x2 - beta\ q\ x2 - q\^2\ x2)\)\
+\^2\)\) + 
+                          alpha\ q\ \@\(\(-\((k - p)\)\)\ \((k + p)\)\ \
+\((\(-beta\)\ x + p\ x - alpha\ x1 - p\ x1)\)\ \((\(-alpha\)\ x + p\ x - beta\
+\ x1 - p\ x1)\)\)\ x2\^2\ \@\(-\(\(\((k - q)\)\ \((k + q)\)\ \((beta\ x - p\ \
+x + alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ x1)\)\ \
+\((\(-alpha\)\ beta\ x1 - alpha\ p\ x1 + beta\ q\ x1 + p\ q\ x1 + alpha\ beta\
+\ x2 - beta\ p\ x2 + alpha\ q\ x2 - p\ q\ x2)\)\ \((\(-alpha\)\ beta\ x1 - \
+beta\ p\ x1 + alpha\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - alpha\ p\ x2 + beta\
+\ q\ x2 - p\ q\ x2)\)\)\/\((\(-p\^2\)\ x + q\^2\ x + alpha\ beta\ x1 + alpha\ \
+p\ x1 + beta\ p\ x1 + p\^2\ x1 - alpha\ beta\ x2 - alpha\ q\ x2 - beta\ q\ x2 \
+- q\^2\ x2)\)\^2\)\) + 
+                          beta\ q\ \@\(\(-\((k - p)\)\)\ \((k + p)\)\ \
+\((\(-beta\)\ x + p\ x - alpha\ x1 - p\ x1)\)\ \((\(-alpha\)\ x + p\ x - beta\
+\ x1 - p\ x1)\)\)\ x2\^2\ \@\(-\(\(\((k - q)\)\ \((k + q)\)\ \((beta\ x - p\ \
+x + alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ x1)\)\ \
+\((\(-alpha\)\ beta\ x1 - alpha\ p\ x1 + beta\ q\ x1 + p\ q\ x1 + alpha\ beta\
+\ x2 - beta\ p\ x2 + alpha\ q\ x2 - p\ q\ x2)\)\ \((\(-alpha\)\ beta\ x1 - \
+beta\ p\ x1 + alpha\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - alpha\ p\ x2 + beta\
+\ q\ x2 - p\ q\ x2)\)\)\/\((\(-p\^2\)\ x + q\^2\ x + alpha\ beta\ x1 + alpha\ \
+p\ x1 + beta\ p\ x1 + p\^2\ x1 - alpha\ beta\ x2 - alpha\ q\ x2 - beta\ q\ x2 \
+- q\^2\ x2)\)\^2\)\) + 
+                          q\^2\ \@\(\(-\((k - p)\)\)\ \((k + p)\)\ \((\(-beta\
+\)\ x + p\ x - alpha\ x1 - p\ x1)\)\ \((\(-alpha\)\ x + p\ x - beta\ x1 - p\ \
+x1)\)\)\ x2\^2\ \@\(-\(\(\((k - q)\)\ \((k + q)\)\ \((beta\ x - p\ x + alpha\ \
+x1 + p\ x1)\)\ \((alpha\ x - p\ x + beta\ x1 + p\ x1)\)\ \((\(-alpha\)\ beta\ \
+x1 - alpha\ p\ x1 + beta\ q\ x1 + p\ q\ x1 + alpha\ beta\ x2 - beta\ p\ x2 + \
+alpha\ q\ x2 - p\ q\ x2)\)\ \((\(-alpha\)\ beta\ x1 - beta\ p\ x1 + alpha\ q\ \
+x1 + p\ q\ x1 + alpha\ beta\ x2 - alpha\ p\ x2 + beta\ q\ x2 - p\ q\ \
+x2)\)\)\/\((\(-p\^2\)\ x + q\^2\ x + alpha\ beta\ x1 + alpha\ p\ x1 + beta\ p\
+\ x1 + p\^2\ x1 - alpha\ beta\ x2 - alpha\ q\ x2 - beta\ q\ x2 - q\^2\ \
+x2)\)\^2\)\) - 
+                          alpha\ beta\ x\^2\ \@\(\(-\((k - q)\)\)\ \((k + \
+q)\)\ \((\(-beta\)\ x + q\ x - alpha\ x2 - q\ x2)\)\ \((\(-alpha\)\ x + q\ x \
+- beta\ x2 - q\ x2)\)\)\ \@\(-\(\(\((k - p)\)\ \((k + p)\)\ \((beta\ x - q\ x \
++ alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\ \((alpha\ \
+beta\ x1 + alpha\ p\ x1 - beta\ q\ x1 - p\ q\ x1 - alpha\ beta\ x2 + beta\ p\ \
+x2 - alpha\ q\ x2 + p\ q\ x2)\)\ \((alpha\ beta\ x1 + beta\ p\ x1 - alpha\ q\ \
+x1 - p\ q\ x1 - alpha\ beta\ x2 + alpha\ p\ x2 - beta\ q\ x2 + p\ q\ \
+x2)\)\)\/\((p\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ p\ x1 - beta\ p\ x1 \
+- p\^2\ x1 + alpha\ beta\ x2 + alpha\ q\ x2 + beta\ q\ x2 + q\^2\ \
+x2)\)\^2\)\) + 
+                          alpha\ p\ x\^2\ \@\(\(-\((k - q)\)\)\ \((k + q)\)\ \
+\((\(-beta\)\ x + q\ x - alpha\ x2 - q\ x2)\)\ \((\(-alpha\)\ x + q\ x - beta\
+\ x2 - q\ x2)\)\)\ \@\(-\(\(\((k - p)\)\ \((k + p)\)\ \((beta\ x - q\ x + \
+alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\ \((alpha\ \
+beta\ x1 + alpha\ p\ x1 - beta\ q\ x1 - p\ q\ x1 - alpha\ beta\ x2 + beta\ p\ \
+x2 - alpha\ q\ x2 + p\ q\ x2)\)\ \((alpha\ beta\ x1 + beta\ p\ x1 - alpha\ q\ \
+x1 - p\ q\ x1 - alpha\ beta\ x2 + alpha\ p\ x2 - beta\ q\ x2 + p\ q\ \
+x2)\)\)\/\((p\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ p\ x1 - beta\ p\ x1 \
+- p\^2\ x1 + alpha\ beta\ x2 + alpha\ q\ x2 + beta\ q\ x2 + q\^2\ \
+x2)\)\^2\)\) + 
+                          beta\ p\ x\^2\ \@\(\(-\((k - q)\)\)\ \((k + q)\)\ \
+\((\(-beta\)\ x + q\ x - alpha\ x2 - q\ x2)\)\ \((\(-alpha\)\ x + q\ x - beta\
+\ x2 - q\ x2)\)\)\ \@\(-\(\(\((k - p)\)\ \((k + p)\)\ \((beta\ x - q\ x + \
+alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\ \((alpha\ \
+beta\ x1 + alpha\ p\ x1 - beta\ q\ x1 - p\ q\ x1 - alpha\ beta\ x2 + beta\ p\ \
+x2 - alpha\ q\ x2 + p\ q\ x2)\)\ \((alpha\ beta\ x1 + beta\ p\ x1 - alpha\ q\ \
+x1 - p\ q\ x1 - alpha\ beta\ x2 + alpha\ p\ x2 - beta\ q\ x2 + p\ q\ \
+x2)\)\)\/\((p\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ p\ x1 - beta\ p\ x1 \
+- p\^2\ x1 + alpha\ beta\ x2 + alpha\ q\ x2 + beta\ q\ x2 + q\^2\ \
+x2)\)\^2\)\) - 
+                          p\^2\ x\^2\ \@\(\(-\((k - q)\)\)\ \((k + q)\)\ \
+\((\(-beta\)\ x + q\ x - alpha\ x2 - q\ x2)\)\ \((\(-alpha\)\ x + q\ x - beta\
+\ x2 - q\ x2)\)\)\ \@\(-\(\(\((k - p)\)\ \((k + p)\)\ \((beta\ x - q\ x + \
+alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\ \((alpha\ \
+beta\ x1 + alpha\ p\ x1 - beta\ q\ x1 - p\ q\ x1 - alpha\ beta\ x2 + beta\ p\ \
+x2 - alpha\ q\ x2 + p\ q\ x2)\)\ \((alpha\ beta\ x1 + beta\ p\ x1 - alpha\ q\ \
+x1 - p\ q\ x1 - alpha\ beta\ x2 + alpha\ p\ x2 - beta\ q\ x2 + p\ q\ \
+x2)\)\)\/\((p\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ p\ x1 - beta\ p\ x1 \
+- p\^2\ x1 + alpha\ beta\ x2 + alpha\ q\ x2 + beta\ q\ x2 + q\^2\ \
+x2)\)\^2\)\) - 
+                          alpha\^2\ x\ x1\ \@\(\(-\((k - q)\)\)\ \((k + q)\)\ \
+\((\(-beta\)\ x + q\ x - alpha\ x2 - q\ x2)\)\ \((\(-alpha\)\ x + q\ x - beta\
+\ x2 - q\ x2)\)\)\ \@\(-\(\(\((k - p)\)\ \((k + p)\)\ \((beta\ x - q\ x + \
+alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\ \((alpha\ \
+beta\ x1 + alpha\ p\ x1 - beta\ q\ x1 - p\ q\ x1 - alpha\ beta\ x2 + beta\ p\ \
+x2 - alpha\ q\ x2 + p\ q\ x2)\)\ \((alpha\ beta\ x1 + beta\ p\ x1 - alpha\ q\ \
+x1 - p\ q\ x1 - alpha\ beta\ x2 + alpha\ p\ x2 - beta\ q\ x2 + p\ q\ \
+x2)\)\)\/\((p\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ p\ x1 - beta\ p\ x1 \
+- p\^2\ x1 + alpha\ beta\ x2 + alpha\ q\ x2 + beta\ q\ x2 + q\^2\ \
+x2)\)\^2\)\) - 
+                          beta\^2\ x\ x1\ \@\(\(-\((k - q)\)\)\ \((k + q)\)\ \
+\((\(-beta\)\ x + q\ x - alpha\ x2 - q\ x2)\)\ \((\(-alpha\)\ x + q\ x - beta\
+\ x2 - q\ x2)\)\)\ \@\(-\(\(\((k - p)\)\ \((k + p)\)\ \((beta\ x - q\ x + \
+alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\ \((alpha\ \
+beta\ x1 + alpha\ p\ x1 - beta\ q\ x1 - p\ q\ x1 - alpha\ beta\ x2 + beta\ p\ \
+x2 - alpha\ q\ x2 + p\ q\ x2)\)\ \((alpha\ beta\ x1 + beta\ p\ x1 - alpha\ q\ \
+x1 - p\ q\ x1 - alpha\ beta\ x2 + alpha\ p\ x2 - beta\ q\ x2 + p\ q\ \
+x2)\)\)\/\((p\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ p\ x1 - beta\ p\ x1 \
+- p\^2\ x1 + alpha\ beta\ x2 + alpha\ q\ x2 + beta\ q\ x2 + q\^2\ \
+x2)\)\^2\)\) + 
+                          2\ p\^2\ x\ x1\ \@\(\(-\((k - q)\)\)\ \((k + q)\)\ \
+\((\(-beta\)\ x + q\ x - alpha\ x2 - q\ x2)\)\ \((\(-alpha\)\ x + q\ x - beta\
+\ x2 - q\ x2)\)\)\ \@\(-\(\(\((k - p)\)\ \((k + p)\)\ \((beta\ x - q\ x + \
+alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\ \((alpha\ \
+beta\ x1 + alpha\ p\ x1 - beta\ q\ x1 - p\ q\ x1 - alpha\ beta\ x2 + beta\ p\ \
+x2 - alpha\ q\ x2 + p\ q\ x2)\)\ \((alpha\ beta\ x1 + beta\ p\ x1 - alpha\ q\ \
+x1 - p\ q\ x1 - alpha\ beta\ x2 + alpha\ p\ x2 - beta\ q\ x2 + p\ q\ \
+x2)\)\)\/\((p\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ p\ x1 - beta\ p\ x1 \
+- p\^2\ x1 + alpha\ beta\ x2 + alpha\ q\ x2 + beta\ q\ x2 + q\^2\ \
+x2)\)\^2\)\) - 
+                          alpha\ beta\ x1\^2\ \@\(\(-\((k - q)\)\)\ \((k + q)\
+\)\ \((\(-beta\)\ x + q\ x - alpha\ x2 - q\ x2)\)\ \((\(-alpha\)\ x + q\ x - \
+beta\ x2 - q\ x2)\)\)\ \@\(-\(\(\((k - p)\)\ \((k + p)\)\ \((beta\ x - q\ x + \
+alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\ \((alpha\ \
+beta\ x1 + alpha\ p\ x1 - beta\ q\ x1 - p\ q\ x1 - alpha\ beta\ x2 + beta\ p\ \
+x2 - alpha\ q\ x2 + p\ q\ x2)\)\ \((alpha\ beta\ x1 + beta\ p\ x1 - alpha\ q\ \
+x1 - p\ q\ x1 - alpha\ beta\ x2 + alpha\ p\ x2 - beta\ q\ x2 + p\ q\ \
+x2)\)\)\/\((p\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ p\ x1 - beta\ p\ x1 \
+- p\^2\ x1 + alpha\ beta\ x2 + alpha\ q\ x2 + beta\ q\ x2 + q\^2\ \
+x2)\)\^2\)\) - 
+                          alpha\ p\ x1\^2\ \@\(\(-\((k - q)\)\)\ \((k + q)\)\ \
+\((\(-beta\)\ x + q\ x - alpha\ x2 - q\ x2)\)\ \((\(-alpha\)\ x + q\ x - beta\
+\ x2 - q\ x2)\)\)\ \@\(-\(\(\((k - p)\)\ \((k + p)\)\ \((beta\ x - q\ x + \
+alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\ \((alpha\ \
+beta\ x1 + alpha\ p\ x1 - beta\ q\ x1 - p\ q\ x1 - alpha\ beta\ x2 + beta\ p\ \
+x2 - alpha\ q\ x2 + p\ q\ x2)\)\ \((alpha\ beta\ x1 + beta\ p\ x1 - alpha\ q\ \
+x1 - p\ q\ x1 - alpha\ beta\ x2 + alpha\ p\ x2 - beta\ q\ x2 + p\ q\ \
+x2)\)\)\/\((p\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ p\ x1 - beta\ p\ x1 \
+- p\^2\ x1 + alpha\ beta\ x2 + alpha\ q\ x2 + beta\ q\ x2 + q\^2\ \
+x2)\)\^2\)\) - 
+                          beta\ p\ x1\^2\ \@\(\(-\((k - q)\)\)\ \((k + q)\)\ \
+\((\(-beta\)\ x + q\ x - alpha\ x2 - q\ x2)\)\ \((\(-alpha\)\ x + q\ x - beta\
+\ x2 - q\ x2)\)\)\ \@\(-\(\(\((k - p)\)\ \((k + p)\)\ \((beta\ x - q\ x + \
+alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\ \((alpha\ \
+beta\ x1 + alpha\ p\ x1 - beta\ q\ x1 - p\ q\ x1 - alpha\ beta\ x2 + beta\ p\ \
+x2 - alpha\ q\ x2 + p\ q\ x2)\)\ \((alpha\ beta\ x1 + beta\ p\ x1 - alpha\ q\ \
+x1 - p\ q\ x1 - alpha\ beta\ x2 + alpha\ p\ x2 - beta\ q\ x2 + p\ q\ \
+x2)\)\)\/\((p\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ p\ x1 - beta\ p\ x1 \
+- p\^2\ x1 + alpha\ beta\ x2 + alpha\ q\ x2 + beta\ q\ x2 + q\^2\ \
+x2)\)\^2\)\) - 
+                          p\^2\ x1\^2\ \@\(\(-\((k - q)\)\)\ \((k + q)\)\ \((\
+\(-beta\)\ x + q\ x - alpha\ x2 - q\ x2)\)\ \((\(-alpha\)\ x + q\ x - beta\ \
+x2 - q\ x2)\)\)\ \@\(-\(\(\((k - p)\)\ \((k + p)\)\ \((beta\ x - q\ x + alpha\
+\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 + q\ x2)\)\ \((alpha\ beta\ x1 \
++ alpha\ p\ x1 - beta\ q\ x1 - p\ q\ x1 - alpha\ beta\ x2 + beta\ p\ x2 - \
+alpha\ q\ x2 + p\ q\ x2)\)\ \((alpha\ beta\ x1 + beta\ p\ x1 - alpha\ q\ x1 - \
+p\ q\ x1 - alpha\ beta\ x2 + alpha\ p\ x2 - beta\ q\ x2 + p\ q\ x2)\)\)\/\((p\
+\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ p\ x1 - beta\ p\ x1 - p\^2\ x1 + \
+alpha\ beta\ x2 + alpha\ q\ x2 + beta\ q\ x2 + q\^2\ \
+x2)\)\^2\)\))\)\)\/\(\@\(\(-\((k - p)\)\)\ \((k + p)\)\ \((\(-beta\)\ x + p\ \
+x - alpha\ x1 - p\ x1)\)\ \((\(-alpha\)\ x + p\ x - beta\ x1 - p\ x1)\)\)\ \@\
+\(\(-\((k - q)\)\)\ \((k + q)\)\ \((\(-beta\)\ x + q\ x - alpha\ x2 - q\ \
+x2)\)\ \((\(-alpha\)\ x + q\ x - beta\ x2 - q\ x2)\)\)\ \@\(-\(\(\((k - q)\)\ \
+\((k + q)\)\ \((beta\ x - p\ x + alpha\ x1 + p\ x1)\)\ \((alpha\ x - p\ x + \
+beta\ x1 + p\ x1)\)\ \((\(-alpha\)\ beta\ x1 - alpha\ p\ x1 + beta\ q\ x1 + p\
+\ q\ x1 + alpha\ beta\ x2 - beta\ p\ x2 + alpha\ q\ x2 - p\ q\ x2)\)\ \
+\((\(-alpha\)\ beta\ x1 - beta\ p\ x1 + alpha\ q\ x1 + p\ q\ x1 + alpha\ beta\
+\ x2 - alpha\ p\ x2 + beta\ q\ x2 - p\ q\ x2)\)\)\/\((\(-p\^2\)\ x + q\^2\ x \
++ alpha\ beta\ x1 + alpha\ p\ x1 + beta\ p\ x1 + p\^2\ x1 - alpha\ beta\ x2 - \
+alpha\ q\ x2 - beta\ q\ x2 - q\^2\ x2)\)\^2\)\)\ \@\(-\(\(\((k - p)\)\ \((k + \
+p)\)\ \((beta\ x - q\ x + alpha\ x2 + q\ x2)\)\ \((alpha\ x - q\ x + beta\ x2 \
++ q\ x2)\)\ \((alpha\ beta\ x1 + alpha\ p\ x1 - beta\ q\ x1 - p\ q\ x1 - \
+alpha\ beta\ x2 + beta\ p\ x2 - alpha\ q\ x2 + p\ q\ x2)\)\ \((alpha\ beta\ \
+x1 + beta\ p\ x1 - alpha\ q\ x1 - p\ q\ x1 - alpha\ beta\ x2 + alpha\ p\ x2 - \
+beta\ q\ x2 + p\ q\ x2)\)\)\/\((p\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ \
+p\ x1 - beta\ p\ x1 - p\^2\ x1 + alpha\ beta\ x2 + alpha\ q\ x2 + beta\ q\ x2 \
++ q\^2\ x2)\)\^2\)\)\ \((p\^2\ x - q\^2\ x - alpha\ beta\ x1 - alpha\ p\ x1 - 
+                          beta\ p\ x1 - p\^2\ x1 + alpha\ beta\ x2 + 
+                          alpha\ q\ x2 + beta\ q\ x2 + q\^2\ x2)\)\)\)\)}
+            }], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Print"],
+
+Cell[BoxData[
+    \("Either the Lax pair computed by the software does not satisfy"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("the Lax equation OR, more likely, Mathematica could not "\)], "Print"],
+
+Cell[BoxData[
+    \("simplify the resulting matrix."\)], "Print"],
+
+Cell[BoxData[
+    \("Matrix will be tested with 12 numeric tests where the symbols"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("are replaced by randomly selected prime numbers."\)], "Print"],
+
+Cell[BoxData[
+    \("Upon substitution into the Lax equation, the computed Lax pair"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("PASSES the 12 NUMERIC TESTS"\)], "Print"],
+
+Cell[BoxData[
+    \("(based on randomly selected prime numbers)."\)], "Print"],
+
+Cell[BoxData[
+    \("The computed Lax pair SATISFIES the Lax equation"\)], "Print"],
+
+Cell[BoxData[
+    \("*********************************************************************"\
+\)], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("Total CPU time used in the current session is "\
+\[InvisibleSpace]4873\[InvisibleSpace]" seconds."\),
+      SequenceForm[ 
+      "Total CPU time used in the current session is ", 4873, " seconds."],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("Code of July 12, 2008 was successfully loaded."\)], "Print"]
+}, Open  ]]
+},
+FrontEndVersion->"5.0 for Microsoft Windows",
+ScreenRectangle->{{0, 1280}, {0, 941}},
+WindowSize->{1112, 740},
+WindowMargins->{{21, Automatic}, {Automatic, 6}},
+Magnification->1.5
+]
+
+(*******************************************************************
+Cached data follows.  If you edit this Notebook file directly, not
+using Mathematica, you must remove the line containing CacheID at
+the top of  the file.  The cache data will then be recreated when
+you save this file from within Mathematica.
+*******************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+
+(*NotebookFileOutline
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[1776, 53, 69, 1, 42, "Input"],
+Cell[1848, 56, 52, 1, 41, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[1937, 62, 54, 1, 42, "Input"],
+Cell[1994, 65, 105, 2, 35, "Print"],
+Cell[2102, 69, 275, 5, 35, "Print"],
+Cell[2380, 76, 106, 2, 35, "Print"],
+Cell[2489, 80, 82, 1, 35, "Print"],
+Cell[2574, 83, 82, 1, 35, "Print"],
+Cell[2659, 86, 78, 1, 35, "Print"],
+Cell[2740, 89, 81, 1, 35, "Print"],
+Cell[2824, 92, 81, 1, 35, "Print"],
+Cell[2908, 95, 100, 2, 35, "Print"],
+Cell[3011, 99, 99, 2, 35, "Print"],
+Cell[3113, 103, 100, 2, 35, "Print"],
+Cell[3216, 107, 99, 2, 35, "Print"],
+Cell[3318, 111, 101, 2, 35, "Print"],
+Cell[3422, 115, 49, 1, 35, "Print"],
+Cell[3474, 118, 51, 1, 35, "Print"],
+Cell[3528, 121, 56, 1, 35, "Print"],
+Cell[3587, 124, 106, 2, 35, "Print"],
+Cell[3696, 128, 275, 5, 35, "Print"],
+Cell[3974, 135, 106, 2, 35, "Print"],
+Cell[4083, 139, 100, 2, 35, "Print"],
+Cell[4186, 143, 101, 2, 35, "Print"],
+Cell[4290, 147, 100, 2, 35, "Print"],
+Cell[4393, 151, 101, 2, 35, "Print"],
+Cell[4497, 155, 100, 2, 35, "Print"],
+Cell[4600, 159, 82, 1, 35, "Print"],
+Cell[4685, 162, 73, 1, 35, "Print"],
+Cell[4761, 165, 49, 1, 35, "Print"],
+Cell[4813, 168, 51, 1, 35, "Print"],
+Cell[4867, 171, 56, 1, 35, "Print"],
+Cell[4926, 174, 106, 2, 35, "Print"],
+Cell[5035, 178, 105, 2, 35, "Print"],
+Cell[5143, 182, 92, 1, 35, "Print"],
+Cell[5238, 185, 92, 1, 35, "Print"],
+Cell[5333, 188, 92, 1, 35, "Print"],
+Cell[5428, 191, 92, 1, 35, "Print"],
+Cell[5523, 194, 92, 1, 35, "Print"],
+Cell[5618, 197, 92, 1, 35, "Print"],
+Cell[5713, 200, 92, 1, 35, "Print"],
+Cell[5808, 203, 105, 2, 35, "Print"],
+Cell[5916, 207, 226, 4, 35, "Print"],
+Cell[6145, 213, 367, 6, 60, "Print"],
+Cell[6515, 221, 102, 2, 35, "Print"],
+Cell[6620, 225, 252, 5, 35, "Print"],
+Cell[6875, 232, 242, 5, 35, "Print"],
+Cell[7120, 239, 236, 5, 35, "Print"],
+Cell[7359, 246, 201, 4, 35, "Print"],
+Cell[7563, 252, 191, 4, 35, "Print"],
+Cell[7757, 258, 183, 3, 35, "Print"],
+Cell[7943, 263, 203, 4, 35, "Print"],
+Cell[8149, 269, 234, 5, 35, "Print"],
+Cell[8386, 276, 106, 2, 35, "Print"],
+Cell[8495, 280, 91, 1, 35, "Print"],
+Cell[8589, 283, 367, 6, 60, "Print"],
+Cell[8959, 291, 72, 1, 35, "Print"],
+Cell[9034, 294, 360, 6, 60, "Print"],
+Cell[9397, 302, 77, 1, 35, "Print"],
+Cell[9477, 305, 360, 6, 60, "Print"],
+Cell[9840, 313, 106, 2, 35, "Print"],
+Cell[9949, 317, 53, 1, 35, "Print"],
+Cell[10005, 320, 406, 6, 115, "Print"],
+Cell[10414, 328, 54, 1, 35, "Print"],
+Cell[10471, 331, 401, 6, 115, "Print"],
+Cell[10875, 339, 54, 1, 35, "Print"],
+Cell[10932, 342, 401, 6, 115, "Print"],
+Cell[11336, 350, 102, 2, 35, "Print"],
+Cell[11441, 354, 105, 2, 35, "Print"],
+Cell[11549, 358, 1394, 21, 245, "Print"],
+Cell[12946, 381, 106, 2, 35, "Print"],
+Cell[13055, 385, 1394, 21, 245, "Print"],
+Cell[14452, 408, 105, 2, 35, "Print"],
+Cell[14560, 412, 101, 2, 35, "Print"],
+Cell[14664, 416, 106, 2, 35, "Print"],
+Cell[14773, 420, 102, 2, 35, "Print"],
+Cell[14878, 424, 34, 1, 35, "Print"],
+Cell[14915, 427, 226, 4, 35, "Print"],
+Cell[15144, 433, 78, 1, 35, "Print"],
+Cell[15225, 436, 104, 2, 35, "Print"],
+Cell[15332, 440, 104, 2, 35, "Print"],
+Cell[15439, 444, 88, 1, 35, "Print"],
+Cell[15530, 447, 85, 1, 35, "Print"],
+Cell[15618, 450, 421, 6, 115, "Print"],
+Cell[16042, 458, 85, 1, 35, "Print"],
+Cell[16130, 461, 421, 6, 115, "Print"],
+Cell[16554, 469, 106, 2, 35, "Print"],
+Cell[16663, 473, 76, 1, 35, "Print"],
+Cell[16742, 476, 39, 1, 35, "Print"],
+Cell[16784, 479, 586, 12, 62, "Print"],
+Cell[17373, 493, 106, 2, 35, "Print"],
+Cell[17482, 497, 80, 1, 35, "Print"],
+Cell[17565, 500, 41, 1, 35, "Print"],
+Cell[17609, 503, 126, 2, 37, "Print"],
+Cell[17738, 507, 80, 1, 35, "Print"],
+Cell[17821, 510, 41, 1, 35, "Print"],
+Cell[17865, 513, 79, 1, 35, "Print"],
+Cell[17947, 516, 80, 1, 35, "Print"],
+Cell[18030, 519, 41, 1, 35, "Print"],
+Cell[18074, 522, 67, 1, 35, "Print"],
+Cell[18144, 525, 80, 1, 35, "Print"],
+Cell[18227, 528, 41, 1, 35, "Print"],
+Cell[18271, 531, 133, 2, 37, "Print"],
+Cell[18407, 535, 106, 2, 35, "Print"],
+Cell[18516, 539, 76, 1, 35, "Print"],
+Cell[18595, 542, 39, 1, 35, "Print"],
+Cell[18637, 545, 586, 12, 62, "Print"],
+Cell[19226, 559, 106, 2, 35, "Print"],
+Cell[19335, 563, 80, 1, 35, "Print"],
+Cell[19418, 566, 41, 1, 35, "Print"],
+Cell[19462, 569, 126, 2, 37, "Print"],
+Cell[19591, 573, 80, 1, 35, "Print"],
+Cell[19674, 576, 41, 1, 35, "Print"],
+Cell[19718, 579, 79, 1, 35, "Print"],
+Cell[19800, 582, 80, 1, 35, "Print"],
+Cell[19883, 585, 41, 1, 35, "Print"],
+Cell[19927, 588, 67, 1, 35, "Print"],
+Cell[19997, 591, 80, 1, 35, "Print"],
+Cell[20080, 594, 41, 1, 35, "Print"],
+Cell[20124, 597, 133, 2, 37, "Print"],
+Cell[20260, 601, 104, 2, 35, "Print"],
+Cell[20367, 605, 103, 2, 35, "Print"],
+Cell[20473, 609, 104, 2, 35, "Print"],
+Cell[20580, 613, 148, 2, 60, "Print"],
+Cell[20731, 617, 84, 1, 35, "Print"],
+Cell[20818, 620, 64, 1, 35, "Print"],
+Cell[20885, 623, 1394, 21, 271, "Print"],
+Cell[22282, 646, 85, 1, 35, "Print"],
+Cell[22370, 649, 64, 1, 35, "Print"],
+Cell[22437, 652, 1043, 16, 191, "Print"],
+Cell[23483, 670, 85, 1, 35, "Print"],
+Cell[23571, 673, 64, 1, 35, "Print"],
+Cell[23638, 676, 1030, 16, 191, "Print"],
+Cell[24671, 694, 85, 1, 35, "Print"],
+Cell[24759, 697, 64, 1, 35, "Print"],
+Cell[24826, 700, 1394, 21, 271, "Print"],
+Cell[26223, 723, 105, 2, 35, "Print"],
+Cell[26331, 727, 105, 2, 35, "Print"],
+Cell[26439, 731, 87, 1, 35, "Print"],
+Cell[26529, 734, 78, 1, 35, "Print"],
+Cell[26610, 737, 51, 1, 35, "Print"],
+Cell[26664, 740, 211, 3, 54, "Print"],
+Cell[26878, 745, 87, 1, 35, "Print"],
+Cell[26968, 748, 78, 1, 35, "Print"],
+Cell[27049, 751, 51, 1, 35, "Print"],
+Cell[27103, 754, 211, 3, 54, "Print"],
+Cell[27317, 759, 87, 1, 35, "Print"],
+Cell[27407, 762, 78, 1, 35, "Print"],
+Cell[27488, 765, 51, 1, 35, "Print"],
+Cell[27542, 768, 211, 3, 54, "Print"],
+Cell[27756, 773, 87, 1, 35, "Print"],
+Cell[27846, 776, 78, 1, 35, "Print"],
+Cell[27927, 779, 51, 1, 35, "Print"],
+Cell[27981, 782, 211, 3, 54, "Print"],
+Cell[28195, 787, 103, 2, 35, "Print"],
+Cell[28301, 791, 104, 2, 35, "Print"],
+Cell[28408, 795, 148, 2, 60, "Print"],
+Cell[28559, 799, 106, 2, 35, "Print"],
+Cell[28668, 803, 77, 1, 35, "Print"],
+Cell[28748, 806, 157, 2, 35, "Print"],
+Cell[28908, 810, 77, 1, 35, "Print"],
+Cell[28988, 813, 157, 2, 35, "Print"],
+Cell[29148, 817, 106, 2, 35, "Print"],
+Cell[29257, 821, 148, 2, 60, "Print"],
+Cell[29408, 825, 99, 2, 35, "Print"],
+Cell[29510, 829, 39, 1, 35, "Print"],
+Cell[29552, 832, 157, 2, 58, "Print"],
+Cell[29712, 836, 104, 2, 35, "Print"],
+Cell[29819, 840, 100, 2, 35, "Print"],
+Cell[29922, 844, 39, 1, 35, "Print"],
+Cell[29964, 847, 157, 2, 58, "Print"],
+Cell[30124, 851, 104, 2, 35, "Print"],
+Cell[30231, 855, 106, 2, 35, "Print"],
+Cell[30340, 859, 148, 2, 60, "Print"],
+Cell[30491, 863, 77, 1, 35, "Print"],
+Cell[30571, 866, 82, 1, 35, "Print"],
+Cell[30656, 869, 100, 2, 35, "Print"],
+Cell[30759, 873, 96, 2, 35, "Print"],
+Cell[30858, 877, 97, 2, 35, "Print"],
+Cell[30958, 881, 77, 1, 35, "Print"],
+Cell[31038, 884, 89, 1, 35, "Print"],
+Cell[31130, 887, 77, 1, 35, "Print"],
+Cell[31210, 890, 78, 1, 35, "Print"],
+Cell[31291, 893, 90, 1, 35, "Print"],
+Cell[31384, 896, 77, 1, 35, "Print"],
+Cell[31464, 899, 97, 2, 35, "Print"],
+Cell[31564, 903, 77, 1, 35, "Print"],
+Cell[31644, 906, 82, 1, 35, "Print"],
+Cell[31729, 909, 91, 1, 35, "Print"],
+Cell[31823, 912, 84, 1, 35, "Print"],
+Cell[31910, 915, 77, 1, 35, "Print"],
+Cell[31990, 918, 77, 1, 35, "Print"],
+Cell[32070, 921, 82, 1, 35, "Print"],
+Cell[32155, 924, 85, 1, 35, "Print"],
+Cell[32243, 927, 88, 1, 35, "Print"],
+Cell[32334, 930, 87, 1, 35, "Print"],
+Cell[32424, 933, 66, 1, 35, "Print"],
+Cell[32493, 936, 106, 2, 35, "Print"],
+Cell[32602, 940, 101, 2, 35, "Print"],
+Cell[32706, 944, 93, 1, 35, "Print"],
+Cell[32802, 947, 61, 1, 35, "Print"],
+Cell[32866, 950, 100, 2, 35, "Print"],
+Cell[32969, 954, 74, 1, 35, "Print"],
+Cell[33046, 957, 34, 1, 35, "Print"],
+Cell[33083, 960, 196, 4, 35, "Print"],
+Cell[33282, 966, 51, 1, 35, "Print"],
+Cell[33336, 969, 93, 1, 35, "Print"],
+Cell[33432, 972, 106, 2, 35, "Print"],
+Cell[33541, 976, 1341, 39, 111, "Print"],
+Cell[34885, 1017, 792, 22, 86, "Print"],
+Cell[35680, 1041, 105, 2, 35, "Print"],
+Cell[35788, 1045, 39, 1, 35, "Print"],
+Cell[35830, 1048, 1088, 20, 98, "Print"],
+Cell[36921, 1070, 105, 2, 35, "Print"],
+Cell[37029, 1074, 763, 21, 86, "Print"],
+Cell[37795, 1097, 55, 1, 35, "Print"],
+Cell[37853, 1100, 41, 1, 35, "Print"],
+Cell[37897, 1103, 235, 3, 63, "Print"],
+Cell[38135, 1108, 55, 1, 35, "Print"],
+Cell[38193, 1111, 41, 1, 35, "Print"],
+Cell[38237, 1114, 205, 3, 58, "Print"],
+Cell[38445, 1119, 55, 1, 35, "Print"],
+Cell[38503, 1122, 41, 1, 35, "Print"],
+Cell[38547, 1125, 193, 3, 58, "Print"],
+Cell[38743, 1130, 55, 1, 35, "Print"],
+Cell[38801, 1133, 41, 1, 35, "Print"],
+Cell[38845, 1136, 272, 5, 63, "Print"],
+Cell[39120, 1143, 105, 2, 35, "Print"],
+Cell[39228, 1147, 792, 22, 86, "Print"],
+Cell[40023, 1171, 105, 2, 35, "Print"],
+Cell[40131, 1175, 39, 1, 35, "Print"],
+Cell[40173, 1178, 1088, 20, 98, "Print"],
+Cell[41264, 1200, 105, 2, 35, "Print"],
+Cell[41372, 1204, 763, 21, 86, "Print"],
+Cell[42138, 1227, 55, 1, 35, "Print"],
+Cell[42196, 1230, 41, 1, 35, "Print"],
+Cell[42240, 1233, 235, 3, 63, "Print"],
+Cell[42478, 1238, 55, 1, 35, "Print"],
+Cell[42536, 1241, 41, 1, 35, "Print"],
+Cell[42580, 1244, 205, 3, 58, "Print"],
+Cell[42788, 1249, 55, 1, 35, "Print"],
+Cell[42846, 1252, 41, 1, 35, "Print"],
+Cell[42890, 1255, 193, 3, 58, "Print"],
+Cell[43086, 1260, 55, 1, 35, "Print"],
+Cell[43144, 1263, 41, 1, 35, "Print"],
+Cell[43188, 1266, 272, 5, 63, "Print"],
+Cell[43463, 1273, 103, 2, 35, "Print"],
+Cell[43569, 1277, 103, 2, 35, "Print"],
+Cell[43675, 1281, 148, 2, 60, "Print"],
+Cell[43826, 1285, 79, 1, 35, "Print"],
+Cell[43908, 1288, 70, 1, 35, "Print"],
+Cell[43981, 1291, 70102, 977, 198, "Print"],
+Cell[114086, 2270, 98, 2, 35, "Print"],
+Cell[114187, 2274, 91, 1, 35, "Print"],
+Cell[114281, 2277, 65, 1, 35, "Print"],
+Cell[114349, 2280, 98, 2, 35, "Print"],
+Cell[114450, 2284, 83, 1, 35, "Print"],
+Cell[114536, 2287, 99, 2, 35, "Print"],
+Cell[114638, 2291, 62, 1, 35, "Print"],
+Cell[114703, 2294, 78, 1, 35, "Print"],
+Cell[114784, 2297, 83, 1, 35, "Print"],
+Cell[114870, 2300, 106, 2, 35, "Print"],
+Cell[114979, 2304, 271, 5, 35, "Print"],
+Cell[115253, 2311, 81, 1, 35, "Print"]
+}, Open  ]]
+}
+]
+*)
+
+
+
+(*******************************************************************
+End of Mathematica Notebook file.
+*******************************************************************)
+

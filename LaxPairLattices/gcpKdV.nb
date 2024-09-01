@@ -1,0 +1,1351 @@
+(************** Content-type: application/mathematica **************
+                     CreatedBy='Mathematica 5.0'
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used with any Mathematica-compatible
+application, such as Mathematica, MathReader or Publicon. The data
+for the notebook starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do
+one of the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the
+  application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing
+the word CacheID, otherwise Mathematica-compatible applications may
+try to use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+*******************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[     30960,       1069]*)
+(*NotebookOutlinePosition[     31626,       1092]*)
+(*  CellTagsIndexPosition[     31582,       1088]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+    \(SetDirectory["\<d:\\demolattices\>"]\)], "Input"],
+
+Cell[BoxData[
+    \("d:\\demolattices"\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(Get["\<l0711-08.m\>"]\)], "Input"],
+
+Cell[BoxData[
+    \("Loading code for computation of Lax pair of lattices (July 12, \
+2008)"\)], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("***************** MENU INTERFACE *****************  \
+(page: "\[InvisibleSpace]1\[InvisibleSpace]")"\),
+      SequenceForm[ 
+      "***************** MENU INTERFACE *****************  (page: ", 1, ")"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("---------------------------------------------------------------------"\
+\)], "Print"],
+
+Cell[BoxData[
+    \("  1) discrete potential KdV Equation (l_pKdV.m)"\)], "Print"],
+
+Cell[BoxData[
+    \("  2) discrete modified KdV Equation  (l_mKdV.m)"\)], "Print"],
+
+Cell[BoxData[
+    \("  3) discrete sine-Gordon Equation (l_sG.m)"\)], "Print"],
+
+Cell[BoxData[
+    \("  4) H1 equation (ABS classification) (l_H1.m)"\)], "Print"],
+
+Cell[BoxData[
+    \("  5) H2 equation (ABS classification) (l_H2.m)"\)], "Print"],
+
+Cell[BoxData[
+    \("  6) H3 equation (delta not 0) (ABS classification) (l_H3rhs.m)"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("  7) H3 equation (delta = 0) (ABS classification) (l_H3zero.m)"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("  8) Q1 equation (delta not 0) (ABS classification) (l_Q1rhs.m)"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("  9) Q1 equation (delta = 0) (ABS classification) (l_Q1zero.m)"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("  10) Q2 equation (delta not 0) (ABS classification) (l_Q2rhs.m)"\)], \
+"Print"],
+
+Cell[BoxData[
+    \(" nn) Next Page"\)], "Print"],
+
+Cell[BoxData[
+    \(" tt) Your System"\)], "Print"],
+
+Cell[BoxData[
+    \(" qq) Exit the Program"\)], "Print"],
+
+Cell[BoxData[
+    \("---------------------------------------------------------------------"\
+\)], "Print"],
+
+Cell[BoxData[
+    \("Make sure that you have prepared the data file for the system"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("you want to test (similar to the data files we supplied)."\)], "Print"],
+
+Cell[BoxData[
+    \("********************************************************************"\)\
+], "Print"],
+
+Cell[BoxData[
+    \("         WELCOME TO THE MATHEMATICA PROGRAM              "\)], "Print"],
+
+Cell[BoxData[
+    \("                  by WILLY HEREMAN                       "\)], "Print"],
+
+Cell[BoxData[
+    \("     FOR THE COMPUTATION OF LAX PAIRS OF NONLINEAR       "\)], "Print"],
+
+Cell[BoxData[
+    \("  PARTIAL DIFFERENCE EQUATIONS IN 2D (ON QUAD-GRAPHS)    "\)], "Print"],
+
+Cell[BoxData[
+    \(" Collaborators: Reinout Quispel and Peter van der Kamp   "\)], "Print"],
+
+Cell[BoxData[
+    \("           First released on July 12, 2008               "\)], "Print"],
+
+Cell[BoxData[
+    \("                    Copyright 2008                       "\)], "Print"],
+
+Cell[BoxData[
+    \("********************************************************************"\)\
+], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("Working with the discrete "\[InvisibleSpace]gcpKdV\
+\[InvisibleSpace]" equation:"\),
+      SequenceForm[ "Working with the discrete ", gcpKdV, " equation:"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \(\((\(-x1\) + x2 + f[p] - f[q])\)\ \((x - x12 + f[p] + f[q])\) + g[p] - 
+        g[q] \[Equal] 0\)], "Print"],
+
+Cell[BoxData[
+    \("********************** CONTROL SETTINGS *************************"\)], \
+"Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("LaxPairGiven (L and M are given in data file) is set \
+to "\[InvisibleSpace]False\),
+      SequenceForm[ 
+      "LaxPairGiven (L and M are given in data file) is set to ", False],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("t and s are given in data file (byhand) is set to: "\
+\[InvisibleSpace]False\),
+      SequenceForm[ 
+      "t and s are given in data file (byhand) is set to: ", False],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("Determinant method to compute t and s is set to: "\
+\[InvisibleSpace]True\),
+      SequenceForm[ 
+      "Determinant method to compute t and s is set to: ", True],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("Test consistency on cube is set to \
+"\[InvisibleSpace]True\),
+      SequenceForm[ "Test consistency on cube is set to ", True],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("Use of powerexpand is set to "\[InvisibleSpace]False\
+\),
+      SequenceForm[ "Use of powerexpand is set to ", False],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("Use of rootrules is set to "\[InvisibleSpace]True\),
+      SequenceForm[ "Use of rootrules is set to ", True],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("Computation of matrix N is set to: \
+"\[InvisibleSpace]True\),
+      SequenceForm[ "Computation of matrix N is set to: ", True],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("Application of gauge transformation is set to: "\
+\[InvisibleSpace]False\),
+      SequenceForm[ "Application of gauge transformation is set to: ", False],
+      
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("******************* START OF THE COMPUTATION ************************"\
+\)], "Print"],
+
+Cell[BoxData[
+    \("Working with lattice defined on front (F), latticefront:"\)], "Print"],
+
+Cell[BoxData[
+    \(\((\(-x1\) + x2 + f[p] - f[q])\)\ \((x - x12 + f[p] + f[q])\) + g[p] - 
+        g[q] \[Equal] 0\)], "Print"],
+
+Cell[BoxData[
+    \("Lattice on ground (G), latticeground:"\)], "Print"],
+
+Cell[BoxData[
+    \(\((\(-x1\) + x3 - f[k] + f[p])\)\ \((x - x13 + f[k] + f[p])\) - g[k] + 
+        g[p] \[Equal] 0\)], "Print"],
+
+Cell[BoxData[
+    \("Lattice on left face (L), latticeleftface:"\)], "Print"],
+
+Cell[BoxData[
+    \(\((\(-x2\) + x3 - f[k] + f[q])\)\ \((x - x23 + f[k] + f[q])\) - g[k] + 
+        g[q] \[Equal] 0\)], "Print"],
+
+Cell[BoxData[
+    \("**************** TESTING CONSISTENCY AROUND THE CUBE ****************"\
+\)], "Print"],
+
+Cell[BoxData[
+    \("Computation  x12 ="\)], "Print"],
+
+Cell[BoxData[
+    \(\(x\ x1 - x\ x2 - x\ f[p] + x1\ f[p] - x2\ f[p] - f[p]\^2 + x\ f[q] + \
+x1\ f[q] - x2\ f[q] + f[q]\^2 - g[p] + g[q]\)\/\(x1 - x2 - f[p] + f[q]\)\)], \
+"Print"],
+
+Cell[BoxData[
+    \("Computation  x13 = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(x\ x1 - x\ x3 + x\ f[k] + x1\ f[k] - x3\ f[k] + f[k]\^2 - x\ f[p] + \
+x1\ f[p] - x3\ f[p] - f[p]\^2 + g[k] - g[p]\)\/\(x1 - x3 + f[k] - f[p]\)\)], \
+"Print"],
+
+Cell[BoxData[
+    \("Computation  x23 = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(x\ x2 - x\ x3 + x\ f[k] + x2\ f[k] - x3\ f[k] + f[k]\^2 - x\ f[q] + \
+x2\ f[q] - x3\ f[q] - f[q]\^2 + g[k] - g[q]\)\/\(x2 - x3 + f[k] - f[q]\)\)], \
+"Print"],
+
+Cell[BoxData[
+    \("*****************************************************************"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("After factoring, computation of x123 using x23 (x123choice1), x123 \
+="\)], "Print"],
+
+Cell[BoxData[
+    \(\((x1\ x3\ g[k] - x2\ x3\ g[k] + x1\ f[p]\ g[k] - x2\ f[p]\ g[k] - 
+          x3\ f[p]\ g[k] - f[p]\^2\ g[k] + x1\ f[q]\ g[k] - x2\ f[q]\ g[k] + 
+          x3\ f[q]\ g[k] + f[q]\^2\ g[k] + x1\ x2\ g[p] - x1\ x3\ g[p] + 
+          x1\ f[k]\ g[p] + x2\ f[k]\ g[p] - x3\ f[k]\ g[p] + f[k]\^2\ g[p] - 
+          x1\ f[q]\ g[p] + x2\ f[q]\ g[p] - x3\ f[q]\ g[p] - f[q]\^2\ g[p] - 
+          x1\ x2\ g[q] + x2\ x3\ g[q] - x1\ f[k]\ g[q] - x2\ f[k]\ g[q] + 
+          x3\ f[k]\ g[q] - f[k]\^2\ g[q] - x1\ f[p]\ g[q] + x2\ f[p]\ g[q] + 
+          x3\ f[p]\ g[q] + f[p]\^2\ g[q])\)/\((x1\ g[k] - x2\ g[k] - 
+          f[p]\ g[k] + f[q]\ g[k] + x2\ g[p] - x3\ g[p] + f[k]\ g[p] - 
+          f[q]\ g[p] - x1\ g[q] + x3\ g[q] - f[k]\ g[q] + 
+          f[p]\ g[q])\)\)], "Print"],
+
+Cell[BoxData[
+    \("After factoring, computation of x123 using x13, (x123choice2), x123 ="\
+\)], "Print"],
+
+Cell[BoxData[
+    \(\((\(-x1\)\ x3\ g[k] + x2\ x3\ g[k] - x1\ f[p]\ g[k] + x2\ f[p]\ g[k] + 
+          x3\ f[p]\ g[k] + f[p]\^2\ g[k] - x1\ f[q]\ g[k] + x2\ f[q]\ g[k] - 
+          x3\ f[q]\ g[k] - f[q]\^2\ g[k] - x1\ x2\ g[p] + x1\ x3\ g[p] - 
+          x1\ f[k]\ g[p] - x2\ f[k]\ g[p] + x3\ f[k]\ g[p] - f[k]\^2\ g[p] + 
+          x1\ f[q]\ g[p] - x2\ f[q]\ g[p] + x3\ f[q]\ g[p] + f[q]\^2\ g[p] + 
+          x1\ x2\ g[q] - x2\ x3\ g[q] + x1\ f[k]\ g[q] + x2\ f[k]\ g[q] - 
+          x3\ f[k]\ g[q] + f[k]\^2\ g[q] + x1\ f[p]\ g[q] - x2\ f[p]\ g[q] - 
+          x3\ f[p]\ g[q] - f[p]\^2\ g[q])\)/\((\(-x1\)\ g[k] + x2\ g[k] + 
+          f[p]\ g[k] - f[q]\ g[k] - x2\ g[p] + x3\ g[p] - f[k]\ g[p] + 
+          f[q]\ g[p] + x1\ g[q] - x3\ g[q] + f[k]\ g[q] - 
+          f[p]\ g[q])\)\)], "Print"],
+
+Cell[BoxData[
+    \("********************************************************************"\)\
+], "Print"],
+
+Cell[BoxData[
+    \("As soon as one consistency condition is violated the computation"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("will abort, unless candidates for L and M are given in the data file."\
+\)], "Print"],
+
+Cell[BoxData[
+    \("Test if (x123choice1 - x123choice2) = 0, diffx123choice1choice2 ="\)], \
+"Print"],
+
+Cell[BoxData[
+    \(0\)], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("*** TEST RESULT = "\[InvisibleSpace]0\
+\[InvisibleSpace]" (SHOULD BE ZERO) ***"\),
+      SequenceForm[ "*** TEST RESULT = ", 0, " (SHOULD BE ZERO) ***"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("The equation is CONSISTENT around the cube!"\)], "Print"],
+
+Cell[BoxData[
+    \("************* BUILDING THE LAX PAIR (L_c and M_c) \
+*****************"\)], "Print"],
+
+Cell[BoxData[
+    \("(c refers to candidate matrix), normalization factors t and s will \
+"\)], "Print"],
+
+Cell[BoxData[
+    \("be computed below, or must be given in the data file "\)], "Print"],
+
+Cell[BoxData[
+    \("Substitution of x3 = f/g into x13, gives x13hom = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(\(1\/\(f - g\ x1 - g\ f[k] + g\ f[p]\)\)\((f\ x - g\ x\ x1 + 
+        f\ f[k] - g\ x\ f[k] - g\ x1\ f[k] - g\ f[k]\^2 + f\ f[p] + 
+        g\ x\ f[p] - g\ x1\ f[p] + g\ f[p]\^2 - g\ g[k] + 
+        g\ g[p])\)\)\)], "Print"],
+
+Cell[BoxData[
+    \("Substitution of x3 = f/g into x23, gives x23hom = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(\(1\/\(f - g\ x2 - g\ f[k] + g\ f[q]\)\)\((f\ x - g\ x\ x2 + 
+        f\ f[k] - g\ x\ f[k] - g\ x2\ f[k] - g\ f[k]\^2 + f\ f[q] + 
+        g\ x\ f[q] - g\ x2\ f[q] + g\ f[q]\^2 - g\ g[k] + 
+        g\ g[q])\)\)\)], "Print"],
+
+Cell[BoxData[
+    \("*********************************************************************"\
+\)], "Print"],
+
+Cell[BoxData[
+    \("Candidate Lax pair, matrix L (candidateL)"\)], "Print"],
+
+Cell[BoxData[
+    \("L = "\)], "Print"],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+            {\(t\ \((x + f[k] + f[p])\)\), \(\(-t\)\ \((x\ x1 + x\ f[k] + 
+                    x1\ f[k] + f[k]\^2 - x\ f[p] + x1\ f[p] - f[p]\^2 + 
+                    g[k] - g[p])\)\)},
+            {"t", \(\(-t\)\ \((x1 + f[k] - f[p])\)\)}
+            }], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Print"],
+
+Cell[BoxData[
+    \("*********************************************************************"\
+\)], "Print"],
+
+Cell[BoxData[
+    \("Entry L11 of candidate L (entrycandidateL11) "\)], "Print"],
+
+Cell[BoxData[
+    \("L11 = "\)], "Print"],
+
+Cell[BoxData[
+    \(t\ \((x + f[k] + f[p])\)\)], "Print"],
+
+Cell[BoxData[
+    \("Entry L12 of candidate L (entrycandidateL12) "\)], "Print"],
+
+Cell[BoxData[
+    \("L12 = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(-t\)\ \((x\ x1 + x\ f[k] + x1\ f[k] + f[k]\^2 - x\ f[p] + x1\ f[p] - 
+          f[p]\^2 + g[k] - g[p])\)\)], "Print"],
+
+Cell[BoxData[
+    \("Entry L21 of candidate L (entrycandidateL21) "\)], "Print"],
+
+Cell[BoxData[
+    \("L21 = "\)], "Print"],
+
+Cell[BoxData[
+    \(t\)], "Print"],
+
+Cell[BoxData[
+    \("Entry L22 of candidate L (entrycandidateL22) "\)], "Print"],
+
+Cell[BoxData[
+    \("L22 = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(-t\)\ \((x1 + f[k] - f[p])\)\)], "Print"],
+
+Cell[BoxData[
+    \("*********************************************************************"\
+\)], "Print"],
+
+Cell[BoxData[
+    \("Candidate Lax pair, matrix M (candidateM)"\)], "Print"],
+
+Cell[BoxData[
+    \("M = "\)], "Print"],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+            {\(s\ \((x + f[k] + f[q])\)\), \(\(-s\)\ \((x\ x2 + x\ f[k] + 
+                    x2\ f[k] + f[k]\^2 - x\ f[q] + x2\ f[q] - f[q]\^2 + 
+                    g[k] - g[q])\)\)},
+            {"s", \(\(-s\)\ \((x2 + f[k] - f[q])\)\)}
+            }], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Print"],
+
+Cell[BoxData[
+    \("*********************************************************************"\
+\)], "Print"],
+
+Cell[BoxData[
+    \("Entry M11 of candidate M (entrycandidateM11) "\)], "Print"],
+
+Cell[BoxData[
+    \("M11 = "\)], "Print"],
+
+Cell[BoxData[
+    \(s\ \((x + f[k] + f[q])\)\)], "Print"],
+
+Cell[BoxData[
+    \("Entry M12 of candidate M (entrycandidateM12) "\)], "Print"],
+
+Cell[BoxData[
+    \("M12 = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(-s\)\ \((x\ x2 + x\ f[k] + x2\ f[k] + f[k]\^2 - x\ f[q] + x2\ f[q] - 
+          f[q]\^2 + g[k] - g[q])\)\)], "Print"],
+
+Cell[BoxData[
+    \("Entry M21 of candidate M (entrycandidateM21) "\)], "Print"],
+
+Cell[BoxData[
+    \("M21 = "\)], "Print"],
+
+Cell[BoxData[
+    \(s\)], "Print"],
+
+Cell[BoxData[
+    \("Entry M22 of candidate M (entrycandidateM22) "\)], "Print"],
+
+Cell[BoxData[
+    \("M22 = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(-s\)\ \((x2 + f[k] - f[q])\)\)], "Print"],
+
+Cell[BoxData[
+    \("*******************************************************************"\)]\
+, "Print"],
+
+Cell[BoxData[
+    \("************ COMPUTATION OF THE LAX PAIR CONTINUES \
+***************"\)], "Print"],
+
+Cell[BoxData[
+    \("************ COMPUTATION OF CONSTRAINTS FOR t AND s \
+***************"\)], "Print"],
+
+Cell[BoxData[
+    \("The subsequent computations might be slow for complicated \
+lattices!"\)], "Print"],
+
+Cell[BoxData[
+    \("Compatibility equation, (1-1) element ON LATTICE,"\)], "Print"],
+
+Cell[BoxData[
+    \("compatibilityeq11onlattice = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(\(1\/\(x1 - x2 - f[p] + 
+            f[q]\)\)\((\((s1\ t - s\ t2)\)\ \((x1\ g[k] - x2\ g[k] - 
+              f[p]\ g[k] + f[q]\ g[k] - x1\ g[p] - f[k]\ g[p] - f[q]\ g[p] + 
+              x2\ g[q] + f[k]\ g[q] + f[p]\ g[q])\))\)\) \[Equal] 
+      0\)], "Print"],
+
+Cell[BoxData[
+    \("Compatibility equation, (1-2) element ON LATTICE, "\)], "Print"],
+
+Cell[BoxData[
+    \("compatibilityeq12onlattice = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(\(1\/\(x1 - x2 - f[p] + 
+            f[q]\)\)\((\((s1\ t - s\ t2)\)\ \((x1\ f[p]\ g[k] - 
+              x2\ f[p]\ g[k] - f[p]\^2\ g[k] + x1\ f[q]\ g[k] - 
+              x2\ f[q]\ g[k] + f[q]\^2\ g[k] + x1\ x2\ g[p] + 
+              x1\ f[k]\ g[p] + x2\ f[k]\ g[p] + f[k]\^2\ g[p] - 
+              x1\ f[q]\ g[p] + x2\ f[q]\ g[p] - f[q]\^2\ g[p] - 
+              x1\ x2\ g[q] - x1\ f[k]\ g[q] - x2\ f[k]\ g[q] - 
+              f[k]\^2\ g[q] - x1\ f[p]\ g[q] + x2\ f[p]\ g[q] + 
+              f[p]\^2\ g[q])\))\)\) \[Equal] 0\)], "Print"],
+
+Cell[BoxData[
+    \("Compatibility equation, (2-1) element ON LATTICE, "\)], "Print"],
+
+Cell[BoxData[
+    \("compatibilityeq21onlattice = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(-\(\(\((s1\ t - s\ t2)\)\ \((g[p] - g[q])\)\)\/\(x1 - x2 - f[p] + 
+              f[q]\)\)\) \[Equal] 0\)], "Print"],
+
+Cell[BoxData[
+    \("Compatibility equation, (2-2) element ON LATTICE, "\)], "Print"],
+
+Cell[BoxData[
+    \("compatibilityeq22onlattice = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(\(1\/\(x1 - x2 - f[p] + 
+            f[q]\)\)\((\((s1\ t - s\ t2)\)\ \((x1\ g[k] - x2\ g[k] - 
+              f[p]\ g[k] + f[q]\ g[k] - x1\ g[p] - f[k]\ g[p] - f[q]\ g[p] + 
+              x2\ g[q] + f[k]\ g[q] + f[p]\ g[q])\))\)\) \[Equal] 
+      0\)], "Print"],
+
+Cell[BoxData[
+    \("********************************************************************"\)\
+], "Print"],
+
+Cell[BoxData[
+    \("Compatibility testing of elements of matrix equation L2.M - M1.L = \
+0"\)], "Print"],
+
+Cell[BoxData[
+    \("Fraction (t2 s)/(t s1) (fractiononlatticeeq11, from "\)], "Print"],
+
+Cell[BoxData[
+    \("compatibilityeq11 and EVALUATED ON LATTICE)"\)], "Print"],
+
+Cell[BoxData[
+    \("(t2 s)/(t s1) = "\)], "Print"],
+
+Cell[BoxData[
+    \(1\)], "Print"],
+
+Cell[BoxData[
+    \("Fraction (t2 s)/(t s1) (fractiononlatticeeq12, from "\)], "Print"],
+
+Cell[BoxData[
+    \("compatibilityeq12 and EVALUATED ON LATTICE)"\)], "Print"],
+
+Cell[BoxData[
+    \("(t2 s)/(t s1) = "\)], "Print"],
+
+Cell[BoxData[
+    \(1\)], "Print"],
+
+Cell[BoxData[
+    \("Fraction (t2 s)/(t s1) (fractiononlatticeeq21, from "\)], "Print"],
+
+Cell[BoxData[
+    \("compatibilityeq21 and EVALUATED ON LATTICE)"\)], "Print"],
+
+Cell[BoxData[
+    \("(t2 s)/(t s1) = "\)], "Print"],
+
+Cell[BoxData[
+    \(1\)], "Print"],
+
+Cell[BoxData[
+    \("Fraction (t2 s)/(t s1) (fractiononlatticeeq22, from "\)], "Print"],
+
+Cell[BoxData[
+    \("compatibilityeq22 and EVALUATED ON LATTICE)"\)], "Print"],
+
+Cell[BoxData[
+    \("(t2 s)/(t s1) = "\)], "Print"],
+
+Cell[BoxData[
+    \(1\)], "Print"],
+
+Cell[BoxData[
+    \("******************************************************************"\)],\
+ "Print"],
+
+Cell[BoxData[
+    \("************* CRUCIAL STEP: COMPUTATION OF t AND s \
+***************"\)], "Print"],
+
+Cell[BoxData[
+    \("The subsequent computations might be slow for complicated \
+lattices"\)], "Print"],
+
+Cell[BoxData[
+    \("*********************************************************************"\
+\)], "Print"],
+
+Cell[BoxData[
+    \("Determinant of matrix Lc, det(matrixLc) = "\)], "Print"],
+
+Cell[BoxData[
+    \(g[k] - g[p]\)], "Print"],
+
+Cell[BoxData[
+    \("Determinant of matrix Mc, det(matrixMc) = "\)], "Print"],
+
+Cell[BoxData[
+    \(g[k] - g[q]\)], "Print"],
+
+Cell[BoxData[
+    \("*********************************************************************"\
+\)], "Print"],
+
+Cell[BoxData[
+    \("The subsequent computations might be slow for complicated lattices, in \
+particular, if square roots are present!"\)], "Print"],
+
+Cell[BoxData[
+    \("-----> Using algorithm (detmethod)! Coefficient t (tcondition)"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("t = "\)], "Print"],
+
+Cell[BoxData[
+    \(1\/\@\(g[k] - g[p]\)\)], "Print"],
+
+Cell[BoxData[
+    \("*******************************************************************"\)]\
+, "Print"],
+
+Cell[BoxData[
+    \("------> Using algorithm (detmethod)! Coefficient s (scondition)"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("s = "\)], "Print"],
+
+Cell[BoxData[
+    \(1\/\@\(g[k] - g[q]\)\)], "Print"],
+
+Cell[BoxData[
+    \("*******************************************************************"\)]\
+, "Print"],
+
+Cell[BoxData[
+    \("************************* TESTING t AND s ***************************"\
+\)], "Print"],
+
+Cell[BoxData[
+    \("The subsequent computations might be slow for complicated lattices, in \
+particular, if square roots are present!"\)], "Print"],
+
+Cell[BoxData[
+    \("Without introducing extra root rules or absolute value rules,"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("t and s PASS the SYMBOLIC TEST!"\)], "Print"],
+
+Cell[BoxData[
+    \("After introducing rootrules to simplify the roots,"\)], "Print"],
+
+Cell[BoxData[
+    \("t and s PASS the SYMBOLIC TEST!"\)], "Print"],
+
+Cell[BoxData[
+    \("After using powerexpand in various places,"\)], "Print"],
+
+Cell[BoxData[
+    \("t and s PASS the SYMBOLIC TEST!"\)], "Print"],
+
+Cell[BoxData[
+    \("After introducing absolute values in various places,"\)], "Print"],
+
+Cell[BoxData[
+    \("t and s PASS the SYMBOLIC TEST!"\)], "Print"],
+
+Cell[BoxData[
+    \("*********************************************************************"\
+\)], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("Using t = "\[InvisibleSpace]1\/\@\(g[k] - g[p]\)\
+\[InvisibleSpace]" and s = "\[InvisibleSpace]1\/\@\(g[k] - g[q]\)\),
+      SequenceForm[ "Using t = ", 
+        Power[ 
+          Plus[ 
+            g[ k], 
+            Times[ -1, 
+              g[ p]]], 
+          Rational[ -1, 2]], " and s = ", 
+        Power[ 
+          Plus[ 
+            g[ k], 
+            Times[ -1, 
+              g[ q]]], 
+          Rational[ -1, 2]]],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("Lax pair, matrix L (matrixL) for t = "\
+\[InvisibleSpace]1\/\@\(g[k] - g[p]\)\[InvisibleSpace]" "\),
+      SequenceForm[ "Lax pair, matrix L (matrixL) for t = ", 
+        Power[ 
+          Plus[ 
+            g[ k], 
+            Times[ -1, 
+              g[ p]]], 
+          Rational[ -1, 2]], " "],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("********************************************************************"\)\
+], "Print"],
+
+Cell[BoxData[
+    \("L = "\)], "Print"],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+            {\(\(x + f[k] + 
+                    f[p]\)\/\@\(g[k] - g[p]\)\), \(-\(\(x\ x1 + x\ f[k] + 
+                      x1\ f[k] + f[k]\^2 - x\ f[p] + x1\ f[p] - f[p]\^2 + 
+                      g[k] - g[p]\)\/\@\(g[k] - g[p]\)\)\)},
+            {\(1\/\@\(g[k] - g[p]\)\), \(-\(\(x1 + f[k] - 
+                      f[p]\)\/\@\(g[k] - g[p]\)\)\)}
+            }], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Print"],
+
+Cell[BoxData[
+    \("********************************************************************"\)\
+], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("The elements of L below are for t = "\
+\[InvisibleSpace]1\/\@\(g[k] - g[p]\)\),
+      SequenceForm[ "The elements of L below are for t = ", 
+        Power[ 
+          Plus[ 
+            g[ k], 
+            Times[ -1, 
+              g[ p]]], 
+          Rational[ -1, 2]]],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("Entry L11 (entryL11)"\)], "Print"],
+
+Cell[BoxData[
+    \("L11 = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(x + f[k] + f[p]\)\/\@\(g[k] - g[p]\)\)], "Print"],
+
+Cell[BoxData[
+    \("Entry L12 (entryL12)"\)], "Print"],
+
+Cell[BoxData[
+    \("L12 = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(-\(\(x\ x1 + x\ f[k] + x1\ f[k] + f[k]\^2 - x\ f[p] + x1\ f[p] - 
+            f[p]\^2 + g[k] - g[p]\)\/\@\(g[k] - g[p]\)\)\)\)], "Print"],
+
+Cell[BoxData[
+    \("Entry L21 (entryL21)"\)], "Print"],
+
+Cell[BoxData[
+    \("L21 = "\)], "Print"],
+
+Cell[BoxData[
+    \(1\/\@\(g[k] - g[p]\)\)], "Print"],
+
+Cell[BoxData[
+    \("Entry L22 (entryL22)"\)], "Print"],
+
+Cell[BoxData[
+    \("L22 = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(-\(\(x1 + f[k] - f[p]\)\/\@\(g[k] - g[p]\)\)\)\)], "Print"],
+
+Cell[BoxData[
+    \("********************************************************************"\)\
+], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("Lax pair, matrix M (matrixM) for s = "\
+\[InvisibleSpace]1\/\@\(g[k] - g[q]\)\[InvisibleSpace]" "\),
+      SequenceForm[ "Lax pair, matrix M (matrixM) for s = ", 
+        Power[ 
+          Plus[ 
+            g[ k], 
+            Times[ -1, 
+              g[ q]]], 
+          Rational[ -1, 2]], " "],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("********************************************************************"\)\
+], "Print"],
+
+Cell[BoxData[
+    \("M = "\)], "Print"],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+            {\(\(x + f[k] + 
+                    f[q]\)\/\@\(g[k] - g[q]\)\), \(-\(\(x\ x2 + x\ f[k] + 
+                      x2\ f[k] + f[k]\^2 - x\ f[q] + x2\ f[q] - f[q]\^2 + 
+                      g[k] - g[q]\)\/\@\(g[k] - g[q]\)\)\)},
+            {\(1\/\@\(g[k] - g[q]\)\), \(-\(\(x2 + f[k] - 
+                      f[q]\)\/\@\(g[k] - g[q]\)\)\)}
+            }], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Print"],
+
+Cell[BoxData[
+    \("********************************************************************"\)\
+], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("The elements of M below are for s = "\
+\[InvisibleSpace]1\/\@\(g[k] - g[q]\)\),
+      SequenceForm[ "The elements of M below are for s = ", 
+        Power[ 
+          Plus[ 
+            g[ k], 
+            Times[ -1, 
+              g[ q]]], 
+          Rational[ -1, 2]]],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("Entry M11 (entryM11)"\)], "Print"],
+
+Cell[BoxData[
+    \("M11 = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(x + f[k] + f[q]\)\/\@\(g[k] - g[q]\)\)], "Print"],
+
+Cell[BoxData[
+    \("Entry M12 (entryM12)"\)], "Print"],
+
+Cell[BoxData[
+    \("M12 = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(-\(\(x\ x2 + x\ f[k] + x2\ f[k] + f[k]\^2 - x\ f[q] + x2\ f[q] - 
+            f[q]\^2 + g[k] - g[q]\)\/\@\(g[k] - g[q]\)\)\)\)], "Print"],
+
+Cell[BoxData[
+    \("Entry M21 (entryM21)"\)], "Print"],
+
+Cell[BoxData[
+    \("M21 = "\)], "Print"],
+
+Cell[BoxData[
+    \(1\/\@\(g[k] - g[q]\)\)], "Print"],
+
+Cell[BoxData[
+    \("Entry M22 (entryM22)"\)], "Print"],
+
+Cell[BoxData[
+    \("M22 = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(-\(\(x2 + f[k] - f[q]\)\/\@\(g[k] - g[q]\)\)\)\)], "Print"],
+
+Cell[BoxData[
+    \("******************************************************************"\)],\
+ "Print"],
+
+Cell[BoxData[
+    \("************** FINAL TEST OF THE COMPUTED LAX PAIR \
+***************"\)], "Print"],
+
+Cell[BoxData[
+    \("The subsequent computations might be slow for complicated lattices, in \
+particular, if square roots are present!"\)], "Print"],
+
+Cell[BoxData[
+    \("Compatibility matrix L2.M - M1.L, ON LATTICE"\)], "Print"],
+
+Cell[BoxData[
+    \("finalcompatibilitymatrixonlattice ="\)], "Print"],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+            {"0", "0"},
+            {"0", "0"}
+            }], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Print"],
+
+Cell[BoxData[
+    \("********************************************************************"\)\
+], "Print"],
+
+Cell[BoxData[
+    \("****************** START COMPUTATION OF MATRIX N \
+*******************"\)], "Print"],
+
+Cell[BoxData[
+    \("********* THIS PIECE OF THE CODE IS STILL UNDER DEVELOPMENT \
+********"\)], "Print"],
+
+Cell[BoxData[
+    \("Matrix Lc, (matrixLc):"\)], "Print"],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+            {\(x + f[k] + f[p]\), \(\(-x\)\ x1 - x\ f[k] - x1\ f[k] - 
+                f[k]\^2 + x\ f[p] - x1\ f[p] + f[p]\^2 - g[k] + g[p]\)},
+            {"1", \(\(-x1\) - f[k] + f[p]\)}
+            }], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Print"],
+
+Cell[BoxData[
+    \("Matrix Mc, (matrixMc):"\)], "Print"],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+            {\(x + f[k] + f[q]\), \(\(-x\)\ x2 - x\ f[k] - x2\ f[k] - 
+                f[k]\^2 + x\ f[q] - x2\ f[q] + f[q]\^2 - g[k] + g[q]\)},
+            {"1", \(\(-x2\) - f[k] + f[q]\)}
+            }], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Print"],
+
+Cell[BoxData[
+    \("prodnamematrixN = "\)], "Print"],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+            {\(gcpKdV\/\(\@\(g[k] - g[p]\)\ \@\(g[k] - g[q]\)\)\), \
+\(-\(\(gcpKdV\ \((x1 + x2 + 
+                          2\ f[k])\)\)\/\(\@\(g[k] - g[p]\)\ \@\(g[k] - \
+g[q]\)\)\)\)},
+            {"0", \(-\(gcpKdV\/\(\@\(g[k] - g[p]\)\ \@\(g[k] - g[q]\)\)\)\)}
+            }], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Print"],
+
+Cell[BoxData[
+    \(" **** CHECK BY INSPECTION **** NOT FULLY CODED YET! "\)], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("Check if prodnamematrixN (above) has the common \
+factor: "\[InvisibleSpace]gcpKdV\),
+      SequenceForm[ 
+      "Check if prodnamematrixN (above) has the common factor: ", gcpKdV],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("This is the matrix N (matrixN)"\)], "Print"],
+
+Cell[BoxData[
+    \("N = "\)], "Print"],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+            {\(1\/\(\@\(g[k] - g[p]\)\ \@\(g[k] - g[q]\)\)\), \(-\(\(x1 + 
+                      x2 + 2\ f[
+                          k]\)\/\(\@\(g[k] - g[p]\)\ \@\(g[k] - \
+g[q]\)\)\)\)},
+            {"0", \(-\(1\/\(\@\(g[k] - g[p]\)\ \@\(g[k] - g[q]\)\)\)\)}
+            }], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Print"],
+
+Cell[BoxData[
+    \("*******************************************************************"\)]\
+, "Print"],
+
+Cell[BoxData[
+    \("N11 = "\)], "Print"],
+
+Cell[BoxData[
+    \(1\/\(\@\(g[k] - g[p]\)\ \@\(g[k] - g[q]\)\)\)], "Print"],
+
+Cell[BoxData[
+    \("N12 = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(-\(\(x1 + x2 + 
+            2\ f[k]\)\/\(\@\(g[k] - g[p]\)\ \@\(g[k] - g[q]\)\)\)\)\)], \
+"Print"],
+
+Cell[BoxData[
+    \("N21 = "\)], "Print"],
+
+Cell[BoxData[
+    \(0\)], "Print"],
+
+Cell[BoxData[
+    \("N22 = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(-\(1\/\(\@\(g[k] - g[p]\)\ \@\(g[k] - g[q]\)\)\)\)\)], "Print"],
+
+Cell[BoxData[
+    \("******************* END OF THE COMPUTATIONS! ************************"\
+\)], "Print"],
+
+Cell[BoxData[
+    \("*********************************************************************"\
+\)], "Print"],
+
+Cell[BoxData[
+    \($Aborted\)], "Output"]
+}, Open  ]]
+},
+FrontEndVersion->"5.0 for Microsoft Windows",
+ScreenRectangle->{{0, 1280}, {0, 941}},
+WindowSize->{1112, 740},
+WindowMargins->{{Automatic, 44}, {Automatic, 25}},
+Magnification->1.5
+]
+
+(*******************************************************************
+Cached data follows.  If you edit this Notebook file directly, not
+using Mathematica, you must remove the line containing CacheID at
+the top of  the file.  The cache data will then be recreated when
+you save this file from within Mathematica.
+*******************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+
+(*NotebookFileOutline
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[1776, 53, 69, 1, 42, "Input"],
+Cell[1848, 56, 52, 1, 41, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[1937, 62, 54, 1, 42, "Input"],
+Cell[1994, 65, 105, 2, 35, "Print"],
+Cell[2102, 69, 275, 5, 35, "Print"],
+Cell[2380, 76, 106, 2, 35, "Print"],
+Cell[2489, 80, 82, 1, 35, "Print"],
+Cell[2574, 83, 82, 1, 35, "Print"],
+Cell[2659, 86, 78, 1, 35, "Print"],
+Cell[2740, 89, 81, 1, 35, "Print"],
+Cell[2824, 92, 81, 1, 35, "Print"],
+Cell[2908, 95, 100, 2, 35, "Print"],
+Cell[3011, 99, 99, 2, 35, "Print"],
+Cell[3113, 103, 100, 2, 35, "Print"],
+Cell[3216, 107, 99, 2, 35, "Print"],
+Cell[3318, 111, 101, 2, 35, "Print"],
+Cell[3422, 115, 49, 1, 35, "Print"],
+Cell[3474, 118, 51, 1, 35, "Print"],
+Cell[3528, 121, 56, 1, 35, "Print"],
+Cell[3587, 124, 106, 2, 35, "Print"],
+Cell[3696, 128, 98, 2, 35, "Print"],
+Cell[3797, 132, 92, 1, 35, "Print"],
+Cell[3892, 135, 105, 2, 35, "Print"],
+Cell[4000, 139, 92, 1, 35, "Print"],
+Cell[4095, 142, 92, 1, 35, "Print"],
+Cell[4190, 145, 92, 1, 35, "Print"],
+Cell[4285, 148, 92, 1, 35, "Print"],
+Cell[4380, 151, 92, 1, 35, "Print"],
+Cell[4475, 154, 92, 1, 35, "Print"],
+Cell[4570, 157, 92, 1, 35, "Print"],
+Cell[4665, 160, 105, 2, 35, "Print"],
+Cell[4773, 164, 230, 4, 35, "Print"],
+Cell[5006, 170, 128, 2, 35, "Print"],
+Cell[5137, 174, 102, 2, 35, "Print"],
+Cell[5242, 178, 252, 5, 35, "Print"],
+Cell[5497, 185, 242, 5, 35, "Print"],
+Cell[5742, 192, 236, 5, 35, "Print"],
+Cell[5981, 199, 201, 4, 35, "Print"],
+Cell[6185, 205, 191, 4, 35, "Print"],
+Cell[6379, 211, 183, 3, 35, "Print"],
+Cell[6565, 216, 201, 4, 35, "Print"],
+Cell[6769, 222, 234, 5, 35, "Print"],
+Cell[7006, 229, 106, 2, 35, "Print"],
+Cell[7115, 233, 91, 1, 35, "Print"],
+Cell[7209, 236, 128, 2, 35, "Print"],
+Cell[7340, 240, 72, 1, 35, "Print"],
+Cell[7415, 243, 128, 2, 35, "Print"],
+Cell[7546, 247, 77, 1, 35, "Print"],
+Cell[7626, 250, 128, 2, 35, "Print"],
+Cell[7757, 254, 106, 2, 35, "Print"],
+Cell[7866, 258, 53, 1, 35, "Print"],
+Cell[7922, 261, 179, 3, 59, "Print"],
+Cell[8104, 266, 54, 1, 35, "Print"],
+Cell[8161, 269, 179, 3, 59, "Print"],
+Cell[8343, 274, 54, 1, 35, "Print"],
+Cell[8400, 277, 179, 3, 59, "Print"],
+Cell[8582, 282, 102, 2, 35, "Print"],
+Cell[8687, 286, 105, 2, 35, "Print"],
+Cell[8795, 290, 786, 11, 191, "Print"],
+Cell[9584, 303, 106, 2, 35, "Print"],
+Cell[9693, 307, 796, 11, 191, "Print"],
+Cell[10492, 320, 105, 2, 35, "Print"],
+Cell[10600, 324, 101, 2, 35, "Print"],
+Cell[10704, 328, 106, 2, 35, "Print"],
+Cell[10813, 332, 102, 2, 35, "Print"],
+Cell[10918, 336, 34, 1, 35, "Print"],
+Cell[10955, 339, 226, 4, 35, "Print"],
+Cell[11184, 345, 78, 1, 35, "Print"],
+Cell[11265, 348, 104, 2, 35, "Print"],
+Cell[11372, 352, 104, 2, 35, "Print"],
+Cell[11479, 356, 88, 1, 35, "Print"],
+Cell[11570, 359, 85, 1, 35, "Print"],
+Cell[11658, 362, 245, 4, 82, "Print"],
+Cell[11906, 368, 85, 1, 35, "Print"],
+Cell[11994, 371, 245, 4, 82, "Print"],
+Cell[12242, 377, 106, 2, 35, "Print"],
+Cell[12351, 381, 76, 1, 35, "Print"],
+Cell[12430, 384, 39, 1, 35, "Print"],
+Cell[12472, 387, 420, 9, 56, "Print"],
+Cell[12895, 398, 106, 2, 35, "Print"],
+Cell[13004, 402, 80, 1, 35, "Print"],
+Cell[13087, 405, 41, 1, 35, "Print"],
+Cell[13131, 408, 57, 1, 35, "Print"],
+Cell[13191, 411, 80, 1, 35, "Print"],
+Cell[13274, 414, 41, 1, 35, "Print"],
+Cell[13318, 417, 139, 2, 37, "Print"],
+Cell[13460, 421, 80, 1, 35, "Print"],
+Cell[13543, 424, 41, 1, 35, "Print"],
+Cell[13587, 427, 34, 1, 35, "Print"],
+Cell[13624, 430, 80, 1, 35, "Print"],
+Cell[13707, 433, 41, 1, 35, "Print"],
+Cell[13751, 436, 63, 1, 35, "Print"],
+Cell[13817, 439, 106, 2, 35, "Print"],
+Cell[13926, 443, 76, 1, 35, "Print"],
+Cell[14005, 446, 39, 1, 35, "Print"],
+Cell[14047, 449, 420, 9, 56, "Print"],
+Cell[14470, 460, 106, 2, 35, "Print"],
+Cell[14579, 464, 80, 1, 35, "Print"],
+Cell[14662, 467, 41, 1, 35, "Print"],
+Cell[14706, 470, 57, 1, 35, "Print"],
+Cell[14766, 473, 80, 1, 35, "Print"],
+Cell[14849, 476, 41, 1, 35, "Print"],
+Cell[14893, 479, 139, 2, 37, "Print"],
+Cell[15035, 483, 80, 1, 35, "Print"],
+Cell[15118, 486, 41, 1, 35, "Print"],
+Cell[15162, 489, 34, 1, 35, "Print"],
+Cell[15199, 492, 80, 1, 35, "Print"],
+Cell[15282, 495, 41, 1, 35, "Print"],
+Cell[15326, 498, 63, 1, 35, "Print"],
+Cell[15392, 501, 104, 2, 35, "Print"],
+Cell[15499, 505, 103, 2, 35, "Print"],
+Cell[15605, 509, 104, 2, 35, "Print"],
+Cell[15712, 513, 104, 2, 35, "Print"],
+Cell[15819, 517, 84, 1, 35, "Print"],
+Cell[15906, 520, 64, 1, 35, "Print"],
+Cell[15973, 523, 282, 5, 106, "Print"],
+Cell[16258, 530, 85, 1, 35, "Print"],
+Cell[16346, 533, 64, 1, 35, "Print"],
+Cell[16413, 536, 558, 9, 134, "Print"],
+Cell[16974, 547, 85, 1, 35, "Print"],
+Cell[17062, 550, 64, 1, 35, "Print"],
+Cell[17129, 553, 137, 2, 54, "Print"],
+Cell[17269, 557, 85, 1, 35, "Print"],
+Cell[17357, 560, 64, 1, 35, "Print"],
+Cell[17424, 563, 282, 5, 106, "Print"],
+Cell[17709, 570, 105, 2, 35, "Print"],
+Cell[17817, 574, 105, 2, 35, "Print"],
+Cell[17925, 578, 87, 1, 35, "Print"],
+Cell[18015, 581, 78, 1, 35, "Print"],
+Cell[18096, 584, 51, 1, 35, "Print"],
+Cell[18150, 587, 34, 1, 35, "Print"],
+Cell[18187, 590, 87, 1, 35, "Print"],
+Cell[18277, 593, 78, 1, 35, "Print"],
+Cell[18358, 596, 51, 1, 35, "Print"],
+Cell[18412, 599, 34, 1, 35, "Print"],
+Cell[18449, 602, 87, 1, 35, "Print"],
+Cell[18539, 605, 78, 1, 35, "Print"],
+Cell[18620, 608, 51, 1, 35, "Print"],
+Cell[18674, 611, 34, 1, 35, "Print"],
+Cell[18711, 614, 87, 1, 35, "Print"],
+Cell[18801, 617, 78, 1, 35, "Print"],
+Cell[18882, 620, 51, 1, 35, "Print"],
+Cell[18936, 623, 34, 1, 35, "Print"],
+Cell[18973, 626, 103, 2, 35, "Print"],
+Cell[19079, 630, 103, 2, 35, "Print"],
+Cell[19185, 634, 103, 2, 35, "Print"],
+Cell[19291, 638, 106, 2, 35, "Print"],
+Cell[19400, 642, 77, 1, 35, "Print"],
+Cell[19480, 645, 44, 1, 35, "Print"],
+Cell[19527, 648, 77, 1, 35, "Print"],
+Cell[19607, 651, 44, 1, 35, "Print"],
+Cell[19654, 654, 106, 2, 35, "Print"],
+Cell[19763, 658, 148, 2, 60, "Print"],
+Cell[19914, 662, 99, 2, 35, "Print"],
+Cell[20016, 666, 39, 1, 35, "Print"],
+Cell[20058, 669, 53, 1, 58, "Print"],
+Cell[20114, 672, 104, 2, 35, "Print"],
+Cell[20221, 676, 100, 2, 35, "Print"],
+Cell[20324, 680, 39, 1, 35, "Print"],
+Cell[20366, 683, 53, 1, 58, "Print"],
+Cell[20422, 686, 104, 2, 35, "Print"],
+Cell[20529, 690, 106, 2, 35, "Print"],
+Cell[20638, 694, 148, 2, 60, "Print"],
+Cell[20789, 698, 98, 2, 35, "Print"],
+Cell[20890, 702, 66, 1, 35, "Print"],
+Cell[20959, 705, 85, 1, 35, "Print"],
+Cell[21047, 708, 66, 1, 35, "Print"],
+Cell[21116, 711, 77, 1, 35, "Print"],
+Cell[21196, 714, 66, 1, 35, "Print"],
+Cell[21265, 717, 87, 1, 35, "Print"],
+Cell[21355, 720, 66, 1, 35, "Print"],
+Cell[21424, 723, 106, 2, 35, "Print"],
+Cell[21533, 727, 501, 16, 58, "Print"],
+Cell[22037, 745, 371, 10, 58, "Print"],
+Cell[22411, 757, 105, 2, 35, "Print"],
+Cell[22519, 761, 39, 1, 35, "Print"],
+Cell[22561, 764, 531, 11, 92, "Print"],
+Cell[23095, 777, 105, 2, 35, "Print"],
+Cell[23203, 781, 344, 10, 58, "Print"],
+Cell[23550, 793, 55, 1, 35, "Print"],
+Cell[23608, 796, 41, 1, 35, "Print"],
+Cell[23652, 799, 71, 1, 58, "Print"],
+Cell[23726, 802, 55, 1, 35, "Print"],
+Cell[23784, 805, 41, 1, 35, "Print"],
+Cell[23828, 808, 159, 2, 63, "Print"],
+Cell[23990, 812, 55, 1, 35, "Print"],
+Cell[24048, 815, 41, 1, 35, "Print"],
+Cell[24092, 818, 53, 1, 58, "Print"],
+Cell[24148, 821, 55, 1, 35, "Print"],
+Cell[24206, 824, 41, 1, 35, "Print"],
+Cell[24250, 827, 81, 1, 58, "Print"],
+Cell[24334, 830, 105, 2, 35, "Print"],
+Cell[24442, 834, 371, 10, 58, "Print"],
+Cell[24816, 846, 105, 2, 35, "Print"],
+Cell[24924, 850, 39, 1, 35, "Print"],
+Cell[24966, 853, 531, 11, 92, "Print"],
+Cell[25500, 866, 105, 2, 35, "Print"],
+Cell[25608, 870, 344, 10, 58, "Print"],
+Cell[25955, 882, 55, 1, 35, "Print"],
+Cell[26013, 885, 41, 1, 35, "Print"],
+Cell[26057, 888, 71, 1, 58, "Print"],
+Cell[26131, 891, 55, 1, 35, "Print"],
+Cell[26189, 894, 41, 1, 35, "Print"],
+Cell[26233, 897, 159, 2, 63, "Print"],
+Cell[26395, 901, 55, 1, 35, "Print"],
+Cell[26453, 904, 41, 1, 35, "Print"],
+Cell[26497, 907, 53, 1, 58, "Print"],
+Cell[26553, 910, 55, 1, 35, "Print"],
+Cell[26611, 913, 41, 1, 35, "Print"],
+Cell[26655, 916, 81, 1, 58, "Print"],
+Cell[26739, 919, 103, 2, 35, "Print"],
+Cell[26845, 923, 103, 2, 35, "Print"],
+Cell[26951, 927, 148, 2, 60, "Print"],
+Cell[27102, 931, 79, 1, 35, "Print"],
+Cell[27184, 934, 70, 1, 35, "Print"],
+Cell[27257, 937, 226, 7, 52, "Print"],
+Cell[27486, 946, 105, 2, 35, "Print"],
+Cell[27594, 950, 105, 2, 35, "Print"],
+Cell[27702, 954, 105, 2, 35, "Print"],
+Cell[27810, 958, 57, 1, 35, "Print"],
+Cell[27870, 961, 368, 8, 56, "Print"],
+Cell[28241, 971, 57, 1, 35, "Print"],
+Cell[28301, 974, 368, 8, 56, "Print"],
+Cell[28672, 984, 53, 1, 35, "Print"],
+Cell[28728, 987, 443, 10, 88, "Print"],
+Cell[29174, 999, 87, 1, 35, "Print"],
+Cell[29264, 1002, 254, 5, 35, "Print"],
+Cell[29521, 1009, 65, 1, 35, "Print"],
+Cell[29589, 1012, 39, 1, 35, "Print"],
+Cell[29631, 1015, 440, 10, 86, "Print"],
+Cell[30074, 1027, 104, 2, 35, "Print"],
+Cell[30181, 1031, 41, 1, 35, "Print"],
+Cell[30225, 1034, 76, 1, 58, "Print"],
+Cell[30304, 1037, 41, 1, 35, "Print"],
+Cell[30348, 1040, 120, 3, 58, "Print"],
+Cell[30471, 1045, 41, 1, 35, "Print"],
+Cell[30515, 1048, 34, 1, 35, "Print"],
+Cell[30552, 1051, 41, 1, 35, "Print"],
+Cell[30596, 1054, 85, 1, 58, "Print"],
+Cell[30684, 1057, 106, 2, 35, "Print"],
+Cell[30793, 1061, 106, 2, 35, "Print"],
+Cell[30902, 1065, 42, 1, 41, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+
+
+(*******************************************************************
+End of Mathematica Notebook file.
+*******************************************************************)
+

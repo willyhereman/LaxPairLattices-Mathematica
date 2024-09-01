@@ -1,0 +1,472 @@
+(************** Content-type: application/mathematica **************
+                     CreatedBy='Mathematica 5.0'
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used with any Mathematica-compatible
+application, such as Mathematica, MathReader or Publicon. The data
+for the notebook starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do
+one of the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the
+  application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing
+the word CacheID, otherwise Mathematica-compatible applications may
+try to use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+*******************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[     13379,        369]*)
+(*NotebookOutlinePosition[     14045,        392]*)
+(*  CellTagsIndexPosition[     14001,        388]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+    \(SetDirectory["\<d:\\demolattices\>"]\)], "Input"],
+
+Cell[BoxData[
+    \("d:\\demolattices"\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(Get["\<l0711-08.m\>"]\)], "Input"],
+
+Cell[BoxData[
+    \("Loading code for computation of Lax pair of lattices (July 12, \
+2008)"\)], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("***************** MENU INTERFACE *****************  \
+(page: "\[InvisibleSpace]1\[InvisibleSpace]")"\),
+      SequenceForm[ 
+      "***************** MENU INTERFACE *****************  (page: ", 1, ")"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("---------------------------------------------------------------------"\
+\)], "Print"],
+
+Cell[BoxData[
+    \("  1) discrete potential KdV Equation (l_pKdV.m)"\)], "Print"],
+
+Cell[BoxData[
+    \("  2) discrete modified KdV Equation  (l_mKdV.m)"\)], "Print"],
+
+Cell[BoxData[
+    \("  3) discrete sine-Gordon Equation (l_sG.m)"\)], "Print"],
+
+Cell[BoxData[
+    \("  4) H1 equation (ABS classification) (l_H1.m)"\)], "Print"],
+
+Cell[BoxData[
+    \("  5) H2 equation (ABS classification) (l_H2.m)"\)], "Print"],
+
+Cell[BoxData[
+    \("  6) H3 equation (delta not 0) (ABS classification) (l_H3rhs.m)"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("  7) H3 equation (delta = 0) (ABS classification) (l_H3zero.m)"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("  8) Q1 equation (delta not 0) (ABS classification) (l_Q1rhs.m)"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("  9) Q1 equation (delta = 0) (ABS classification) (l_Q1zero.m)"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("  10) Q2 equation (delta not 0) (ABS classification) (l_Q2rhs.m)"\)], \
+"Print"],
+
+Cell[BoxData[
+    \(" nn) Next Page"\)], "Print"],
+
+Cell[BoxData[
+    \(" tt) Your System"\)], "Print"],
+
+Cell[BoxData[
+    \(" qq) Exit the Program"\)], "Print"],
+
+Cell[BoxData[
+    \("---------------------------------------------------------------------"\
+\)], "Print"],
+
+Cell[BoxData[
+    \("Make sure that you have prepared the data file for the system"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("you want to test (similar to the data files we supplied)."\)], "Print"],
+
+Cell[BoxData[
+    \("********************************************************************"\)\
+], "Print"],
+
+Cell[BoxData[
+    \("         WELCOME TO THE MATHEMATICA PROGRAM              "\)], "Print"],
+
+Cell[BoxData[
+    \("                  by WILLY HEREMAN                       "\)], "Print"],
+
+Cell[BoxData[
+    \("     FOR THE COMPUTATION OF LAX PAIRS OF NONLINEAR       "\)], "Print"],
+
+Cell[BoxData[
+    \("  PARTIAL DIFFERENCE EQUATIONS IN 2D (ON QUAD-GRAPHS)    "\)], "Print"],
+
+Cell[BoxData[
+    \(" Collaborators: Reinout Quispel and Peter van der Kamp   "\)], "Print"],
+
+Cell[BoxData[
+    \("           First released on July 12, 2008               "\)], "Print"],
+
+Cell[BoxData[
+    \("                    Copyright 2008                       "\)], "Print"],
+
+Cell[BoxData[
+    \("********************************************************************"\)\
+], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("Working with the discrete "\[InvisibleSpace]cabeq\
+\[InvisibleSpace]" equation:"\),
+      SequenceForm[ "Working with the discrete ", cabeq, " equation:"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \(\((\((\(-alpha\) + p)\)\ x - \((beta + 
+                    p)\)\ x1)\)\ \((\(-\((alpha + 
+                      p)\)\)\ x12 + \((\(-beta\) + 
+                    p)\)\ x2)\) - \((\((\(-beta\) + q)\)\ x1 - \((alpha + 
+                    q)\)\ x12)\)\ \((\((\(-alpha\) + q)\)\ x - \((beta + 
+                    q)\)\ x2)\) \[Equal] 0\)], "Print"],
+
+Cell[BoxData[
+    \("********************** CONTROL SETTINGS *************************"\)], \
+"Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("LaxPairGiven (L and M are given in data file) is set \
+to "\[InvisibleSpace]False\),
+      SequenceForm[ 
+      "LaxPairGiven (L and M are given in data file) is set to ", False],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("t and s are given in data file (byhand) is set to: "\
+\[InvisibleSpace]True\),
+      SequenceForm[ 
+      "t and s are given in data file (byhand) is set to: ", True],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("Determinant method to compute t and s is set to: "\
+\[InvisibleSpace]False\),
+      SequenceForm[ 
+      "Determinant method to compute t and s is set to: ", False],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("Test consistency on cube is set to \
+"\[InvisibleSpace]True\),
+      SequenceForm[ "Test consistency on cube is set to ", True],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("Use of powerexpand is set to "\[InvisibleSpace]False\
+\),
+      SequenceForm[ "Use of powerexpand is set to ", False],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("Use of rootrules is set to "\[InvisibleSpace]True\),
+      SequenceForm[ "Use of rootrules is set to ", True],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("Computation of matrix N is set to: \
+"\[InvisibleSpace]False\),
+      SequenceForm[ "Computation of matrix N is set to: ", False],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("Application of gauge transformation is set to: "\
+\[InvisibleSpace]False\),
+      SequenceForm[ "Application of gauge transformation is set to: ", False],
+      
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("******************* START OF THE COMPUTATION ************************"\
+\)], "Print"],
+
+Cell[BoxData[
+    \("The data file l_cabeq.m was created to experiment with removing"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("constant terms in the lattice, or, with applying a"\)], "Print"],
+
+Cell[BoxData[
+    \("non-autonomous Moebius transformation to reduce the original"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("lattice to a lattice of type Q3"\)], "Print"],
+
+Cell[BoxData[
+    \("In the data file l_cabeq.m, set action = translation"\)], "Print"],
+
+Cell[BoxData[
+    \("to see the effect of removing the constant terms"\)], "Print"],
+
+Cell[BoxData[
+    \("In the data file l_cabeq.m, set action = moebiustransformation"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("to see the effect of applying a non-autonomous Moebius"\)], "Print"],
+
+Cell[BoxData[
+    \("transformation"\)], "Print"],
+
+Cell[BoxData[
+    \("****** APPLICATION OF A NON-AUTONOMOUS MOEBIUS TRANSFORMATION *******"\
+\)], "Print"],
+
+Cell[BoxData[
+    \("Lattice on front plane (F) before the non-autonomous Moebius"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("transformation, (latticefrontoriginal):"\)], "Print"],
+
+Cell[BoxData[
+    \(\((\((\(-alpha\) + p)\)\ y - \((beta + 
+                    p)\)\ y1)\)\ \((\(-\((alpha + 
+                      p)\)\)\ y12 + \((\(-beta\) + 
+                    p)\)\ y2)\) - \((\((\(-beta\) + q)\)\ y1 - \((alpha + 
+                    q)\)\ y12)\)\ \((\((\(-alpha\) + q)\)\ y - \((beta + 
+                    q)\)\ y2)\) \[Equal] 0\)], "Print"],
+
+Cell[BoxData[
+    \("Applying a non-autonomous Moebius transformation first!"\)], "Print"],
+
+Cell[BoxData[
+    \("To the lattice (on the front plane), apply the \
+translationrulefront:"\)], "Print"],
+
+Cell[BoxData[
+    \({y \[Rule] \((\(\((\(-alpha\) + p)\)\ \((\(-beta\) + p)\)\)\/\(\((alpha \
++ p)\)\ \((beta + p)\)\))\)\^\(l/2\)\ \((\(\((\(-alpha\) + q)\)\ \((\(-beta\) \
++ q)\)\)\/\(\((alpha + q)\)\ \((beta + q)\)\))\)\^\(m/2\)\ x, 
+      y1 \[Rule] \((\(\((\(-alpha\) + p)\)\ \((\(-beta\) + p)\)\)\/\(\((alpha \
++ p)\)\ \((beta + p)\)\))\)\^\(\(1 + l\)\/2\)\ \((\(\((\(-alpha\) + q)\)\ \((\
+\(-beta\) + q)\)\)\/\(\((alpha + q)\)\ \((beta + q)\)\))\)\^\(m/2\)\ x1, 
+      y2 \[Rule] \((\(\((\(-alpha\) + p)\)\ \((\(-beta\) + p)\)\)\/\(\((alpha \
++ p)\)\ \((beta + p)\)\))\)\^\(l/2\)\ \((\(\((\(-alpha\) + q)\)\ \((\(-beta\) \
++ q)\)\)\/\(\((alpha + q)\)\ \((beta + q)\)\))\)\^\(\(1 + m\)\/2\)\ x2, 
+      y12 \[Rule] \((\(\((\(-alpha\) + p)\)\ \((\(-beta\) + \
+p)\)\)\/\(\((alpha + p)\)\ \((beta + p)\)\))\)\^\(\(1 + l\)\/2\)\ \
+\((\(\((\(-alpha\) + q)\)\ \((\(-beta\) + q)\)\)\/\(\((alpha + q)\)\ \((beta \
++ q)\)\))\)\^\(\(1 + m\)\/2\)\ x12}\)], "Print"],
+
+Cell[BoxData[
+    \("Lattice defined on front (F) after applying the non-autonomousMoebius \
+transformation, latticefront:"\)], "Print"],
+
+Cell[BoxData[
+    \(\(-\((\(\((\(-alpha\) + p)\)\ \((\(-beta\) + p)\)\)\/\(\((alpha + p)\)\ \
+\((beta + p)\)\))\)\^l\)\ \((\(\((\(-alpha\) + q)\)\ \((\(-beta\) + \
+q)\)\)\/\(\((alpha + q)\)\ \((beta + q)\)\))\)\^m\ \((alpha\ beta\ \
+\@\(\(alpha\ beta - alpha\ p - beta\ p + p\^2\)\/\(alpha\ beta + alpha\ p + \
+beta\ p + p\^2\)\)\ x\ x1 - 
+          alpha\ \@\(\(alpha\ beta - alpha\ p - beta\ p + p\^2\)\/\(alpha\ \
+beta + alpha\ p + beta\ p + p\^2\)\)\ q\ x\ x1 - 
+          beta\ \@\(\(alpha\ beta - alpha\ p - beta\ p + p\^2\)\/\(alpha\ \
+beta + alpha\ p + beta\ p + p\^2\)\)\ q\ x\ x1 + \@\(\(alpha\ beta - alpha\ p \
+- beta\ p + p\^2\)\/\(alpha\ beta + alpha\ p + beta\ p + p\^2\)\)\ q\^2\ x\ \
+x1 + p\^2\ \@\(\(alpha\ beta - alpha\ p - beta\ p + p\^2\)\/\(alpha\ beta + \
+alpha\ p + beta\ p + p\^2\)\)\ \@\(\(alpha\ beta - alpha\ q - beta\ q + \
+q\^2\)\/\(alpha\ beta + alpha\ q + beta\ q + q\^2\)\)\ x\ x12 - \@\(\(alpha\ \
+beta - alpha\ p - beta\ p + p\^2\)\/\(alpha\ beta + alpha\ p + beta\ p + p\^2\
+\)\)\ q\^2\ \@\(\(alpha\ beta - alpha\ q - beta\ q + q\^2\)\/\(alpha\ beta + \
+alpha\ q + beta\ q + q\^2\)\)\ x\ x12 - 
+          alpha\ beta\ \@\(\(alpha\ beta - alpha\ q - beta\ q + \
+q\^2\)\/\(alpha\ beta + alpha\ q + beta\ q + q\^2\)\)\ x1\ x12 + 
+          alpha\ p\ \@\(\(alpha\ beta - alpha\ q - beta\ q + q\^2\)\/\(alpha\ \
+beta + alpha\ q + beta\ q + q\^2\)\)\ x1\ x12 + 
+          beta\ p\ \@\(\(alpha\ beta - alpha\ q - beta\ q + q\^2\)\/\(alpha\ \
+beta + alpha\ q + beta\ q + q\^2\)\)\ x1\ x12 - 
+          p\^2\ \@\(\(alpha\ beta - alpha\ q - beta\ q + q\^2\)\/\(alpha\ \
+beta + alpha\ q + beta\ q + q\^2\)\)\ x1\ x12 - 
+          alpha\ beta\ \@\(\(alpha\ beta - alpha\ q - beta\ q + \
+q\^2\)\/\(alpha\ beta + alpha\ q + beta\ q + q\^2\)\)\ x\ x2 + 
+          alpha\ p\ \@\(\(alpha\ beta - alpha\ q - beta\ q + q\^2\)\/\(alpha\ \
+beta + alpha\ q + beta\ q + q\^2\)\)\ x\ x2 + 
+          beta\ p\ \@\(\(alpha\ beta - alpha\ q - beta\ q + q\^2\)\/\(alpha\ \
+beta + alpha\ q + beta\ q + q\^2\)\)\ x\ x2 - 
+          
+          p\^2\ \@\(\(alpha\ beta - alpha\ q - beta\ q + q\^2\)\/\(alpha\ \
+beta + alpha\ q + beta\ q + q\^2\)\)\ x\ x2 + 
+          p\^2\ \@\(\(alpha\ beta - alpha\ p - beta\ p + p\^2\)\/\(alpha\ \
+beta + alpha\ p + beta\ p + p\^2\)\)\ \@\(\(alpha\ beta - alpha\ q - beta\ q \
++ q\^2\)\/\(alpha\ beta + alpha\ q + beta\ q + q\^2\)\)\ x1\ x2 - \@\(\(alpha\
+\ beta - alpha\ p - beta\ p + p\^2\)\/\(alpha\ beta + alpha\ p + beta\ p + \
+p\^2\)\)\ q\^2\ \@\(\(alpha\ beta - alpha\ q - beta\ q + q\^2\)\/\(alpha\ \
+beta + alpha\ q + beta\ q + q\^2\)\)\ x1\ x2 + 
+          alpha\ beta\ \@\(\(alpha\ beta - alpha\ p - beta\ p + \
+p\^2\)\/\(alpha\ beta + alpha\ p + beta\ p + p\^2\)\)\ x12\ x2 - 
+          alpha\ \@\(\(alpha\ beta - alpha\ p - beta\ p + p\^2\)\/\(alpha\ \
+beta + alpha\ p + beta\ p + p\^2\)\)\ q\ x12\ x2 - 
+          beta\ \@\(\(alpha\ beta - alpha\ p - beta\ p + p\^2\)\/\(alpha\ \
+beta + alpha\ p + beta\ p + p\^2\)\)\ q\ x12\ x2 + \@\(\(alpha\ beta - alpha\ \
+p - beta\ p + p\^2\)\/\(alpha\ beta + alpha\ p + beta\ p + p\^2\)\)\ q\^2\ \
+x12\ x2)\)\)], "Print"],
+
+Cell[BoxData[
+    \("************************** END OF COMPUTATION! **********************"\
+\)], "Print"],
+
+Cell[BoxData[
+    \($Aborted\)], "Output"]
+}, Open  ]]
+},
+FrontEndVersion->"5.0 for Microsoft Windows",
+ScreenRectangle->{{0, 1280}, {0, 941}},
+WindowSize->{1112, 740},
+WindowMargins->{{Automatic, 44}, {Automatic, 25}},
+Magnification->1.5
+]
+
+(*******************************************************************
+Cached data follows.  If you edit this Notebook file directly, not
+using Mathematica, you must remove the line containing CacheID at
+the top of  the file.  The cache data will then be recreated when
+you save this file from within Mathematica.
+*******************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+
+(*NotebookFileOutline
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[1776, 53, 69, 1, 42, "Input"],
+Cell[1848, 56, 52, 1, 41, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[1937, 62, 54, 1, 42, "Input"],
+Cell[1994, 65, 105, 2, 35, "Print"],
+Cell[2102, 69, 275, 5, 35, "Print"],
+Cell[2380, 76, 106, 2, 35, "Print"],
+Cell[2489, 80, 82, 1, 35, "Print"],
+Cell[2574, 83, 82, 1, 35, "Print"],
+Cell[2659, 86, 78, 1, 35, "Print"],
+Cell[2740, 89, 81, 1, 35, "Print"],
+Cell[2824, 92, 81, 1, 35, "Print"],
+Cell[2908, 95, 100, 2, 35, "Print"],
+Cell[3011, 99, 99, 2, 35, "Print"],
+Cell[3113, 103, 100, 2, 35, "Print"],
+Cell[3216, 107, 99, 2, 35, "Print"],
+Cell[3318, 111, 101, 2, 35, "Print"],
+Cell[3422, 115, 49, 1, 35, "Print"],
+Cell[3474, 118, 51, 1, 35, "Print"],
+Cell[3528, 121, 56, 1, 35, "Print"],
+Cell[3587, 124, 106, 2, 35, "Print"],
+Cell[3696, 128, 98, 2, 35, "Print"],
+Cell[3797, 132, 92, 1, 35, "Print"],
+Cell[3892, 135, 105, 2, 35, "Print"],
+Cell[4000, 139, 92, 1, 35, "Print"],
+Cell[4095, 142, 92, 1, 35, "Print"],
+Cell[4190, 145, 92, 1, 35, "Print"],
+Cell[4285, 148, 92, 1, 35, "Print"],
+Cell[4380, 151, 92, 1, 35, "Print"],
+Cell[4475, 154, 92, 1, 35, "Print"],
+Cell[4570, 157, 92, 1, 35, "Print"],
+Cell[4665, 160, 105, 2, 35, "Print"],
+Cell[4773, 164, 228, 4, 35, "Print"],
+Cell[5004, 170, 367, 6, 60, "Print"],
+Cell[5374, 178, 102, 2, 35, "Print"],
+Cell[5479, 182, 252, 5, 35, "Print"],
+Cell[5734, 189, 240, 5, 35, "Print"],
+Cell[5977, 196, 238, 5, 35, "Print"],
+Cell[6218, 203, 201, 4, 35, "Print"],
+Cell[6422, 209, 191, 4, 35, "Print"],
+Cell[6616, 215, 183, 3, 35, "Print"],
+Cell[6802, 220, 203, 4, 35, "Print"],
+Cell[7008, 226, 234, 5, 35, "Print"],
+Cell[7245, 233, 106, 2, 35, "Print"],
+Cell[7354, 237, 100, 2, 35, "Print"],
+Cell[7457, 241, 85, 1, 35, "Print"],
+Cell[7545, 244, 97, 2, 35, "Print"],
+Cell[7645, 248, 66, 1, 35, "Print"],
+Cell[7714, 251, 87, 1, 35, "Print"],
+Cell[7804, 254, 83, 1, 35, "Print"],
+Cell[7890, 257, 99, 2, 35, "Print"],
+Cell[7992, 261, 89, 1, 35, "Print"],
+Cell[8084, 264, 49, 1, 35, "Print"],
+Cell[8136, 267, 106, 2, 35, "Print"],
+Cell[8245, 271, 97, 2, 35, "Print"],
+Cell[8345, 275, 74, 1, 35, "Print"],
+Cell[8422, 278, 367, 6, 60, "Print"],
+Cell[8792, 286, 90, 1, 35, "Print"],
+Cell[8885, 289, 105, 2, 35, "Print"],
+Cell[8993, 293, 960, 13, 226, "Print"],
+Cell[9956, 308, 136, 2, 60, "Print"],
+Cell[10095, 312, 3114, 47, 1167, "Print"],
+Cell[13212, 361, 106, 2, 35, "Print"],
+Cell[13321, 365, 42, 1, 41, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+
+
+(*******************************************************************
+End of Mathematica Notebook file.
+*******************************************************************)
+

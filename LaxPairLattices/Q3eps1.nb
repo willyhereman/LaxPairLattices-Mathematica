@@ -1,0 +1,2559 @@
+(************** Content-type: application/mathematica **************
+                     CreatedBy='Mathematica 5.0'
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used with any Mathematica-compatible
+application, such as Mathematica, MathReader or Publicon. The data
+for the notebook starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do
+one of the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the
+  application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing
+the word CacheID, otherwise Mathematica-compatible applications may
+try to use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+*******************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[    115813,       2282]*)
+(*NotebookOutlinePosition[    116478,       2305]*)
+(*  CellTagsIndexPosition[    116434,       2301]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+    \(SetDirectory["\<d:\\demolattices\>"]\)], "Input"],
+
+Cell[BoxData[
+    \("d:\\demolattices"\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(Get["\<LaxPair.m\>"]\)], "Input"],
+
+Cell[BoxData[
+    \("Loading code for computation of Lax pairs (July 18, 2008)"\)], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("***************** MENU INTERFACE *****************  \
+(page: "\[InvisibleSpace]1\[InvisibleSpace]")"\),
+      SequenceForm[ 
+      "***************** MENU INTERFACE *****************  (page: ", 1, ")"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("---------------------------------------------------------------------"\
+\)], "Print"],
+
+Cell[BoxData[
+    \("  1) discrete potential KdV Equation (l_pKdV.m)"\)], "Print"],
+
+Cell[BoxData[
+    \("  2) discrete modified KdV Equation  (l_mKdV.m)"\)], "Print"],
+
+Cell[BoxData[
+    \("  3) discrete sine-Gordon Equation (l_sG.m)"\)], "Print"],
+
+Cell[BoxData[
+    \("  4) H1 equation (ABS classification) (l_H1.m)"\)], "Print"],
+
+Cell[BoxData[
+    \("  5) H2 equation (ABS classification) (l_H2.m)"\)], "Print"],
+
+Cell[BoxData[
+    \("  6) H3 equation (delta not 0) (ABS classification) (l_H3rhs.m)"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("  7) H3 equation (delta = 0) (ABS classification) (l_H3zero.m)"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("  8) Q1 equation (delta not 0) (ABS classification) (l_Q1rhs.m)"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("  9) Q1 equation (delta = 0) (ABS classification) (l_Q1zero.m)"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("  10) Q2 equation (delta not 0) (ABS classification) (l_Q2rhs.m)"\)], \
+"Print"],
+
+Cell[BoxData[
+    \(" nn) Next Page"\)], "Print"],
+
+Cell[BoxData[
+    \(" tt) Your System"\)], "Print"],
+
+Cell[BoxData[
+    \(" qq) Exit the Program"\)], "Print"],
+
+Cell[BoxData[
+    \("---------------------------------------------------------------------"\
+\)], "Print"],
+
+Cell[BoxData[
+    \("Make sure that you have prepared the data file for the system"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("you want to test (similar to the data files we supplied)."\)], "Print"],
+
+Cell[BoxData[
+    \("********************************************************************"\)\
+], "Print"],
+
+Cell[BoxData[
+    \("         WELCOME TO THE MATHEMATICA PROGRAM              "\)], "Print"],
+
+Cell[BoxData[
+    \("                  by WILLY HEREMAN                       "\)], "Print"],
+
+Cell[BoxData[
+    \("     FOR THE COMPUTATION OF LAX PAIRS OF NONLINEAR       "\)], "Print"],
+
+Cell[BoxData[
+    \("  PARTIAL DIFFERENCE EQUATIONS IN 2D (ON QUAD-GRAPHS)    "\)], "Print"],
+
+Cell[BoxData[
+    \(" Collaborators: Reinout Quispel and Peter van der Kamp   "\)], "Print"],
+
+Cell[BoxData[
+    \("           First released on July 18, 2008               "\)], "Print"],
+
+Cell[BoxData[
+    \("                    Copyright 2008                       "\)], "Print"],
+
+Cell[BoxData[
+    \("********************************************************************"\)\
+], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("Working with the discrete "\[InvisibleSpace]Q3\
+\[InvisibleSpace]" equation:"\),
+      SequenceForm[ "Working with the discrete ", Q3, " equation:"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \(\(-delta\^2\)\ \((\(-1\) + p\^2)\)\ \((p\^2 - q\^2)\)\ \((\(-1\) + 
+              q\^2)\) + 
+        4\ p\ q\ \((\(-p\)\ \((\(-1\) + q\^2)\)\ \((x1\ x12 + 
+                    x\ x2)\) + \((\(-p\^2\) + q\^2)\)\ \((x\ x12 + 
+                    x1\ x2)\) + \((\(-1\) + p\^2)\)\ q\ \((x\ x1 + 
+                    x12\ x2)\))\) \[Equal] 0\)], "Print"],
+
+Cell[BoxData[
+    \("********************** CONTROL SETTINGS *************************"\)], \
+"Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("LaxPairGiven (L and M are given in data file) is set \
+to "\[InvisibleSpace]False\),
+      SequenceForm[ 
+      "LaxPairGiven (L and M are given in data file) is set to ", False],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("t and s are given in data file (byhand) is set to: "\
+\[InvisibleSpace]True\),
+      SequenceForm[ 
+      "t and s are given in data file (byhand) is set to: ", True],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("Determinant method to compute t and s is set to: "\
+\[InvisibleSpace]False\),
+      SequenceForm[ 
+      "Determinant method to compute t and s is set to: ", False],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("Test consistency on cube is set to \
+"\[InvisibleSpace]True\),
+      SequenceForm[ "Test consistency on cube is set to ", True],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("Use of powerexpand is set to \
+"\[InvisibleSpace]True\),
+      SequenceForm[ "Use of powerexpand is set to ", True],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("Use of rootrules is set to "\[InvisibleSpace]True\),
+      SequenceForm[ "Use of rootrules is set to ", True],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("Computation of matrix N is set to: \
+"\[InvisibleSpace]False\),
+      SequenceForm[ "Computation of matrix N is set to: ", False],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("Application of gauge transformation is set to: "\
+\[InvisibleSpace]False\),
+      SequenceForm[ "Application of gauge transformation is set to: ", False],
+      
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("******************* START OF THE COMPUTATION ************************"\
+\)], "Print"],
+
+Cell[BoxData[
+    \("Working with lattice defined on front (F), latticefront:"\)], "Print"],
+
+Cell[BoxData[
+    \(\(-delta\^2\)\ \((\(-1\) + p\^2)\)\ \((p\^2 - q\^2)\)\ \((\(-1\) + 
+              q\^2)\) + 
+        4\ p\ q\ \((\(-p\)\ \((\(-1\) + q\^2)\)\ \((x1\ x12 + 
+                    x\ x2)\) + \((\(-p\^2\) + q\^2)\)\ \((x\ x12 + 
+                    x1\ x2)\) + \((\(-1\) + p\^2)\)\ q\ \((x\ x1 + 
+                    x12\ x2)\))\) \[Equal] 0\)], "Print"],
+
+Cell[BoxData[
+    \("Lattice on ground (G), latticeground:"\)], "Print"],
+
+Cell[BoxData[
+    \(\(-delta\^2\)\ \((\(-1\) + k\^2)\)\ \((\(-1\) + p\^2)\)\ \((\(-k\^2\) + 
+              p\^2)\) + 
+        4\ k\ p\ \((\(-\((\(-1\) + k\^2)\)\)\ p\ \((x1\ x13 + 
+                    x\ x3)\) + \((k\^2 - p\^2)\)\ \((x\ x13 + x1\ x3)\) + 
+              k\ \((\(-1\) + p\^2)\)\ \((x\ x1 + x13\ x3)\))\) \[Equal] 
+      0\)], "Print"],
+
+Cell[BoxData[
+    \("Lattice on left face (L), latticeleftface:"\)], "Print"],
+
+Cell[BoxData[
+    \(\(-delta\^2\)\ \((\(-1\) + k\^2)\)\ \((\(-1\) + q\^2)\)\ \((\(-k\^2\) + 
+              q\^2)\) + 
+        4\ k\ q\ \((\(-\((\(-1\) + k\^2)\)\)\ q\ \((x2\ x23 + 
+                    x\ x3)\) + \((k\^2 - q\^2)\)\ \((x\ x23 + x2\ x3)\) + 
+              k\ \((\(-1\) + q\^2)\)\ \((x\ x2 + x23\ x3)\))\) \[Equal] 
+      0\)], "Print"],
+
+Cell[BoxData[
+    \("**************** TESTING CONSISTENCY AROUND THE CUBE ****************"\
+\)], "Print"],
+
+Cell[BoxData[
+    \("Computation  x12 ="\)], "Print"],
+
+Cell[BoxData[
+    \(\((delta\^2\ p\^2 - delta\^2\ p\^4 - delta\^2\ q\^2 + 
+          delta\^2\ p\^4\ q\^2 + delta\^2\ q\^4 - delta\^2\ p\^2\ q\^4 + 
+          4\ p\ q\^2\ x\ x1 - 4\ p\^3\ q\^2\ x\ x1 - 4\ p\^2\ q\ x\ x2 + 
+          4\ p\^2\ q\^3\ x\ x2 + 4\ p\^3\ q\ x1\ x2 - 
+          4\ p\ q\^3\ x1\ x2)\)/\((4\ p\ q\ \((\(-p\^2\)\ x + q\^2\ x + 
+              p\ x1 - p\ q\^2\ x1 - q\ x2 + p\^2\ q\ x2)\))\)\)], "Print"],
+
+Cell[BoxData[
+    \("Computation  x13 = "\)], "Print"],
+
+Cell[BoxData[
+    \(\((delta\^2\ k\^2 - delta\^2\ k\^4 - delta\^2\ p\^2 + 
+          delta\^2\ k\^4\ p\^2 + delta\^2\ p\^4 - delta\^2\ k\^2\ p\^4 - 
+          4\ k\^2\ p\ x\ x1 + 4\ k\^2\ p\^3\ x\ x1 + 4\ k\ p\^2\ x\ x3 - 
+          4\ k\^3\ p\^2\ x\ x3 + 4\ k\^3\ p\ x1\ x3 - 
+          4\ k\ p\^3\ x1\ x3)\)/\((4\ k\ p\ \((\(-k\^2\)\ x + p\^2\ x - 
+              p\ x1 + k\^2\ p\ x1 + k\ x3 - k\ p\^2\ x3)\))\)\)], "Print"],
+
+Cell[BoxData[
+    \("Computation  x23 = "\)], "Print"],
+
+Cell[BoxData[
+    \(\((delta\^2\ k\^2 - delta\^2\ k\^4 - delta\^2\ q\^2 + 
+          delta\^2\ k\^4\ q\^2 + delta\^2\ q\^4 - delta\^2\ k\^2\ q\^4 - 
+          4\ k\^2\ q\ x\ x2 + 4\ k\^2\ q\^3\ x\ x2 + 4\ k\ q\^2\ x\ x3 - 
+          4\ k\^3\ q\^2\ x\ x3 + 4\ k\^3\ q\ x2\ x3 - 
+          4\ k\ q\^3\ x2\ x3)\)/\((4\ k\ q\ \((\(-k\^2\)\ x + q\^2\ x - 
+              q\ x2 + k\^2\ q\ x2 + k\ x3 - k\ q\^2\ x3)\))\)\)], "Print"],
+
+Cell[BoxData[
+    \("*****************************************************************"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("After factoring, computation of x123 using x23 (x123choice1), x123 \
+="\)], "Print"],
+
+Cell[BoxData[
+    \(\((\(-delta\^2\)\ k\^4\ p\^2 + delta\^2\ k\^2\ p\^4 + 
+          delta\^2\ k\^4\ q\^2 - delta\^2\ p\^4\ q\^2 - 
+          delta\^2\ k\^2\ q\^4 + delta\^2\ p\^2\ q\^4 - 
+          4\ k\^2\ p\^3\ q\ x1\ x2 + 4\ k\^2\ p\ q\^3\ x1\ x2 - 
+          4\ k\^3\ p\ q\^2\ x1\ x3 + 4\ k\ p\^3\ q\^2\ x1\ x3 + 
+          4\ k\^3\ p\^2\ q\ x2\ x3 - 
+          4\ k\ p\^2\ q\^3\ x2\ x3)\)/\((4\ k\ p\ q\ \((\(-k\^2\)\ p\ x1 + 
+              p\ q\^2\ x1 + k\^2\ q\ x2 - p\^2\ q\ x2 + k\ p\^2\ x3 - 
+              k\ q\^2\ x3)\))\)\)], "Print"],
+
+Cell[BoxData[
+    \("After factoring, computation of x123 using x13, (x123choice2), x123 ="\
+\)], "Print"],
+
+Cell[BoxData[
+    \(\((delta\^2\ k\^4\ p\^2 - delta\^2\ k\^2\ p\^4 - delta\^2\ k\^4\ q\^2 + 
+          delta\^2\ p\^4\ q\^2 + delta\^2\ k\^2\ q\^4 - 
+          delta\^2\ p\^2\ q\^4 + 4\ k\^2\ p\^3\ q\ x1\ x2 - 
+          4\ k\^2\ p\ q\^3\ x1\ x2 + 4\ k\^3\ p\ q\^2\ x1\ x3 - 
+          4\ k\ p\^3\ q\^2\ x1\ x3 - 4\ k\^3\ p\^2\ q\ x2\ x3 + 
+          4\ k\ p\^2\ q\^3\ x2\ x3)\)/\((4\ k\ p\ q\ \((k\^2\ p\ x1 - 
+              p\ q\^2\ x1 - k\^2\ q\ x2 + p\^2\ q\ x2 - k\ p\^2\ x3 + 
+              k\ q\^2\ x3)\))\)\)], "Print"],
+
+Cell[BoxData[
+    \("********************************************************************"\)\
+], "Print"],
+
+Cell[BoxData[
+    \("As soon as one consistency condition is violated the computation"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("will abort, unless candidates for L and M are given in the data file."\
+\)], "Print"],
+
+Cell[BoxData[
+    \("Test if (x123choice1 - x123choice2) = 0, diffx123choice1choice2 ="\)], \
+"Print"],
+
+Cell[BoxData[
+    \(0\)], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("*** TEST RESULT = "\[InvisibleSpace]0\
+\[InvisibleSpace]" (SHOULD BE ZERO) ***"\),
+      SequenceForm[ "*** TEST RESULT = ", 0, " (SHOULD BE ZERO) ***"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("The equation is CONSISTENT around the cube!"\)], "Print"],
+
+Cell[BoxData[
+    \("************* BUILDING THE LAX PAIR (L_c and M_c) \
+*****************"\)], "Print"],
+
+Cell[BoxData[
+    \("(c refers to candidate matrix), normalization factors t and s will \
+"\)], "Print"],
+
+Cell[BoxData[
+    \("be computed below, or must be given in the data file "\)], "Print"],
+
+Cell[BoxData[
+    \("Substitution of x3 = f/g into x13, gives x13hom = "\)], "Print"],
+
+Cell[BoxData[
+    \(\((delta\^2\ g\ k\^2 - delta\^2\ g\ k\^4 - delta\^2\ g\ p\^2 + 
+          delta\^2\ g\ k\^4\ p\^2 + delta\^2\ g\ p\^4 - 
+          delta\^2\ g\ k\^2\ p\^4 + 4\ f\ k\ p\^2\ x - 4\ f\ k\^3\ p\^2\ x + 
+          4\ f\ k\^3\ p\ x1 - 4\ f\ k\ p\^3\ x1 - 4\ g\ k\^2\ p\ x\ x1 + 
+          4\ g\ k\^2\ p\^3\ x\ x1)\)/\((4\ k\ p\ \((f\ k - f\ k\ p\^2 - 
+              g\ k\^2\ x + g\ p\^2\ x - g\ p\ x1 + 
+              g\ k\^2\ p\ x1)\))\)\)], "Print"],
+
+Cell[BoxData[
+    \("Substitution of x3 = f/g into x23, gives x23hom = "\)], "Print"],
+
+Cell[BoxData[
+    \(\((delta\^2\ g\ k\^2 - delta\^2\ g\ k\^4 - delta\^2\ g\ q\^2 + 
+          delta\^2\ g\ k\^4\ q\^2 + delta\^2\ g\ q\^4 - 
+          delta\^2\ g\ k\^2\ q\^4 + 4\ f\ k\ q\^2\ x - 4\ f\ k\^3\ q\^2\ x + 
+          4\ f\ k\^3\ q\ x2 - 4\ f\ k\ q\^3\ x2 - 4\ g\ k\^2\ q\ x\ x2 + 
+          4\ g\ k\^2\ q\^3\ x\ x2)\)/\((4\ k\ q\ \((f\ k - f\ k\ q\^2 - 
+              g\ k\^2\ x + g\ q\^2\ x - g\ q\ x2 + 
+              g\ k\^2\ q\ x2)\))\)\)], "Print"],
+
+Cell[BoxData[
+    \("*********************************************************************"\
+\)], "Print"],
+
+Cell[BoxData[
+    \("IMPORTANT NOTE:"\)], "Print"],
+
+Cell[BoxData[
+    \("Although t and s are given in the data file, they will only be"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("used LATER. Continuation with the next steps allows one to verify"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("if t and s are CONSISTENT with the steps of the algorithm"\)], "Print"],
+
+Cell[BoxData[
+    \("******************************************************************"\)],\
+ "Print"],
+
+Cell[BoxData[
+    \("Candidate Lax pair, matrix L (candidateL)"\)], "Print"],
+
+Cell[BoxData[
+    \("L = "\)], "Print"],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+            {\(\(-4\)\ k\ p\ t\ \((\(-p\)\ x + k\^2\ p\ x - k\^2\ x1 + 
+                    p\^2\ x1)\)\), \(\((\(-1\) + p)\)\ \((1 + 
+                    p)\)\ t\ \((\(-delta\^2\)\ k\^2 + delta\^2\ k\^4 + 
+                    delta\^2\ p\^2 - delta\^2\ k\^2\ p\^2 + 
+                    4\ k\^2\ p\ x\ x1)\)\)},
+            {\(\(-4\)\ k\^2\ \((\(-1\) + p)\)\ p\ \((1 + 
+                    p)\)\ t\), \(4\ k\ p\ t\ \((\(-k\^2\)\ x + p\^2\ x - 
+                    p\ x1 + k\^2\ p\ x1)\)\)}
+            }], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Print"],
+
+Cell[BoxData[
+    \("*********************************************************************"\
+\)], "Print"],
+
+Cell[BoxData[
+    \("Entry L11 of candidate L (entrycandidateL11) "\)], "Print"],
+
+Cell[BoxData[
+    \("L11 = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(-4\)\ k\ p\ t\ \((\(-p\)\ x + k\^2\ p\ x - k\^2\ x1 + 
+          p\^2\ x1)\)\)], "Print"],
+
+Cell[BoxData[
+    \("Entry L12 of candidate L (entrycandidateL12) "\)], "Print"],
+
+Cell[BoxData[
+    \("L12 = "\)], "Print"],
+
+Cell[BoxData[
+    \(\((\(-1\) + p)\)\ \((1 + p)\)\ t\ \((\(-delta\^2\)\ k\^2 + 
+          delta\^2\ k\^4 + delta\^2\ p\^2 - delta\^2\ k\^2\ p\^2 + 
+          4\ k\^2\ p\ x\ x1)\)\)], "Print"],
+
+Cell[BoxData[
+    \("Entry L21 of candidate L (entrycandidateL21) "\)], "Print"],
+
+Cell[BoxData[
+    \("L21 = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(-4\)\ k\^2\ \((\(-1\) + p)\)\ p\ \((1 + p)\)\ t\)], "Print"],
+
+Cell[BoxData[
+    \("Entry L22 of candidate L (entrycandidateL22) "\)], "Print"],
+
+Cell[BoxData[
+    \("L22 = "\)], "Print"],
+
+Cell[BoxData[
+    \(4\ k\ p\ t\ \((\(-k\^2\)\ x + p\^2\ x - p\ x1 + 
+          k\^2\ p\ x1)\)\)], "Print"],
+
+Cell[BoxData[
+    \("*********************************************************************"\
+\)], "Print"],
+
+Cell[BoxData[
+    \("Candidate Lax pair, matrix M (candidateM)"\)], "Print"],
+
+Cell[BoxData[
+    \("M = "\)], "Print"],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+            {\(\(-4\)\ k\ q\ s\ \((\(-q\)\ x + k\^2\ q\ x - k\^2\ x2 + 
+                    q\^2\ x2)\)\), \(\((\(-1\) + q)\)\ \((1 + 
+                    q)\)\ s\ \((\(-delta\^2\)\ k\^2 + delta\^2\ k\^4 + 
+                    delta\^2\ q\^2 - delta\^2\ k\^2\ q\^2 + 
+                    4\ k\^2\ q\ x\ x2)\)\)},
+            {\(\(-4\)\ k\^2\ \((\(-1\) + q)\)\ q\ \((1 + 
+                    q)\)\ s\), \(4\ k\ q\ s\ \((\(-k\^2\)\ x + q\^2\ x - 
+                    q\ x2 + k\^2\ q\ x2)\)\)}
+            }], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Print"],
+
+Cell[BoxData[
+    \("*********************************************************************"\
+\)], "Print"],
+
+Cell[BoxData[
+    \("Entry M11 of candidate M (entrycandidateM11) "\)], "Print"],
+
+Cell[BoxData[
+    \("M11 = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(-4\)\ k\ q\ s\ \((\(-q\)\ x + k\^2\ q\ x - k\^2\ x2 + 
+          q\^2\ x2)\)\)], "Print"],
+
+Cell[BoxData[
+    \("Entry M12 of candidate M (entrycandidateM12) "\)], "Print"],
+
+Cell[BoxData[
+    \("M12 = "\)], "Print"],
+
+Cell[BoxData[
+    \(\((\(-1\) + q)\)\ \((1 + q)\)\ s\ \((\(-delta\^2\)\ k\^2 + 
+          delta\^2\ k\^4 + delta\^2\ q\^2 - delta\^2\ k\^2\ q\^2 + 
+          4\ k\^2\ q\ x\ x2)\)\)], "Print"],
+
+Cell[BoxData[
+    \("Entry M21 of candidate M (entrycandidateM21) "\)], "Print"],
+
+Cell[BoxData[
+    \("M21 = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(-4\)\ k\^2\ \((\(-1\) + q)\)\ q\ \((1 + q)\)\ s\)], "Print"],
+
+Cell[BoxData[
+    \("Entry M22 of candidate M (entrycandidateM22) "\)], "Print"],
+
+Cell[BoxData[
+    \("M22 = "\)], "Print"],
+
+Cell[BoxData[
+    \(4\ k\ q\ s\ \((\(-k\^2\)\ x + q\^2\ x - q\ x2 + 
+          k\^2\ q\ x2)\)\)], "Print"],
+
+Cell[BoxData[
+    \("*******************************************************************"\)]\
+, "Print"],
+
+Cell[BoxData[
+    \("************ COMPUTATION OF THE LAX PAIR CONTINUES \
+***************"\)], "Print"],
+
+Cell[BoxData[
+    \("************ COMPUTATION OF CONSTRAINTS FOR t AND s \
+***************"\)], "Print"],
+
+Cell[BoxData[
+    \("The subsequent computations might be slow for complicated \
+lattices!"\)], "Print"],
+
+Cell[BoxData[
+    \("Compatibility equation, (1-1) element ON LATTICE,"\)], "Print"],
+
+Cell[BoxData[
+    \("compatibilityeq11onlattice = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(-\(\((4\ \((\(-1\) + k)\)\ k\^2\ \((1 + k)\)\ \((\(-k\^2\)\ q\ x1 + 
+                  p\^2\ q\ x1 + k\^2\ p\ x2 - 
+                  p\ q\^2\ x2)\)\ \((\(-delta\^2\)\ q\ s1\ t + 
+                  2\ delta\^2\ p\^2\ q\ s1\ t - delta\^2\ p\^4\ q\ s1\ t + 
+                  delta\^2\ q\^3\ s1\ t - 2\ delta\^2\ p\^2\ q\^3\ s1\ t + 
+                  delta\^2\ p\^4\ q\^3\ s1\ t + delta\^2\ p\ s\ t2 - 
+                  delta\^2\ p\^3\ s\ t2 - 2\ delta\^2\ p\ q\^2\ s\ t2 + 
+                  2\ delta\^2\ p\^3\ q\^2\ s\ t2 + delta\^2\ p\ q\^4\ s\ t2 - 
+                  delta\^2\ p\^3\ q\^4\ s\ t2 - 4\ p\^2\ q\ s1\ t\ x\^2 + 
+                  4\ p\^2\ q\^3\ s1\ t\ x\^2 + 4\ p\ q\^2\ s\ t2\ x\^2 - 
+                  4\ p\^3\ q\^2\ s\ t2\ x\^2 + 4\ p\ q\ s1\ t\ x\ x1 + 
+                  4\ p\^3\ q\ s1\ t\ x\ x1 - 4\ p\ q\^3\ s1\ t\ x\ x1 - 
+                  4\ p\^3\ q\^3\ s1\ t\ x\ x1 - 4\ p\^2\ q\ s1\ t\ x1\^2 + 
+                  4\ p\^2\ q\^3\ s1\ t\ x1\^2 - 4\ p\ q\ s\ t2\ x\ x2 + 
+                  4\ p\^3\ q\ s\ t2\ x\ x2 - 4\ p\ q\^3\ s\ t2\ x\ x2 + 
+                  4\ p\^3\ q\^3\ s\ t2\ x\ x2 + 4\ p\ q\^2\ s\ t2\ x2\^2 - 
+                  4\ p\^3\ q\^2\ s\ t2\ x2\^2)\))\)/\((p\^2\ x - q\^2\ x - 
+              p\ x1 + p\ q\^2\ x1 + q\ x2 - p\^2\ q\ x2)\)\)\) \[Equal] 
+      0\)], "Print"],
+
+Cell[BoxData[
+    \("Compatibility equation, (1-2) element ON LATTICE, "\)], "Print"],
+
+Cell[BoxData[
+    \("compatibilityeq12onlattice = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(-\(\((\((\(-1\) + k)\)\ k\ \((1 + k)\)\ \((p - q)\)\ \((p + 
+                  q)\)\ \((delta\^2\ k\^4 - delta\^2\ k\^2\ p\^2 - 
+                  delta\^2\ k\^2\ q\^2 + delta\^2\ p\^2\ q\^2 + 
+                  4\ k\^2\ p\ q\ x1\ x2)\)\ \((\(-delta\^2\)\ q\ s1\ t + 
+                  2\ delta\^2\ p\^2\ q\ s1\ t - delta\^2\ p\^4\ q\ s1\ t + 
+                  delta\^2\ q\^3\ s1\ t - 2\ delta\^2\ p\^2\ q\^3\ s1\ t + 
+                  delta\^2\ p\^4\ q\^3\ s1\ t + delta\^2\ p\ s\ t2 - 
+                  delta\^2\ p\^3\ s\ t2 - 2\ delta\^2\ p\ q\^2\ s\ t2 + 
+                  2\ delta\^2\ p\^3\ q\^2\ s\ t2 + delta\^2\ p\ q\^4\ s\ t2 - 
+                  delta\^2\ p\^3\ q\^4\ s\ t2 - 4\ p\^2\ q\ s1\ t\ x\^2 + 
+                  4\ p\^2\ q\^3\ s1\ t\ x\^2 + 4\ p\ q\^2\ s\ t2\ x\^2 - 
+                  4\ p\^3\ q\^2\ s\ t2\ x\^2 + 4\ p\ q\ s1\ t\ x\ x1 + 
+                  4\ p\^3\ q\ s1\ t\ x\ x1 - 4\ p\ q\^3\ s1\ t\ x\ x1 - 
+                  4\ p\^3\ q\^3\ s1\ t\ x\ x1 - 4\ p\^2\ q\ s1\ t\ x1\^2 + 
+                  4\ p\^2\ q\^3\ s1\ t\ x1\^2 - 4\ p\ q\ s\ t2\ x\ x2 + 
+                  4\ p\^3\ q\ s\ t2\ x\ x2 - 4\ p\ q\^3\ s\ t2\ x\ x2 + 
+                  4\ p\^3\ q\^3\ s\ t2\ x\ x2 + 4\ p\ q\^2\ s\ t2\ x2\^2 - 
+                  4\ p\^3\ q\^2\ s\ t2\ x2\^2)\))\)/\((p\ q\ \((\(-p\^2\)\ x \
++ q\^2\ x + p\ x1 - p\ q\^2\ x1 - q\ x2 + p\^2\ q\ x2)\))\)\)\) \[Equal] 
+      0\)], "Print"],
+
+Cell[BoxData[
+    \("Compatibility equation, (2-1) element ON LATTICE, "\)], "Print"],
+
+Cell[BoxData[
+    \("compatibilityeq21onlattice = "\)], "Print"],
+
+Cell[BoxData[
+    \(\((4\ \((\(-1\) + k)\)\ k\^3\ \((1 + k)\)\ \((p - q)\)\ \((p + 
+                q)\)\ \((\(-delta\^2\)\ q\ s1\ t + 
+                2\ delta\^2\ p\^2\ q\ s1\ t - delta\^2\ p\^4\ q\ s1\ t + 
+                delta\^2\ q\^3\ s1\ t - 2\ delta\^2\ p\^2\ q\^3\ s1\ t + 
+                delta\^2\ p\^4\ q\^3\ s1\ t + delta\^2\ p\ s\ t2 - 
+                delta\^2\ p\^3\ s\ t2 - 2\ delta\^2\ p\ q\^2\ s\ t2 + 
+                2\ delta\^2\ p\^3\ q\^2\ s\ t2 + delta\^2\ p\ q\^4\ s\ t2 - 
+                delta\^2\ p\^3\ q\^4\ s\ t2 - 4\ p\^2\ q\ s1\ t\ x\^2 + 
+                4\ p\^2\ q\^3\ s1\ t\ x\^2 + 4\ p\ q\^2\ s\ t2\ x\^2 - 
+                4\ p\^3\ q\^2\ s\ t2\ x\^2 + 4\ p\ q\ s1\ t\ x\ x1 + 
+                4\ p\^3\ q\ s1\ t\ x\ x1 - 4\ p\ q\^3\ s1\ t\ x\ x1 - 
+                4\ p\^3\ q\^3\ s1\ t\ x\ x1 - 4\ p\^2\ q\ s1\ t\ x1\^2 + 
+                4\ p\^2\ q\^3\ s1\ t\ x1\^2 - 4\ p\ q\ s\ t2\ x\ x2 + 
+                4\ p\^3\ q\ s\ t2\ x\ x2 - 4\ p\ q\^3\ s\ t2\ x\ x2 + 
+                4\ p\^3\ q\^3\ s\ t2\ x\ x2 + 4\ p\ q\^2\ s\ t2\ x2\^2 - 
+                4\ p\^3\ q\^2\ s\ t2\ x2\^2)\))\)/\((\(-p\^2\)\ x + q\^2\ x + 
+            p\ x1 - p\ q\^2\ x1 - q\ x2 + p\^2\ q\ x2)\) \[Equal] 
+      0\)], "Print"],
+
+Cell[BoxData[
+    \("Compatibility equation, (2-2) element ON LATTICE, "\)], "Print"],
+
+Cell[BoxData[
+    \("compatibilityeq22onlattice = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(-\(\((4\ \((\(-1\) + k)\)\ k\^2\ \((1 + k)\)\ \((\(-k\^2\)\ q\ x1 + 
+                  p\^2\ q\ x1 + k\^2\ p\ x2 - 
+                  p\ q\^2\ x2)\)\ \((\(-delta\^2\)\ q\ s1\ t + 
+                  2\ delta\^2\ p\^2\ q\ s1\ t - delta\^2\ p\^4\ q\ s1\ t + 
+                  delta\^2\ q\^3\ s1\ t - 2\ delta\^2\ p\^2\ q\^3\ s1\ t + 
+                  delta\^2\ p\^4\ q\^3\ s1\ t + delta\^2\ p\ s\ t2 - 
+                  delta\^2\ p\^3\ s\ t2 - 2\ delta\^2\ p\ q\^2\ s\ t2 + 
+                  2\ delta\^2\ p\^3\ q\^2\ s\ t2 + delta\^2\ p\ q\^4\ s\ t2 - 
+                  delta\^2\ p\^3\ q\^4\ s\ t2 - 4\ p\^2\ q\ s1\ t\ x\^2 + 
+                  4\ p\^2\ q\^3\ s1\ t\ x\^2 + 4\ p\ q\^2\ s\ t2\ x\^2 - 
+                  4\ p\^3\ q\^2\ s\ t2\ x\^2 + 4\ p\ q\ s1\ t\ x\ x1 + 
+                  4\ p\^3\ q\ s1\ t\ x\ x1 - 4\ p\ q\^3\ s1\ t\ x\ x1 - 
+                  4\ p\^3\ q\^3\ s1\ t\ x\ x1 - 4\ p\^2\ q\ s1\ t\ x1\^2 + 
+                  4\ p\^2\ q\^3\ s1\ t\ x1\^2 - 4\ p\ q\ s\ t2\ x\ x2 + 
+                  4\ p\^3\ q\ s\ t2\ x\ x2 - 4\ p\ q\^3\ s\ t2\ x\ x2 + 
+                  4\ p\^3\ q\^3\ s\ t2\ x\ x2 + 4\ p\ q\^2\ s\ t2\ x2\^2 - 
+                  4\ p\^3\ q\^2\ s\ t2\ x2\^2)\))\)/\((p\^2\ x - q\^2\ x - 
+              p\ x1 + p\ q\^2\ x1 + q\ x2 - p\^2\ q\ x2)\)\)\) \[Equal] 
+      0\)], "Print"],
+
+Cell[BoxData[
+    \("********************************************************************"\)\
+], "Print"],
+
+Cell[BoxData[
+    \("Compatibility testing of elements of matrix equation L2.M - M1.L = \
+0"\)], "Print"],
+
+Cell[BoxData[
+    \("Fraction (t2 s)/(t s1) (fractiononlatticeeq11, from "\)], "Print"],
+
+Cell[BoxData[
+    \("compatibilityeq11 and EVALUATED ON LATTICE)"\)], "Print"],
+
+Cell[BoxData[
+    \("(t2 s)/(t s1) = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(\((\(-1\) + q)\)\ q\ \((1 + q)\)\ \((delta\^2 - 2\ delta\^2\ p\^2 + \
+delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ \
+x1\^2)\)\)\/\(\((\(-1\) + p)\)\ p\ \((1 + p)\)\ \((delta\^2 - 2\ delta\^2\ \
+q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ \
+q\^2\ x2\^2)\)\)\)], "Print"],
+
+Cell[BoxData[
+    \("Fraction (t2 s)/(t s1) (fractiononlatticeeq12, from "\)], "Print"],
+
+Cell[BoxData[
+    \("compatibilityeq12 and EVALUATED ON LATTICE)"\)], "Print"],
+
+Cell[BoxData[
+    \("(t2 s)/(t s1) = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(\((\(-1\) + q)\)\ q\ \((1 + q)\)\ \((delta\^2 - 2\ delta\^2\ p\^2 + \
+delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ \
+x1\^2)\)\)\/\(\((\(-1\) + p)\)\ p\ \((1 + p)\)\ \((delta\^2 - 2\ delta\^2\ \
+q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ \
+q\^2\ x2\^2)\)\)\)], "Print"],
+
+Cell[BoxData[
+    \("Fraction (t2 s)/(t s1) (fractiononlatticeeq21, from "\)], "Print"],
+
+Cell[BoxData[
+    \("compatibilityeq21 and EVALUATED ON LATTICE)"\)], "Print"],
+
+Cell[BoxData[
+    \("(t2 s)/(t s1) = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(\((\(-1\) + q)\)\ q\ \((1 + q)\)\ \((delta\^2 - 2\ delta\^2\ p\^2 + \
+delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ \
+x1\^2)\)\)\/\(\((\(-1\) + p)\)\ p\ \((1 + p)\)\ \((delta\^2 - 2\ delta\^2\ \
+q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ \
+q\^2\ x2\^2)\)\)\)], "Print"],
+
+Cell[BoxData[
+    \("Fraction (t2 s)/(t s1) (fractiononlatticeeq22, from "\)], "Print"],
+
+Cell[BoxData[
+    \("compatibilityeq22 and EVALUATED ON LATTICE)"\)], "Print"],
+
+Cell[BoxData[
+    \("(t2 s)/(t s1) = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(\((\(-1\) + q)\)\ q\ \((1 + q)\)\ \((delta\^2 - 2\ delta\^2\ p\^2 + \
+delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ \
+x1\^2)\)\)\/\(\((\(-1\) + p)\)\ p\ \((1 + p)\)\ \((delta\^2 - 2\ delta\^2\ \
+q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ \
+q\^2\ x2\^2)\)\)\)], "Print"],
+
+Cell[BoxData[
+    \("******************************************************************"\)],\
+ "Print"],
+
+Cell[BoxData[
+    \("****** CRUCIAL STEP: TESTING t AND s GIVEN IN THE DATA FILE \
+******"\)], "Print"],
+
+Cell[BoxData[
+    \("The subsequent computations might be slow for complicated lattices, in \
+particular, if square roots are present!"\)], "Print"],
+
+Cell[BoxData[
+    \("*********************************************************************"\
+\)], "Print"],
+
+Cell[BoxData[
+    \("Determinant of matrix Lc, det(matrixLc) = "\)], "Print"],
+
+Cell[BoxData[
+    \(4\ \((\(-1\) + k)\)\ k\^2\ \((1 + k)\)\ \((k - p)\)\ p\ \((k + 
+          p)\)\ \((delta\^2 - 2\ delta\^2\ p\^2 + delta\^2\ p\^4 + 
+          4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 
+          4\ p\^2\ x1\^2)\)\)], "Print"],
+
+Cell[BoxData[
+    \("Determinant of matrix Mc, det(matrixMc) = "\)], "Print"],
+
+Cell[BoxData[
+    \(4\ \((\(-1\) + k)\)\ k\^2\ \((1 + k)\)\ \((k - q)\)\ q\ \((k + 
+          q)\)\ \((delta\^2 - 2\ delta\^2\ q\^2 + delta\^2\ q\^4 + 
+          4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 
+          4\ q\^2\ x2\^2)\)\)], "Print"],
+
+Cell[BoxData[
+    \("*********************************************************************"\
+\)], "Print"],
+
+Cell[BoxData[
+    \("----> Candidates for t and s are given in the data file!"\)], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("In the data file, t = \
+"\[InvisibleSpace]eps1\/\@\(delta\^2 - 2\ delta\^2\ p\^2 + delta\^2\ p\^4 + 4\
+\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ x1\^2\)\),
+      SequenceForm[ "In the data file, t = ", 
+        Times[ eps1, 
+          Power[ 
+            Plus[ 
+              Power[ delta, 2], 
+              Times[ -2, 
+                Power[ delta, 2], 
+                Power[ p, 2]], 
+              Times[ 
+                Power[ delta, 2], 
+                Power[ p, 4]], 
+              Times[ 4, 
+                Power[ p, 2], 
+                Power[ x, 2]], 
+              Times[ -4, p, x, x1], 
+              Times[ -4, 
+                Power[ p, 3], x, x1], 
+              Times[ 4, 
+                Power[ p, 2], 
+                Power[ x1, 2]]], 
+            Rational[ -1, 2]]]],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("In the data file, s = \
+"\[InvisibleSpace]eps2\/\@\(delta\^2 - 2\ delta\^2\ q\^2 + delta\^2\ q\^4 + 4\
+\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ x2\^2\)\),
+      SequenceForm[ "In the data file, s = ", 
+        Times[ eps2, 
+          Power[ 
+            Plus[ 
+              Power[ delta, 2], 
+              Times[ -2, 
+                Power[ delta, 2], 
+                Power[ q, 2]], 
+              Times[ 
+                Power[ delta, 2], 
+                Power[ q, 4]], 
+              Times[ 4, 
+                Power[ q, 2], 
+                Power[ x, 2]], 
+              Times[ -4, q, x, x2], 
+              Times[ -4, 
+                Power[ q, 3], x, x2], 
+              Times[ 4, 
+                Power[ q, 2], 
+                Power[ x2, 2]]], 
+            Rational[ -1, 2]]]],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("************************* TESTING t AND s ***************************"\
+\)], "Print"],
+
+Cell[BoxData[
+    \("The subsequent computations might be slow for complicated lattices, in \
+particular, if square roots are present!"\)], "Print"],
+
+Cell[BoxData[
+    \("t and s DO NOT PASS the SYMBOLIC TEST YET."\)], "Print"],
+
+Cell[BoxData[
+    \("Either t and s do not satisfy the condition(s),"\)], "Print"],
+
+Cell[BoxData[
+    \("OR, more likely, Mathematica could not simplify the expression."\)], \
+"Print"],
+
+Cell[BoxData[
+    \("The result will be numerically tested, with 12 tests where "\)], \
+"Print"],
+
+Cell[BoxData[
+    \("the symbols are replaced by randomly selected integers."\)], "Print"],
+
+Cell[BoxData[
+    \("Based on t and s (given in the data file),"\)], "Print"],
+
+Cell[BoxData[
+    \("the ratio (t2*s)/(t*s1) has been computed in two ways."\)], "Print"],
+
+Cell[BoxData[
+    \("The comparison PASSES the 12 NUMERIC TESTS"\)], "Print"],
+
+Cell[BoxData[
+    \("(based on randomly selected integers)."\)], "Print"],
+
+Cell[BoxData[
+    \("-----> t and s (given in the data file) appear to be CORRECT!"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("If controlpowerexpand and/or controlrootrules are set to True"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("in the data file, then further simplifications will be attempted."\)], \
+"Print"],
+
+Cell[BoxData[
+    \("After introducing rootrules to simplify the roots,"\)], "Print"],
+
+Cell[BoxData[
+    \("t and s PASS the SYMBOLIC TEST!"\)], "Print"],
+
+Cell[BoxData[
+    \("After using powerexpand in various places,"\)], "Print"],
+
+Cell[BoxData[
+    \("t and s PASS the SYMBOLIC TEST!"\)], "Print"],
+
+Cell[BoxData[
+    \("After introducing absolute values in various places,"\)], "Print"],
+
+Cell[BoxData[
+    \("t and s PASS the SYMBOLIC TEST!"\)], "Print"],
+
+Cell[BoxData[
+    \("*********************************************************************"\
+\)], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("Using t = "\[InvisibleSpace]eps1\/\@\(delta\^2 - 2\ \
+delta\^2\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ \
+x1 + 4\ p\^2\ x1\^2\)\[InvisibleSpace]" and s = \
+"\[InvisibleSpace]eps2\/\@\(delta\^2 - 2\ delta\^2\ q\^2 + delta\^2\ q\^4 + 4\
+\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ x2\^2\)\),
+      SequenceForm[ "Using t = ", 
+        Times[ eps1, 
+          Power[ 
+            Plus[ 
+              Power[ delta, 2], 
+              Times[ -2, 
+                Power[ delta, 2], 
+                Power[ p, 2]], 
+              Times[ 
+                Power[ delta, 2], 
+                Power[ p, 4]], 
+              Times[ 4, 
+                Power[ p, 2], 
+                Power[ x, 2]], 
+              Times[ -4, p, x, x1], 
+              Times[ -4, 
+                Power[ p, 3], x, x1], 
+              Times[ 4, 
+                Power[ p, 2], 
+                Power[ x1, 2]]], 
+            Rational[ -1, 2]]], " and s = ", 
+        Times[ eps2, 
+          Power[ 
+            Plus[ 
+              Power[ delta, 2], 
+              Times[ -2, 
+                Power[ delta, 2], 
+                Power[ q, 2]], 
+              Times[ 
+                Power[ delta, 2], 
+                Power[ q, 4]], 
+              Times[ 4, 
+                Power[ q, 2], 
+                Power[ x, 2]], 
+              Times[ -4, q, x, x2], 
+              Times[ -4, 
+                Power[ q, 3], x, x2], 
+              Times[ 4, 
+                Power[ q, 2], 
+                Power[ x2, 2]]], 
+            Rational[ -1, 2]]]],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("Lax pair, matrix L (matrixL) for t = "\
+\[InvisibleSpace]eps1\/\@\(delta\^2 - 2\ delta\^2\ p\^2 + delta\^2\ p\^4 + 4\ \
+p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ \
+x1\^2\)\[InvisibleSpace]" "\),
+      SequenceForm[ "Lax pair, matrix L (matrixL) for t = ", 
+        Times[ eps1, 
+          Power[ 
+            Plus[ 
+              Power[ delta, 2], 
+              Times[ -2, 
+                Power[ delta, 2], 
+                Power[ p, 2]], 
+              Times[ 
+                Power[ delta, 2], 
+                Power[ p, 4]], 
+              Times[ 4, 
+                Power[ p, 2], 
+                Power[ x, 2]], 
+              Times[ -4, p, x, x1], 
+              Times[ -4, 
+                Power[ p, 3], x, x1], 
+              Times[ 4, 
+                Power[ p, 2], 
+                Power[ x1, 2]]], 
+            Rational[ -1, 2]]], " "],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("********************************************************************"\)\
+], "Print"],
+
+Cell[BoxData[
+    \("L = "\)], "Print"],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+            {\(-\(\(4\ eps1\ k\ p\ \((\(-p\)\ x + k\^2\ p\ x - k\^2\ x1 + 
+                          p\^2\ x1)\)\)\/\@\(delta\^2 - 2\ delta\^2\ p\^2 + \
+delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ \
+x1\^2\)\)\), \(-\(\(eps1\ \((\(-1\) + p)\)\ \((1 + p)\)\ \((delta\^2\ k\^2 - 
+                          delta\^2\ k\^4 - delta\^2\ p\^2 + 
+                          delta\^2\ k\^2\ p\^2 - 
+                          4\ k\^2\ p\ x\ x1)\)\)\/\@\(delta\^2 - 2\ delta\^2\ \
+p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ \
+p\^2\ x1\^2\)\)\)},
+            {\(-\(\(4\ eps1\ k\^2\ \((\(-1\) + p)\)\ p\ \((1 + 
+                          p)\)\)\/\@\(delta\^2 - 2\ delta\^2\ p\^2 + delta\^2\
+\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ x1\^2\)\)\), \
+\(\(4\ eps1\ k\ p\ \((\(-k\^2\)\ x + p\^2\ x - p\ x1 + 
+                        k\^2\ p\ x1)\)\)\/\@\(delta\^2 - 2\ delta\^2\ p\^2 + \
+delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ \
+x1\^2\)\)}
+            }], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Print"],
+
+Cell[BoxData[
+    \("********************************************************************"\)\
+], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("The elements of L below are for t = "\
+\[InvisibleSpace]eps1\/\@\(delta\^2 - 2\ delta\^2\ p\^2 + delta\^2\ p\^4 + 4\ \
+p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ x1\^2\)\),
+      SequenceForm[ "The elements of L below are for t = ", 
+        Times[ eps1, 
+          Power[ 
+            Plus[ 
+              Power[ delta, 2], 
+              Times[ -2, 
+                Power[ delta, 2], 
+                Power[ p, 2]], 
+              Times[ 
+                Power[ delta, 2], 
+                Power[ p, 4]], 
+              Times[ 4, 
+                Power[ p, 2], 
+                Power[ x, 2]], 
+              Times[ -4, p, x, x1], 
+              Times[ -4, 
+                Power[ p, 3], x, x1], 
+              Times[ 4, 
+                Power[ p, 2], 
+                Power[ x1, 2]]], 
+            Rational[ -1, 2]]]],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("Entry L11 (entryL11)"\)], "Print"],
+
+Cell[BoxData[
+    \("L11 = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(-\(\(4\ eps1\ k\ p\ \((\(-p\)\ x + k\^2\ p\ x - k\^2\ x1 + 
+                p\^2\ x1)\)\)\/\@\(delta\^2 - 2\ delta\^2\ p\^2 + delta\^2\ p\
+\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ x1\^2\)\)\)\)], \
+"Print"],
+
+Cell[BoxData[
+    \("Entry L12 (entryL12)"\)], "Print"],
+
+Cell[BoxData[
+    \("L12 = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(-\(\(eps1\ \((\(-1\) + p)\)\ \((1 + p)\)\ \((delta\^2\ k\^2 - 
+                delta\^2\ k\^4 - delta\^2\ p\^2 + delta\^2\ k\^2\ p\^2 - 
+                4\ k\^2\ p\ x\ x1)\)\)\/\@\(delta\^2 - 2\ delta\^2\ p\^2 + \
+delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ \
+x1\^2\)\)\)\)], "Print"],
+
+Cell[BoxData[
+    \("Entry L21 (entryL21)"\)], "Print"],
+
+Cell[BoxData[
+    \("L21 = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(-\(\(4\ eps1\ k\^2\ \((\(-1\) + p)\)\ p\ \((1 + 
+                p)\)\)\/\@\(delta\^2 - 2\ delta\^2\ p\^2 + delta\^2\ p\^4 + 4\
+\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ x1\^2\)\)\)\)], "Print"],
+
+Cell[BoxData[
+    \("Entry L22 (entryL22)"\)], "Print"],
+
+Cell[BoxData[
+    \("L22 = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(4\ eps1\ k\ p\ \((\(-k\^2\)\ x + p\^2\ x - p\ x1 + k\^2\ p\ x1)\)\)\/\
+\@\(delta\^2 - 2\ delta\^2\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ \
+x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ x1\^2\)\)], "Print"],
+
+Cell[BoxData[
+    \("********************************************************************"\)\
+], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("Lax pair, matrix M (matrixM) for s = "\
+\[InvisibleSpace]eps2\/\@\(delta\^2 - 2\ delta\^2\ q\^2 + delta\^2\ q\^4 + 4\ \
+q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ \
+x2\^2\)\[InvisibleSpace]" "\),
+      SequenceForm[ "Lax pair, matrix M (matrixM) for s = ", 
+        Times[ eps2, 
+          Power[ 
+            Plus[ 
+              Power[ delta, 2], 
+              Times[ -2, 
+                Power[ delta, 2], 
+                Power[ q, 2]], 
+              Times[ 
+                Power[ delta, 2], 
+                Power[ q, 4]], 
+              Times[ 4, 
+                Power[ q, 2], 
+                Power[ x, 2]], 
+              Times[ -4, q, x, x2], 
+              Times[ -4, 
+                Power[ q, 3], x, x2], 
+              Times[ 4, 
+                Power[ q, 2], 
+                Power[ x2, 2]]], 
+            Rational[ -1, 2]]], " "],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("********************************************************************"\)\
+], "Print"],
+
+Cell[BoxData[
+    \("M = "\)], "Print"],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+            {\(-\(\(4\ eps2\ k\ q\ \((\(-q\)\ x + k\^2\ q\ x - k\^2\ x2 + 
+                          q\^2\ x2)\)\)\/\@\(delta\^2 - 2\ delta\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ \
+x2\^2\)\)\), \(-\(\(eps2\ \((\(-1\) + q)\)\ \((1 + q)\)\ \((delta\^2\ k\^2 - 
+                          delta\^2\ k\^4 - delta\^2\ q\^2 + 
+                          delta\^2\ k\^2\ q\^2 - 
+                          4\ k\^2\ q\ x\ x2)\)\)\/\@\(delta\^2 - 2\ delta\^2\ \
+q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ \
+q\^2\ x2\^2\)\)\)},
+            {\(-\(\(4\ eps2\ k\^2\ \((\(-1\) + q)\)\ q\ \((1 + 
+                          q)\)\)\/\@\(delta\^2 - 2\ delta\^2\ q\^2 + delta\^2\
+\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ x2\^2\)\)\), \
+\(\(4\ eps2\ k\ q\ \((\(-k\^2\)\ x + q\^2\ x - q\ x2 + 
+                        k\^2\ q\ x2)\)\)\/\@\(delta\^2 - 2\ delta\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ \
+x2\^2\)\)}
+            }], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Print"],
+
+Cell[BoxData[
+    \("********************************************************************"\)\
+], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("The elements of M below are for s = "\
+\[InvisibleSpace]eps2\/\@\(delta\^2 - 2\ delta\^2\ q\^2 + delta\^2\ q\^4 + 4\ \
+q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ x2\^2\)\),
+      SequenceForm[ "The elements of M below are for s = ", 
+        Times[ eps2, 
+          Power[ 
+            Plus[ 
+              Power[ delta, 2], 
+              Times[ -2, 
+                Power[ delta, 2], 
+                Power[ q, 2]], 
+              Times[ 
+                Power[ delta, 2], 
+                Power[ q, 4]], 
+              Times[ 4, 
+                Power[ q, 2], 
+                Power[ x, 2]], 
+              Times[ -4, q, x, x2], 
+              Times[ -4, 
+                Power[ q, 3], x, x2], 
+              Times[ 4, 
+                Power[ q, 2], 
+                Power[ x2, 2]]], 
+            Rational[ -1, 2]]]],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("Entry M11 (entryM11)"\)], "Print"],
+
+Cell[BoxData[
+    \("M11 = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(-\(\(4\ eps2\ k\ q\ \((\(-q\)\ x + k\^2\ q\ x - k\^2\ x2 + 
+                q\^2\ x2)\)\)\/\@\(delta\^2 - 2\ delta\^2\ q\^2 + delta\^2\ q\
+\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ x2\^2\)\)\)\)], \
+"Print"],
+
+Cell[BoxData[
+    \("Entry M12 (entryM12)"\)], "Print"],
+
+Cell[BoxData[
+    \("M12 = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(-\(\(eps2\ \((\(-1\) + q)\)\ \((1 + q)\)\ \((delta\^2\ k\^2 - 
+                delta\^2\ k\^4 - delta\^2\ q\^2 + delta\^2\ k\^2\ q\^2 - 
+                4\ k\^2\ q\ x\ x2)\)\)\/\@\(delta\^2 - 2\ delta\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ \
+x2\^2\)\)\)\)], "Print"],
+
+Cell[BoxData[
+    \("Entry M21 (entryM21)"\)], "Print"],
+
+Cell[BoxData[
+    \("M21 = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(-\(\(4\ eps2\ k\^2\ \((\(-1\) + q)\)\ q\ \((1 + 
+                q)\)\)\/\@\(delta\^2 - 2\ delta\^2\ q\^2 + delta\^2\ q\^4 + 4\
+\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ x2\^2\)\)\)\)], "Print"],
+
+Cell[BoxData[
+    \("Entry M22 (entryM22)"\)], "Print"],
+
+Cell[BoxData[
+    \("M22 = "\)], "Print"],
+
+Cell[BoxData[
+    \(\(4\ eps2\ k\ q\ \((\(-k\^2\)\ x + q\^2\ x - q\ x2 + k\^2\ q\ x2)\)\)\/\
+\@\(delta\^2 - 2\ delta\^2\ q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ \
+x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ x2\^2\)\)], "Print"],
+
+Cell[BoxData[
+    \("******************************************************************"\)],\
+ "Print"],
+
+Cell[BoxData[
+    \("************** FINAL TEST OF THE COMPUTED LAX PAIR \
+***************"\)], "Print"],
+
+Cell[BoxData[
+    \("The subsequent computations might be slow for complicated lattices, in \
+particular, if square roots are present!"\)], "Print"],
+
+Cell[BoxData[
+    \("Compatibility matrix L2.M - M1.L, ON LATTICE"\)], "Print"],
+
+Cell[BoxData[
+    \("finalcompatibilitymatrixonlattice ="\)], "Print"],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+            {\(\(8\ eps1\ eps2\ \((\(-1\) + k)\)\ k\^2\ \((1 + 
+                        k)\)\ \((\(-k\^2\)\ q\ x1 + p\^2\ q\ x1 + 
+                        k\^2\ p\ x2 - 
+                        p\ q\^2\ x2)\)\ \((\(-delta\^2\)\ p\ \@\(delta\^2 - 2\
+\ delta\^2\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ \
+x1 + 4\ p\^2\ x1\^2\)\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 \
+- 2\ delta\^2\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ \
+x\ x1 + 4\ p\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ \
+q\^2\ x1 + q\ x2 - p\^2\ q\ x2)\)\^2\)\) + 
+                        delta\^2\ p\^3\ \@\(delta\^2 - 2\ delta\^2\ p\^2 + \
+delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ \
+x1\^2\)\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ delta\^2\
+\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\
+\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 + \
+4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ \
+q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ q\^2\ x1 + q\ x2 \
+- p\^2\ q\ x2)\)\^2\)\) + 
+                        2\ delta\^2\ p\ q\^2\ \@\(delta\^2 - 2\ delta\^2\ \
+p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ \
+p\^2\ x1\^2\)\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ \
+x1 + 4\ p\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ \
+q\^2\ x1 + q\ x2 - p\^2\ q\ x2)\)\^2\)\) - 
+                        2\ delta\^2\ p\^3\ q\^2\ \@\(delta\^2 - 2\ delta\^2\ \
+p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ \
+p\^2\ x1\^2\)\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ \
+x1 + 4\ p\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ \
+q\^2\ x1 + q\ x2 - p\^2\ q\ x2)\)\^2\)\) - 
+                        delta\^2\ p\ q\^4\ \@\(delta\^2 - 2\ delta\^2\ p\^2 + \
+delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ \
+x1\^2\)\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ delta\^2\
+\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\
+\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 + \
+4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ \
+q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ q\^2\ x1 + q\ x2 \
+- p\^2\ q\ x2)\)\^2\)\) + 
+                        delta\^2\ p\^3\ q\^4\ \@\(delta\^2 - 2\ delta\^2\ \
+p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ \
+p\^2\ x1\^2\)\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ \
+x1 + 4\ p\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ \
+q\^2\ x1 + q\ x2 - p\^2\ q\ x2)\)\^2\)\) - 
+                        4\ p\ q\^2\ x\^2\ \@\(delta\^2 - 2\ delta\^2\ p\^2 + \
+delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ \
+x1\^2\)\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ delta\^2\
+\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\
+\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 + \
+4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ \
+q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ q\^2\ x1 + q\ x2 \
+- p\^2\ q\ x2)\)\^2\)\) + 
+                        4\ p\^3\ q\^2\ x\^2\ \@\(delta\^2 - 2\ delta\^2\ p\^2 \
++ delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ x1\
+\^2\)\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ delta\^2\ \
+p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ \
+p\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 \
++ 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ q\
+\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ q\^2\ x1 + q\ x2 - \
+p\^2\ q\ x2)\)\^2\)\) + 
+                        4\ p\ q\ x\ \@\(delta\^2 - 2\ delta\^2\ p\^2 + \
+delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ \
+x1\^2\)\ x2\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ \
+x1 + 4\ p\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ \
+q\^2\ x1 + q\ x2 - p\^2\ q\ x2)\)\^2\)\) - 
+                        4\ p\^3\ q\ x\ \@\(delta\^2 - 2\ delta\^2\ p\^2 + \
+delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ \
+x1\^2\)\ x2\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ \
+x1 + 4\ p\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ \
+q\^2\ x1 + q\ x2 - p\^2\ q\ x2)\)\^2\)\) + 
+                        4\ p\ q\^3\ x\ \@\(delta\^2 - 2\ delta\^2\ p\^2 + \
+delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ \
+x1\^2\)\ x2\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ \
+x1 + 4\ p\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ \
+q\^2\ x1 + q\ x2 - p\^2\ q\ x2)\)\^2\)\) - 
+                        4\ p\^3\ q\^3\ x\ \@\(delta\^2 - 2\ delta\^2\ p\^2 + \
+delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ \
+x1\^2\)\ x2\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ \
+x1 + 4\ p\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ \
+q\^2\ x1 + q\ x2 - p\^2\ q\ x2)\)\^2\)\) - 
+                        4\ p\ q\^2\ \@\(delta\^2 - 2\ delta\^2\ p\^2 + \
+delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ \
+x1\^2\)\ x2\^2\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ \
+x1 + 4\ p\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ \
+q\^2\ x1 + q\ x2 - p\^2\ q\ x2)\)\^2\)\) + 
+                        4\ p\^3\ q\^2\ \@\(delta\^2 - 2\ delta\^2\ p\^2 + \
+delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ \
+x1\^2\)\ x2\^2\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ \
+x1 + 4\ p\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ \
+q\^2\ x1 + q\ x2 - p\^2\ q\ x2)\)\^2\)\) + 
+                        delta\^2\ q\ \@\(delta\^2 - 2\ delta\^2\ q\^2 + delta\
+\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ x2\^2\)\ \
+\@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ delta\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ \
+x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 + 4\ p\
+\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ q\^2\ \
+x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\ q\^2\ x1 - q\ x2 + \
+p\^2\ q\ x2)\)\^2\)\) - 
+                        2\ delta\^2\ p\^2\ q\ \@\(delta\^2 - 2\ delta\^2\ \
+q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ \
+q\^2\ x2\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ \
+x2 + 4\ q\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\
+\ q\^2\ x1 - q\ x2 + p\^2\ q\ x2)\)\^2\)\) + 
+                        delta\^2\ p\^4\ q\ \@\(delta\^2 - 2\ delta\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ \
+x2\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ delta\^2\
+\ q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\
+\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 + \
+4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ \
+q\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\ q\^2\ x1 - q\
+\ x2 + p\^2\ q\ x2)\)\^2\)\) - 
+                        delta\^2\ q\^3\ \@\(delta\^2 - 2\ delta\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ \
+x2\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ delta\^2\
+\ q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\
+\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 + \
+4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ \
+q\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\ q\^2\ x1 - q\
+\ x2 + p\^2\ q\ x2)\)\^2\)\) + 
+                        2\ delta\^2\ p\^2\ q\^3\ \@\(delta\^2 - 2\ delta\^2\ \
+q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ \
+q\^2\ x2\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ \
+x2 + 4\ q\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\
+\ q\^2\ x1 - q\ x2 + p\^2\ q\ x2)\)\^2\)\) - 
+                        delta\^2\ p\^4\ q\^3\ \@\(delta\^2 - 2\ delta\^2\ \
+q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ \
+q\^2\ x2\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ \
+x2 + 4\ q\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\
+\ q\^2\ x1 - q\ x2 + p\^2\ q\ x2)\)\^2\)\) + 
+                        4\ p\^2\ q\ x\^2\ \@\(delta\^2 - 2\ delta\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ \
+x2\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ delta\^2\
+\ q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\
+\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 + \
+4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ \
+q\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\ q\^2\ x1 - q\
+\ x2 + p\^2\ q\ x2)\)\^2\)\) - 
+                        4\ p\^2\ q\^3\ x\^2\ \@\(delta\^2 - 2\ delta\^2\ q\^2 \
++ delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ x2\
+\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ delta\^2\ \
+q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ \
+q\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 \
++ 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ q\
+\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\ q\^2\ x1 - q\ \
+x2 + p\^2\ q\ x2)\)\^2\)\) - 
+                        4\ p\ q\ x\ x1\ \@\(delta\^2 - 2\ delta\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ \
+x2\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ delta\^2\
+\ q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\
+\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 + \
+4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ \
+q\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\ q\^2\ x1 - q\
+\ x2 + p\^2\ q\ x2)\)\^2\)\) - 
+                        4\ p\^3\ q\ x\ x1\ \@\(delta\^2 - 2\ delta\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ \
+x2\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ delta\^2\
+\ q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\
+\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 + \
+4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ \
+q\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\ q\^2\ x1 - q\
+\ x2 + p\^2\ q\ x2)\)\^2\)\) + 
+                        4\ p\ q\^3\ x\ x1\ \@\(delta\^2 - 2\ delta\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ \
+x2\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ delta\^2\
+\ q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\
+\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 + \
+4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ \
+q\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\ q\^2\ x1 - q\
+\ x2 + p\^2\ q\ x2)\)\^2\)\) + 
+                        4\ p\^3\ q\^3\ x\ x1\ \@\(delta\^2 - 2\ delta\^2\ \
+q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ \
+q\^2\ x2\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ \
+x2 + 4\ q\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\
+\ q\^2\ x1 - q\ x2 + p\^2\ q\ x2)\)\^2\)\) + 
+                        4\ p\^2\ q\ x1\^2\ \@\(delta\^2 - 2\ delta\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ \
+x2\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ delta\^2\
+\ q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\
+\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 + \
+4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ \
+q\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\ q\^2\ x1 - q\
+\ x2 + p\^2\ q\ x2)\)\^2\)\) - 
+                        4\ p\^2\ q\^3\ x1\^2\ \@\(delta\^2 - 2\ delta\^2\ \
+q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ \
+q\^2\ x2\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ \
+x2 + 4\ q\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\
+\ q\^2\ x1 - q\ x2 + p\^2\ q\ x2)\)\^2\)\))\)\)\/\(\@\(delta\^2 - 2\ delta\^2\
+\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\
+\^2\ x1\^2\)\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ q\^2\ x1 + q\ x2 - 
+                        p\^2\ q\ x2)\)\ \@\(delta\^2 - 2\ delta\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ \
+x2\^2\)\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ delta\^2\
+\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\
+\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 + \
+4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ \
+q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ q\^2\ x1 + q\ x2 \
+- p\^2\ q\ x2)\)\^2\)\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \
+\((delta\^2 - 2\ delta\^2\ q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ \
+x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ \
+p\^2\ q\^2 + delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ \
+p\ q\^3\ x1\ x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ \
+x + p\ x1 - p\ q\^2\ x1 - q\ x2 + p\^2\ q\ x2)\)\^2\)\)\)\), \(-\(\(2\ eps1\ \
+eps2\ \((\(-1\) + k)\)\ k\ \((1 + k)\)\ \((p - q)\)\ \((p + 
+                          q)\)\ \((delta\^2\ k\^4 - delta\^2\ k\^2\ p\^2 - 
+                          delta\^2\ k\^2\ q\^2 + delta\^2\ p\^2\ q\^2 + 
+                          4\ k\^2\ p\ q\ x1\ x2)\)\ \((\(-delta\^2\)\ p\ \
+\@\(delta\^2 - 2\ delta\^2\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ \
+x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ x1\^2\)\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + \
+q)\)\^2\ \((delta\^2 - 2\ delta\^2\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\
+\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\
+\^2\ p\^2\ q\^2 + delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 \
+- 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ \
+x - p\ x1 + p\ q\^2\ x1 + q\ x2 - p\^2\ q\ x2)\)\^2\)\) + 
+                          delta\^2\ p\^3\ \@\(delta\^2 - 2\ delta\^2\ p\^2 + \
+delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ \
+x1\^2\)\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ delta\^2\
+\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\
+\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 + \
+4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ \
+q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ q\^2\ x1 + q\ x2 \
+- p\^2\ q\ x2)\)\^2\)\) + 
+                          2\ delta\^2\ p\ q\^2\ \@\(delta\^2 - 2\ delta\^2\ p\
+\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\
+\ x1\^2\)\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ \
+x1 + 4\ p\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ \
+q\^2\ x1 + q\ x2 - p\^2\ q\ x2)\)\^2\)\) - 
+                          2\ delta\^2\ p\^3\ q\^2\ \@\(delta\^2 - 2\ delta\^2\
+\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\
+\^2\ x1\^2\)\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ \
+x1 + 4\ p\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ \
+q\^2\ x1 + q\ x2 - p\^2\ q\ x2)\)\^2\)\) - 
+                          delta\^2\ p\ q\^4\ \@\(delta\^2 - 2\ delta\^2\ p\^2 \
++ delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ x1\
+\^2\)\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ delta\^2\ \
+p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ \
+p\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 \
++ 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ q\
+\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ q\^2\ x1 + q\ x2 - \
+p\^2\ q\ x2)\)\^2\)\) + 
+                          delta\^2\ p\^3\ q\^4\ \@\(delta\^2 - 2\ delta\^2\ p\
+\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\
+\ x1\^2\)\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ \
+x1 + 4\ p\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ \
+q\^2\ x1 + q\ x2 - p\^2\ q\ x2)\)\^2\)\) - 
+                          4\ p\ q\^2\ x\^2\ \@\(delta\^2 - 2\ delta\^2\ p\^2 \
++ delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ x1\
+\^2\)\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ delta\^2\ \
+p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ \
+p\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 \
++ 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ q\
+\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ q\^2\ x1 + q\ x2 - \
+p\^2\ q\ x2)\)\^2\)\) + 
+                          4\ p\^3\ q\^2\ x\^2\ \@\(delta\^2 - 2\ delta\^2\ \
+p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ \
+p\^2\ x1\^2\)\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ \
+x1 + 4\ p\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ \
+q\^2\ x1 + q\ x2 - p\^2\ q\ x2)\)\^2\)\) + 
+                          4\ p\ q\ x\ \@\(delta\^2 - 2\ delta\^2\ p\^2 + \
+delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ \
+x1\^2\)\ x2\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ \
+x1 + 4\ p\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ \
+q\^2\ x1 + q\ x2 - p\^2\ q\ x2)\)\^2\)\) - 
+                          4\ p\^3\ q\ x\ \@\(delta\^2 - 2\ delta\^2\ p\^2 + \
+delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ \
+x1\^2\)\ x2\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ \
+x1 + 4\ p\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ \
+q\^2\ x1 + q\ x2 - p\^2\ q\ x2)\)\^2\)\) + 
+                          4\ p\ q\^3\ x\ \@\(delta\^2 - 2\ delta\^2\ p\^2 + \
+delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ \
+x1\^2\)\ x2\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ \
+x1 + 4\ p\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ \
+q\^2\ x1 + q\ x2 - p\^2\ q\ x2)\)\^2\)\) - 
+                          4\ p\^3\ q\^3\ x\ \@\(delta\^2 - 2\ delta\^2\ p\^2 \
++ delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ x1\
+\^2\)\ x2\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ \
+x1 + 4\ p\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ \
+q\^2\ x1 + q\ x2 - p\^2\ q\ x2)\)\^2\)\) - 
+                          4\ p\ q\^2\ \@\(delta\^2 - 2\ delta\^2\ p\^2 + \
+delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ \
+x1\^2\)\ x2\^2\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ \
+x1 + 4\ p\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ \
+q\^2\ x1 + q\ x2 - p\^2\ q\ x2)\)\^2\)\) + 
+                          4\ p\^3\ q\^2\ \@\(delta\^2 - 2\ delta\^2\ p\^2 + \
+delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ \
+x1\^2\)\ x2\^2\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ \
+x1 + 4\ p\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ \
+q\^2\ x1 + q\ x2 - p\^2\ q\ x2)\)\^2\)\) + 
+                          delta\^2\ q\ \@\(delta\^2 - 2\ delta\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ \
+x2\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ delta\^2\
+\ q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\
+\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 + \
+4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ \
+q\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\ q\^2\ x1 - q\
+\ x2 + p\^2\ q\ x2)\)\^2\)\) - 
+                          2\ delta\^2\ p\^2\ q\ \@\(delta\^2 - 2\ delta\^2\ q\
+\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\
+\ x2\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ \
+x2 + 4\ q\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\
+\ q\^2\ x1 - q\ x2 + p\^2\ q\ x2)\)\^2\)\) + 
+                          delta\^2\ p\^4\ q\ \@\(delta\^2 - 2\ delta\^2\ q\^2 \
++ delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ x2\
+\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ delta\^2\ \
+q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ \
+q\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 \
++ 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ q\
+\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\ q\^2\ x1 - q\ \
+x2 + p\^2\ q\ x2)\)\^2\)\) - 
+                          delta\^2\ q\^3\ \@\(delta\^2 - 2\ delta\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ \
+x2\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ delta\^2\
+\ q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\
+\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 + \
+4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ \
+q\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\ q\^2\ x1 - q\
+\ x2 + p\^2\ q\ x2)\)\^2\)\) + 
+                          2\ delta\^2\ p\^2\ q\^3\ \@\(delta\^2 - 2\ delta\^2\
+\ q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\
+\^2\ x2\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ \
+x2 + 4\ q\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\
+\ q\^2\ x1 - q\ x2 + p\^2\ q\ x2)\)\^2\)\) - 
+                          delta\^2\ p\^4\ q\^3\ \@\(delta\^2 - 2\ delta\^2\ q\
+\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\
+\ x2\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ \
+x2 + 4\ q\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\
+\ q\^2\ x1 - q\ x2 + p\^2\ q\ x2)\)\^2\)\) + 
+                          4\ p\^2\ q\ x\^2\ \@\(delta\^2 - 2\ delta\^2\ q\^2 \
++ delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ x2\
+\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ delta\^2\ \
+q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ \
+q\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 \
++ 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ q\
+\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\ q\^2\ x1 - q\ \
+x2 + p\^2\ q\ x2)\)\^2\)\) - 
+                          4\ p\^2\ q\^3\ x\^2\ \@\(delta\^2 - 2\ delta\^2\ \
+q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ \
+q\^2\ x2\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ \
+x2 + 4\ q\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\
+\ q\^2\ x1 - q\ x2 + p\^2\ q\ x2)\)\^2\)\) - 
+                          4\ p\ q\ x\ x1\ \@\(delta\^2 - 2\ delta\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ \
+x2\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ delta\^2\
+\ q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\
+\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 + \
+4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ \
+q\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\ q\^2\ x1 - q\
+\ x2 + p\^2\ q\ x2)\)\^2\)\) - 
+                          4\ p\^3\ q\ x\ x1\ \@\(delta\^2 - 2\ delta\^2\ q\^2 \
++ delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ x2\
+\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ delta\^2\ \
+q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ \
+q\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 \
++ 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ q\
+\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\ q\^2\ x1 - q\ \
+x2 + p\^2\ q\ x2)\)\^2\)\) + 
+                          4\ p\ q\^3\ x\ x1\ \@\(delta\^2 - 2\ delta\^2\ q\^2 \
++ delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ x2\
+\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ delta\^2\ \
+q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ \
+q\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 \
++ 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ q\
+\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\ q\^2\ x1 - q\ \
+x2 + p\^2\ q\ x2)\)\^2\)\) + 
+                          4\ p\^3\ q\^3\ x\ x1\ \@\(delta\^2 - 2\ delta\^2\ q\
+\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\
+\ x2\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ \
+x2 + 4\ q\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\
+\ q\^2\ x1 - q\ x2 + p\^2\ q\ x2)\)\^2\)\) + 
+                          4\ p\^2\ q\ x1\^2\ \@\(delta\^2 - 2\ delta\^2\ q\^2 \
++ delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ x2\
+\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ delta\^2\ \
+q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ \
+q\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 \
++ 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ q\
+\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\ q\^2\ x1 - q\ \
+x2 + p\^2\ q\ x2)\)\^2\)\) - 
+                          4\ p\^2\ q\^3\ x1\^2\ \@\(delta\^2 - 2\ delta\^2\ q\
+\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\
+\ x2\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ \
+x2 + 4\ q\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\
+\ q\^2\ x1 - q\ x2 + p\^2\ q\ x2)\)\^2\)\))\)\)\/\(p\ q\ \@\(delta\^2 - 2\ \
+delta\^2\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ \
+x1 + 4\ p\^2\ x1\^2\)\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ q\^2\ x1 + q\ x2 - 
+                          p\^2\ q\ x2)\)\ \@\(delta\^2 - 2\ delta\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ \
+x2\^2\)\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ delta\^2\
+\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\
+\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 + \
+4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ \
+q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ q\^2\ x1 + q\ x2 \
+- p\^2\ q\ x2)\)\^2\)\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \
+\((delta\^2 - 2\ delta\^2\ q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ \
+x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ \
+p\^2\ q\^2 + delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ \
+p\ q\^3\ x1\ x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ \
+x + p\ x1 - p\ q\^2\ x1 - q\ x2 + p\^2\ q\ x2)\)\^2\)\)\)\)\)},
+            {\(\(8\ eps1\ eps2\ \((\(-1\) + k)\)\ k\^3\ \((1 + k)\)\ \((p - 
+                        q)\)\ \((p + 
+                        q)\)\ \((\(-delta\^2\)\ p\ \@\(delta\^2 - 2\ delta\^2\
+\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\
+\^2\ x1\^2\)\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ \
+x1 + 4\ p\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ \
+q\^2\ x1 + q\ x2 - p\^2\ q\ x2)\)\^2\)\) + 
+                        delta\^2\ p\^3\ \@\(delta\^2 - 2\ delta\^2\ p\^2 + \
+delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ \
+x1\^2\)\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ delta\^2\
+\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\
+\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 + \
+4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ \
+q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ q\^2\ x1 + q\ x2 \
+- p\^2\ q\ x2)\)\^2\)\) + 
+                        2\ delta\^2\ p\ q\^2\ \@\(delta\^2 - 2\ delta\^2\ \
+p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ \
+p\^2\ x1\^2\)\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ \
+x1 + 4\ p\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ \
+q\^2\ x1 + q\ x2 - p\^2\ q\ x2)\)\^2\)\) - 
+                        2\ delta\^2\ p\^3\ q\^2\ \@\(delta\^2 - 2\ delta\^2\ \
+p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ \
+p\^2\ x1\^2\)\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ \
+x1 + 4\ p\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ \
+q\^2\ x1 + q\ x2 - p\^2\ q\ x2)\)\^2\)\) - 
+                        delta\^2\ p\ q\^4\ \@\(delta\^2 - 2\ delta\^2\ p\^2 + \
+delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ \
+x1\^2\)\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ delta\^2\
+\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\
+\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 + \
+4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ \
+q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ q\^2\ x1 + q\ x2 \
+- p\^2\ q\ x2)\)\^2\)\) + 
+                        delta\^2\ p\^3\ q\^4\ \@\(delta\^2 - 2\ delta\^2\ \
+p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ \
+p\^2\ x1\^2\)\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ \
+x1 + 4\ p\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ \
+q\^2\ x1 + q\ x2 - p\^2\ q\ x2)\)\^2\)\) - 
+                        4\ p\ q\^2\ x\^2\ \@\(delta\^2 - 2\ delta\^2\ p\^2 + \
+delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ \
+x1\^2\)\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ delta\^2\
+\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\
+\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 + \
+4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ \
+q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ q\^2\ x1 + q\ x2 \
+- p\^2\ q\ x2)\)\^2\)\) + 
+                        4\ p\^3\ q\^2\ x\^2\ \@\(delta\^2 - 2\ delta\^2\ p\^2 \
++ delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ x1\
+\^2\)\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ delta\^2\ \
+p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ \
+p\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 \
++ 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ q\
+\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ q\^2\ x1 + q\ x2 - \
+p\^2\ q\ x2)\)\^2\)\) + 
+                        4\ p\ q\ x\ \@\(delta\^2 - 2\ delta\^2\ p\^2 + \
+delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ \
+x1\^2\)\ x2\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ \
+x1 + 4\ p\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ \
+q\^2\ x1 + q\ x2 - p\^2\ q\ x2)\)\^2\)\) - 
+                        4\ p\^3\ q\ x\ \@\(delta\^2 - 2\ delta\^2\ p\^2 + \
+delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ \
+x1\^2\)\ x2\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ \
+x1 + 4\ p\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ \
+q\^2\ x1 + q\ x2 - p\^2\ q\ x2)\)\^2\)\) + 
+                        4\ p\ q\^3\ x\ \@\(delta\^2 - 2\ delta\^2\ p\^2 + \
+delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ \
+x1\^2\)\ x2\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ \
+x1 + 4\ p\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ \
+q\^2\ x1 + q\ x2 - p\^2\ q\ x2)\)\^2\)\) - 
+                        4\ p\^3\ q\^3\ x\ \@\(delta\^2 - 2\ delta\^2\ p\^2 + \
+delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ \
+x1\^2\)\ x2\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ \
+x1 + 4\ p\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ \
+q\^2\ x1 + q\ x2 - p\^2\ q\ x2)\)\^2\)\) - 
+                        4\ p\ q\^2\ \@\(delta\^2 - 2\ delta\^2\ p\^2 + \
+delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ \
+x1\^2\)\ x2\^2\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ \
+x1 + 4\ p\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ \
+q\^2\ x1 + q\ x2 - p\^2\ q\ x2)\)\^2\)\) + 
+                        4\ p\^3\ q\^2\ \@\(delta\^2 - 2\ delta\^2\ p\^2 + \
+delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ \
+x1\^2\)\ x2\^2\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ \
+x1 + 4\ p\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ \
+q\^2\ x1 + q\ x2 - p\^2\ q\ x2)\)\^2\)\) + 
+                        delta\^2\ q\ \@\(delta\^2 - 2\ delta\^2\ q\^2 + delta\
+\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ x2\^2\)\ \
+\@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ delta\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ \
+x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 + 4\ p\
+\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ q\^2\ \
+x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\ q\^2\ x1 - q\ x2 + \
+p\^2\ q\ x2)\)\^2\)\) - 
+                        2\ delta\^2\ p\^2\ q\ \@\(delta\^2 - 2\ delta\^2\ \
+q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ \
+q\^2\ x2\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ \
+x2 + 4\ q\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\
+\ q\^2\ x1 - q\ x2 + p\^2\ q\ x2)\)\^2\)\) + 
+                        delta\^2\ p\^4\ q\ \@\(delta\^2 - 2\ delta\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ \
+x2\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ delta\^2\
+\ q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\
+\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 + \
+4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ \
+q\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\ q\^2\ x1 - q\
+\ x2 + p\^2\ q\ x2)\)\^2\)\) - 
+                        delta\^2\ q\^3\ \@\(delta\^2 - 2\ delta\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ \
+x2\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ delta\^2\
+\ q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\
+\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 + \
+4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ \
+q\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\ q\^2\ x1 - q\
+\ x2 + p\^2\ q\ x2)\)\^2\)\) + 
+                        2\ delta\^2\ p\^2\ q\^3\ \@\(delta\^2 - 2\ delta\^2\ \
+q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ \
+q\^2\ x2\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ \
+x2 + 4\ q\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\
+\ q\^2\ x1 - q\ x2 + p\^2\ q\ x2)\)\^2\)\) - 
+                        delta\^2\ p\^4\ q\^3\ \@\(delta\^2 - 2\ delta\^2\ \
+q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ \
+q\^2\ x2\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ \
+x2 + 4\ q\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\
+\ q\^2\ x1 - q\ x2 + p\^2\ q\ x2)\)\^2\)\) + 
+                        4\ p\^2\ q\ x\^2\ \@\(delta\^2 - 2\ delta\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ \
+x2\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ delta\^2\
+\ q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\
+\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 + \
+4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ \
+q\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\ q\^2\ x1 - q\
+\ x2 + p\^2\ q\ x2)\)\^2\)\) - 
+                        4\ p\^2\ q\^3\ x\^2\ \@\(delta\^2 - 2\ delta\^2\ q\^2 \
++ delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ x2\
+\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ delta\^2\ \
+q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ \
+q\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 \
++ 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ q\
+\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\ q\^2\ x1 - q\ \
+x2 + p\^2\ q\ x2)\)\^2\)\) - 
+                        4\ p\ q\ x\ x1\ \@\(delta\^2 - 2\ delta\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ \
+x2\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ delta\^2\
+\ q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\
+\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 + \
+4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ \
+q\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\ q\^2\ x1 - q\
+\ x2 + p\^2\ q\ x2)\)\^2\)\) - 
+                        4\ p\^3\ q\ x\ x1\ \@\(delta\^2 - 2\ delta\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ \
+x2\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ delta\^2\
+\ q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\
+\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 + \
+4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ \
+q\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\ q\^2\ x1 - q\
+\ x2 + p\^2\ q\ x2)\)\^2\)\) + 
+                        4\ p\ q\^3\ x\ x1\ \@\(delta\^2 - 2\ delta\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ \
+x2\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ delta\^2\
+\ q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\
+\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 + \
+4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ \
+q\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\ q\^2\ x1 - q\
+\ x2 + p\^2\ q\ x2)\)\^2\)\) + 
+                        4\ p\^3\ q\^3\ x\ x1\ \@\(delta\^2 - 2\ delta\^2\ \
+q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ \
+q\^2\ x2\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ \
+x2 + 4\ q\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\
+\ q\^2\ x1 - q\ x2 + p\^2\ q\ x2)\)\^2\)\) + 
+                        4\ p\^2\ q\ x1\^2\ \@\(delta\^2 - 2\ delta\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ \
+x2\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ delta\^2\
+\ q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\
+\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 + \
+4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ \
+q\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\ q\^2\ x1 - q\
+\ x2 + p\^2\ q\ x2)\)\^2\)\) - 
+                        4\ p\^2\ q\^3\ x1\^2\ \@\(delta\^2 - 2\ delta\^2\ \
+q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ \
+q\^2\ x2\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ \
+x2 + 4\ q\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\
+\ q\^2\ x1 - q\ x2 + p\^2\ q\ x2)\)\^2\)\))\)\)\/\(\@\(delta\^2 - 2\ delta\^2\
+\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\
+\^2\ x1\^2\)\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ q\^2\ x1 + q\ x2 - 
+                        p\^2\ q\ x2)\)\ \@\(delta\^2 - 2\ delta\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ \
+x2\^2\)\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ delta\^2\
+\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\
+\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 + \
+4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ \
+q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ q\^2\ x1 + q\ x2 \
+- p\^2\ q\ x2)\)\^2\)\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \
+\((delta\^2 - 2\ delta\^2\ q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ \
+x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ \
+p\^2\ q\^2 + delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ \
+p\ q\^3\ x1\ x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ \
+x + p\ x1 - p\ q\^2\ x1 - q\ x2 + p\^2\ q\ x2)\)\^2\)\)\)\), \(-\(\(8\ eps1\ \
+eps2\ \((\(-1\) + k)\)\ k\^2\ \((1 + k)\)\ \((k\^2\ p\ x1 - p\ q\^2\ x1 - 
+                          k\^2\ q\ x2 + 
+                          p\^2\ q\ x2)\)\ \((\(-delta\^2\)\ p\ \@\(delta\^2 - \
+2\ delta\^2\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\
+\ x1 + 4\ p\^2\ x1\^2\)\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \
+\((delta\^2 - 2\ delta\^2\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ \
+x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ \
+p\^2\ q\^2 + delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ \
+p\ q\^3\ x1\ x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\
+\ x1 + p\ q\^2\ x1 + q\ x2 - p\^2\ q\ x2)\)\^2\)\) + 
+                          delta\^2\ p\^3\ \@\(delta\^2 - 2\ delta\^2\ p\^2 + \
+delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ \
+x1\^2\)\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ delta\^2\
+\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\
+\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 + \
+4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ \
+q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ q\^2\ x1 + q\ x2 \
+- p\^2\ q\ x2)\)\^2\)\) + 
+                          2\ delta\^2\ p\ q\^2\ \@\(delta\^2 - 2\ delta\^2\ p\
+\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\
+\ x1\^2\)\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ \
+x1 + 4\ p\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ \
+q\^2\ x1 + q\ x2 - p\^2\ q\ x2)\)\^2\)\) - 
+                          2\ delta\^2\ p\^3\ q\^2\ \@\(delta\^2 - 2\ delta\^2\
+\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\
+\^2\ x1\^2\)\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ \
+x1 + 4\ p\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ \
+q\^2\ x1 + q\ x2 - p\^2\ q\ x2)\)\^2\)\) - 
+                          delta\^2\ p\ q\^4\ \@\(delta\^2 - 2\ delta\^2\ p\^2 \
++ delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ x1\
+\^2\)\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ delta\^2\ \
+p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ \
+p\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 \
++ 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ q\
+\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ q\^2\ x1 + q\ x2 - \
+p\^2\ q\ x2)\)\^2\)\) + 
+                          delta\^2\ p\^3\ q\^4\ \@\(delta\^2 - 2\ delta\^2\ p\
+\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\
+\ x1\^2\)\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ \
+x1 + 4\ p\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ \
+q\^2\ x1 + q\ x2 - p\^2\ q\ x2)\)\^2\)\) - 
+                          4\ p\ q\^2\ x\^2\ \@\(delta\^2 - 2\ delta\^2\ p\^2 \
++ delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ x1\
+\^2\)\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ delta\^2\ \
+p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ \
+p\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 \
++ 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ q\
+\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ q\^2\ x1 + q\ x2 - \
+p\^2\ q\ x2)\)\^2\)\) + 
+                          4\ p\^3\ q\^2\ x\^2\ \@\(delta\^2 - 2\ delta\^2\ \
+p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ \
+p\^2\ x1\^2\)\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ \
+x1 + 4\ p\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ \
+q\^2\ x1 + q\ x2 - p\^2\ q\ x2)\)\^2\)\) + 
+                          4\ p\ q\ x\ \@\(delta\^2 - 2\ delta\^2\ p\^2 + \
+delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ \
+x1\^2\)\ x2\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ \
+x1 + 4\ p\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ \
+q\^2\ x1 + q\ x2 - p\^2\ q\ x2)\)\^2\)\) - 
+                          4\ p\^3\ q\ x\ \@\(delta\^2 - 2\ delta\^2\ p\^2 + \
+delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ \
+x1\^2\)\ x2\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ \
+x1 + 4\ p\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ \
+q\^2\ x1 + q\ x2 - p\^2\ q\ x2)\)\^2\)\) + 
+                          4\ p\ q\^3\ x\ \@\(delta\^2 - 2\ delta\^2\ p\^2 + \
+delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ \
+x1\^2\)\ x2\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ \
+x1 + 4\ p\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ \
+q\^2\ x1 + q\ x2 - p\^2\ q\ x2)\)\^2\)\) - 
+                          4\ p\^3\ q\^3\ x\ \@\(delta\^2 - 2\ delta\^2\ p\^2 \
++ delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ x1\
+\^2\)\ x2\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ \
+x1 + 4\ p\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ \
+q\^2\ x1 + q\ x2 - p\^2\ q\ x2)\)\^2\)\) - 
+                          4\ p\ q\^2\ \@\(delta\^2 - 2\ delta\^2\ p\^2 + \
+delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ \
+x1\^2\)\ x2\^2\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ \
+x1 + 4\ p\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ \
+q\^2\ x1 + q\ x2 - p\^2\ q\ x2)\)\^2\)\) + 
+                          4\ p\^3\ q\^2\ \@\(delta\^2 - 2\ delta\^2\ p\^2 + \
+delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\^2\ \
+x1\^2\)\ x2\^2\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ \
+x1 + 4\ p\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ \
+q\^2\ x1 + q\ x2 - p\^2\ q\ x2)\)\^2\)\) + 
+                          delta\^2\ q\ \@\(delta\^2 - 2\ delta\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ \
+x2\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ delta\^2\
+\ q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\
+\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 + \
+4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ \
+q\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\ q\^2\ x1 - q\
+\ x2 + p\^2\ q\ x2)\)\^2\)\) - 
+                          2\ delta\^2\ p\^2\ q\ \@\(delta\^2 - 2\ delta\^2\ q\
+\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\
+\ x2\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ \
+x2 + 4\ q\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\
+\ q\^2\ x1 - q\ x2 + p\^2\ q\ x2)\)\^2\)\) + 
+                          delta\^2\ p\^4\ q\ \@\(delta\^2 - 2\ delta\^2\ q\^2 \
++ delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ x2\
+\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ delta\^2\ \
+q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ \
+q\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 \
++ 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ q\
+\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\ q\^2\ x1 - q\ \
+x2 + p\^2\ q\ x2)\)\^2\)\) - 
+                          delta\^2\ q\^3\ \@\(delta\^2 - 2\ delta\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ \
+x2\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ delta\^2\
+\ q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\
+\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 + \
+4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ \
+q\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\ q\^2\ x1 - q\
+\ x2 + p\^2\ q\ x2)\)\^2\)\) + 
+                          2\ delta\^2\ p\^2\ q\^3\ \@\(delta\^2 - 2\ delta\^2\
+\ q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\
+\^2\ x2\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ \
+x2 + 4\ q\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\
+\ q\^2\ x1 - q\ x2 + p\^2\ q\ x2)\)\^2\)\) - 
+                          delta\^2\ p\^4\ q\^3\ \@\(delta\^2 - 2\ delta\^2\ q\
+\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\
+\ x2\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ \
+x2 + 4\ q\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\
+\ q\^2\ x1 - q\ x2 + p\^2\ q\ x2)\)\^2\)\) + 
+                          4\ p\^2\ q\ x\^2\ \@\(delta\^2 - 2\ delta\^2\ q\^2 \
++ delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ x2\
+\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ delta\^2\ \
+q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ \
+q\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 \
++ 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ q\
+\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\ q\^2\ x1 - q\ \
+x2 + p\^2\ q\ x2)\)\^2\)\) - 
+                          4\ p\^2\ q\^3\ x\^2\ \@\(delta\^2 - 2\ delta\^2\ \
+q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ \
+q\^2\ x2\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ \
+x2 + 4\ q\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\
+\ q\^2\ x1 - q\ x2 + p\^2\ q\ x2)\)\^2\)\) - 
+                          4\ p\ q\ x\ x1\ \@\(delta\^2 - 2\ delta\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ \
+x2\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ delta\^2\
+\ q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\
+\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 + \
+4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ \
+q\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\ q\^2\ x1 - q\
+\ x2 + p\^2\ q\ x2)\)\^2\)\) - 
+                          4\ p\^3\ q\ x\ x1\ \@\(delta\^2 - 2\ delta\^2\ q\^2 \
++ delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ x2\
+\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ delta\^2\ \
+q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ \
+q\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 \
++ 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ q\
+\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\ q\^2\ x1 - q\ \
+x2 + p\^2\ q\ x2)\)\^2\)\) + 
+                          4\ p\ q\^3\ x\ x1\ \@\(delta\^2 - 2\ delta\^2\ q\^2 \
++ delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ x2\
+\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ delta\^2\ \
+q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ \
+q\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 \
++ 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ q\
+\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\ q\^2\ x1 - q\ \
+x2 + p\^2\ q\ x2)\)\^2\)\) + 
+                          4\ p\^3\ q\^3\ x\ x1\ \@\(delta\^2 - 2\ delta\^2\ q\
+\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\
+\ x2\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ \
+x2 + 4\ q\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\
+\ q\^2\ x1 - q\ x2 + p\^2\ q\ x2)\)\^2\)\) + 
+                          4\ p\^2\ q\ x1\^2\ \@\(delta\^2 - 2\ delta\^2\ q\^2 \
++ delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ x2\
+\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ delta\^2\ \
+q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ \
+q\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 \
++ 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ q\
+\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\ q\^2\ x1 - q\ \
+x2 + p\^2\ q\ x2)\)\^2\)\) - 
+                          4\ p\^2\ q\^3\ x1\^2\ \@\(delta\^2 - 2\ delta\^2\ q\
+\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\
+\ x2\^2\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \((delta\^2 - 2\ \
+delta\^2\ q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ \
+x2 + 4\ q\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ \
+x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ x + p\ x1 - p\
+\ q\^2\ x1 - q\ x2 + p\^2\ q\ x2)\)\^2\)\))\)\)\/\(\@\(delta\^2 - 2\ delta\^2\
+\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\
+\^2\ x1\^2\)\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ q\^2\ x1 + q\ x2 - 
+                          p\^2\ q\ x2)\)\ \@\(delta\^2 - 2\ delta\^2\ q\^2 + \
+delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ \
+x2\^2\)\ \@\(\(\((\(-1\) + q)\)\^2\ \((1 + q)\)\^2\ \((delta\^2 - 2\ delta\^2\
+\ p\^2 + delta\^2\ p\^4 + 4\ p\^2\ x\^2 - 4\ p\ x\ x1 - 4\ p\^3\ x\ x1 + 4\ p\
+\^2\ x1\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ p\^2\ q\^2 + delta\^2\ q\^4 + \
+4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ p\ q\^3\ x1\ x2 + 4\ p\^2\ \
+q\^2\ x2\^2)\)\)\/\(p\^2\ \((p\^2\ x - q\^2\ x - p\ x1 + p\ q\^2\ x1 + q\ x2 \
+- p\^2\ q\ x2)\)\^2\)\)\ \@\(\(\((\(-1\) + p)\)\^2\ \((1 + p)\)\^2\ \
+\((delta\^2 - 2\ delta\^2\ q\^2 + delta\^2\ q\^4 + 4\ q\^2\ x\^2 - 4\ q\ x\ \
+x2 - 4\ q\^3\ x\ x2 + 4\ q\^2\ x2\^2)\)\ \((delta\^2\ p\^4 - 2\ delta\^2\ \
+p\^2\ q\^2 + delta\^2\ q\^4 + 4\ p\^2\ q\^2\ x1\^2 - 4\ p\^3\ q\ x1\ x2 - 4\ \
+p\ q\^3\ x1\ x2 + 4\ p\^2\ q\^2\ x2\^2)\)\)\/\(q\^2\ \((\(-p\^2\)\ x + q\^2\ \
+x + p\ x1 - p\ q\^2\ x1 - q\ x2 + p\^2\ q\ x2)\)\^2\)\)\)\)\)}
+            }], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Print"],
+
+Cell[BoxData[
+    \("Either the Lax pair computed by the software does not satisfy"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("the Lax equation OR, more likely, Mathematica could not "\)], "Print"],
+
+Cell[BoxData[
+    \("simplify the resulting matrix."\)], "Print"],
+
+Cell[BoxData[
+    \("Matrix will be tested with 12 numeric tests where the symbols"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("are replaced by randomly selected integers."\)], "Print"],
+
+Cell[BoxData[
+    \("Upon substitution into the Lax equation, the computed Lax pair"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("PASSES the 12 NUMERIC TESTS"\)], "Print"],
+
+Cell[BoxData[
+    \("(based on randomly selected integers)."\)], "Print"],
+
+Cell[BoxData[
+    \("The computed Lax pair SATISFIES the Lax equation"\)], "Print"],
+
+Cell[BoxData[
+    \("*********************************************************************"\
+\)], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("Total CPU time used in the current session is "\
+\[InvisibleSpace]820\[InvisibleSpace]" seconds."\),
+      SequenceForm[ 
+      "Total CPU time used in the current session is ", 820, " seconds."],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("Code for computation of Lax pairs (July 18, 2008) was successfully \
+loaded."\)], "Print"]
+}, Open  ]]
+},
+FrontEndVersion->"5.0 for Microsoft Windows",
+ScreenRectangle->{{0, 1280}, {0, 941}},
+WindowSize->{1112, 740},
+WindowMargins->{{21, Automatic}, {Automatic, 6}},
+Magnification->1.5
+]
+
+(*******************************************************************
+Cached data follows.  If you edit this Notebook file directly, not
+using Mathematica, you must remove the line containing CacheID at
+the top of  the file.  The cache data will then be recreated when
+you save this file from within Mathematica.
+*******************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+
+(*NotebookFileOutline
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[1776, 53, 69, 1, 42, "Input"],
+Cell[1848, 56, 52, 1, 41, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[1937, 62, 53, 1, 42, "Input"],
+Cell[1993, 65, 92, 1, 35, "Print"],
+Cell[2088, 68, 275, 5, 35, "Print"],
+Cell[2366, 75, 106, 2, 35, "Print"],
+Cell[2475, 79, 82, 1, 35, "Print"],
+Cell[2560, 82, 82, 1, 35, "Print"],
+Cell[2645, 85, 78, 1, 35, "Print"],
+Cell[2726, 88, 81, 1, 35, "Print"],
+Cell[2810, 91, 81, 1, 35, "Print"],
+Cell[2894, 94, 100, 2, 35, "Print"],
+Cell[2997, 98, 99, 2, 35, "Print"],
+Cell[3099, 102, 100, 2, 35, "Print"],
+Cell[3202, 106, 99, 2, 35, "Print"],
+Cell[3304, 110, 101, 2, 35, "Print"],
+Cell[3408, 114, 49, 1, 35, "Print"],
+Cell[3460, 117, 51, 1, 35, "Print"],
+Cell[3514, 120, 56, 1, 35, "Print"],
+Cell[3573, 123, 106, 2, 35, "Print"],
+Cell[3682, 127, 98, 2, 35, "Print"],
+Cell[3783, 131, 92, 1, 35, "Print"],
+Cell[3878, 134, 105, 2, 35, "Print"],
+Cell[3986, 138, 92, 1, 35, "Print"],
+Cell[4081, 141, 92, 1, 35, "Print"],
+Cell[4176, 144, 92, 1, 35, "Print"],
+Cell[4271, 147, 92, 1, 35, "Print"],
+Cell[4366, 150, 92, 1, 35, "Print"],
+Cell[4461, 153, 92, 1, 35, "Print"],
+Cell[4556, 156, 92, 1, 35, "Print"],
+Cell[4651, 159, 105, 2, 35, "Print"],
+Cell[4759, 163, 222, 4, 35, "Print"],
+Cell[4984, 169, 369, 6, 63, "Print"],
+Cell[5356, 177, 102, 2, 35, "Print"],
+Cell[5461, 181, 252, 5, 35, "Print"],
+Cell[5716, 188, 240, 5, 35, "Print"],
+Cell[5959, 195, 238, 5, 35, "Print"],
+Cell[6200, 202, 201, 4, 35, "Print"],
+Cell[6404, 208, 189, 4, 35, "Print"],
+Cell[6596, 214, 183, 3, 35, "Print"],
+Cell[6782, 219, 203, 4, 35, "Print"],
+Cell[6988, 225, 234, 5, 35, "Print"],
+Cell[7225, 232, 106, 2, 35, "Print"],
+Cell[7334, 236, 91, 1, 35, "Print"],
+Cell[7428, 239, 369, 6, 63, "Print"],
+Cell[7800, 247, 72, 1, 35, "Print"],
+Cell[7875, 250, 349, 6, 63, "Print"],
+Cell[8227, 258, 77, 1, 35, "Print"],
+Cell[8307, 261, 349, 6, 63, "Print"],
+Cell[8659, 269, 106, 2, 35, "Print"],
+Cell[8768, 273, 53, 1, 35, "Print"],
+Cell[8824, 276, 425, 6, 89, "Print"],
+Cell[9252, 284, 54, 1, 35, "Print"],
+Cell[9309, 287, 425, 6, 89, "Print"],
+Cell[9737, 295, 54, 1, 35, "Print"],
+Cell[9794, 298, 425, 6, 89, "Print"],
+Cell[10222, 306, 102, 2, 35, "Print"],
+Cell[10327, 310, 105, 2, 35, "Print"],
+Cell[10435, 314, 548, 9, 89, "Print"],
+Cell[10986, 325, 106, 2, 35, "Print"],
+Cell[11095, 329, 527, 8, 89, "Print"],
+Cell[11625, 339, 105, 2, 35, "Print"],
+Cell[11733, 343, 101, 2, 35, "Print"],
+Cell[11837, 347, 106, 2, 35, "Print"],
+Cell[11946, 351, 102, 2, 35, "Print"],
+Cell[12051, 355, 34, 1, 35, "Print"],
+Cell[12088, 358, 226, 4, 35, "Print"],
+Cell[12317, 364, 78, 1, 35, "Print"],
+Cell[12398, 367, 104, 2, 35, "Print"],
+Cell[12505, 371, 104, 2, 35, "Print"],
+Cell[12612, 375, 88, 1, 35, "Print"],
+Cell[12703, 378, 85, 1, 35, "Print"],
+Cell[12791, 381, 465, 7, 89, "Print"],
+Cell[13259, 390, 85, 1, 35, "Print"],
+Cell[13347, 393, 465, 7, 89, "Print"],
+Cell[13815, 402, 106, 2, 35, "Print"],
+Cell[13924, 406, 50, 1, 35, "Print"],
+Cell[13977, 409, 99, 2, 35, "Print"],
+Cell[14079, 413, 102, 2, 35, "Print"],
+Cell[14184, 417, 92, 1, 35, "Print"],
+Cell[14279, 420, 103, 2, 35, "Print"],
+Cell[14385, 424, 76, 1, 35, "Print"],
+Cell[14464, 427, 39, 1, 35, "Print"],
+Cell[14506, 430, 670, 13, 62, "Print"],
+Cell[15179, 445, 106, 2, 35, "Print"],
+Cell[15288, 449, 80, 1, 35, "Print"],
+Cell[15371, 452, 41, 1, 35, "Print"],
+Cell[15415, 455, 111, 2, 37, "Print"],
+Cell[15529, 459, 80, 1, 35, "Print"],
+Cell[15612, 462, 41, 1, 35, "Print"],
+Cell[15656, 465, 191, 3, 37, "Print"],
+Cell[15850, 470, 80, 1, 35, "Print"],
+Cell[15933, 473, 41, 1, 35, "Print"],
+Cell[15977, 476, 82, 1, 37, "Print"],
+Cell[16062, 479, 80, 1, 35, "Print"],
+Cell[16145, 482, 41, 1, 35, "Print"],
+Cell[16189, 485, 106, 2, 37, "Print"],
+Cell[16298, 489, 106, 2, 35, "Print"],
+Cell[16407, 493, 76, 1, 35, "Print"],
+Cell[16486, 496, 39, 1, 35, "Print"],
+Cell[16528, 499, 670, 13, 62, "Print"],
+Cell[17201, 514, 106, 2, 35, "Print"],
+Cell[17310, 518, 80, 1, 35, "Print"],
+Cell[17393, 521, 41, 1, 35, "Print"],
+Cell[17437, 524, 111, 2, 37, "Print"],
+Cell[17551, 528, 80, 1, 35, "Print"],
+Cell[17634, 531, 41, 1, 35, "Print"],
+Cell[17678, 534, 191, 3, 37, "Print"],
+Cell[17872, 539, 80, 1, 35, "Print"],
+Cell[17955, 542, 41, 1, 35, "Print"],
+Cell[17999, 545, 82, 1, 37, "Print"],
+Cell[18084, 548, 80, 1, 35, "Print"],
+Cell[18167, 551, 41, 1, 35, "Print"],
+Cell[18211, 554, 106, 2, 37, "Print"],
+Cell[18320, 558, 104, 2, 35, "Print"],
+Cell[18427, 562, 103, 2, 35, "Print"],
+Cell[18533, 566, 104, 2, 35, "Print"],
+Cell[18640, 570, 104, 2, 35, "Print"],
+Cell[18747, 574, 84, 1, 35, "Print"],
+Cell[18834, 577, 64, 1, 35, "Print"],
+Cell[18901, 580, 1337, 19, 219, "Print"],
+Cell[20241, 601, 85, 1, 35, "Print"],
+Cell[20329, 604, 64, 1, 35, "Print"],
+Cell[20396, 607, 1429, 20, 243, "Print"],
+Cell[21828, 629, 85, 1, 35, "Print"],
+Cell[21916, 632, 64, 1, 35, "Print"],
+Cell[21983, 635, 1242, 18, 219, "Print"],
+Cell[23228, 655, 85, 1, 35, "Print"],
+Cell[23316, 658, 64, 1, 35, "Print"],
+Cell[23383, 661, 1337, 19, 219, "Print"],
+Cell[24723, 682, 105, 2, 35, "Print"],
+Cell[24831, 686, 105, 2, 35, "Print"],
+Cell[24939, 690, 87, 1, 35, "Print"],
+Cell[25029, 693, 78, 1, 35, "Print"],
+Cell[25110, 696, 51, 1, 35, "Print"],
+Cell[25164, 699, 349, 5, 59, "Print"],
+Cell[25516, 706, 87, 1, 35, "Print"],
+Cell[25606, 709, 78, 1, 35, "Print"],
+Cell[25687, 712, 51, 1, 35, "Print"],
+Cell[25741, 715, 349, 5, 59, "Print"],
+Cell[26093, 722, 87, 1, 35, "Print"],
+Cell[26183, 725, 78, 1, 35, "Print"],
+Cell[26264, 728, 51, 1, 35, "Print"],
+Cell[26318, 731, 349, 5, 59, "Print"],
+Cell[26670, 738, 87, 1, 35, "Print"],
+Cell[26760, 741, 78, 1, 35, "Print"],
+Cell[26841, 744, 51, 1, 35, "Print"],
+Cell[26895, 747, 349, 5, 59, "Print"],
+Cell[27247, 754, 103, 2, 35, "Print"],
+Cell[27353, 758, 103, 2, 35, "Print"],
+Cell[27459, 762, 148, 2, 60, "Print"],
+Cell[27610, 766, 106, 2, 35, "Print"],
+Cell[27719, 770, 77, 1, 35, "Print"],
+Cell[27799, 773, 250, 4, 63, "Print"],
+Cell[28052, 779, 77, 1, 35, "Print"],
+Cell[28132, 782, 250, 4, 63, "Print"],
+Cell[28385, 788, 106, 2, 35, "Print"],
+Cell[28494, 792, 91, 1, 35, "Print"],
+Cell[28588, 795, 875, 25, 60, "Print"],
+Cell[29466, 822, 875, 25, 60, "Print"],
+Cell[30344, 849, 106, 2, 35, "Print"],
+Cell[30453, 853, 148, 2, 60, "Print"],
+Cell[30604, 857, 77, 1, 35, "Print"],
+Cell[30684, 860, 82, 1, 35, "Print"],
+Cell[30769, 863, 100, 2, 35, "Print"],
+Cell[30872, 867, 96, 2, 35, "Print"],
+Cell[30971, 871, 90, 1, 35, "Print"],
+Cell[31064, 874, 77, 1, 35, "Print"],
+Cell[31144, 877, 89, 1, 35, "Print"],
+Cell[31236, 880, 77, 1, 35, "Print"],
+Cell[31316, 883, 73, 1, 35, "Print"],
+Cell[31392, 886, 98, 2, 35, "Print"],
+Cell[31493, 890, 98, 2, 35, "Print"],
+Cell[31594, 894, 102, 2, 35, "Print"],
+Cell[31699, 898, 85, 1, 35, "Print"],
+Cell[31787, 901, 66, 1, 35, "Print"],
+Cell[31856, 904, 77, 1, 35, "Print"],
+Cell[31936, 907, 66, 1, 35, "Print"],
+Cell[32005, 910, 87, 1, 35, "Print"],
+Cell[32095, 913, 66, 1, 35, "Print"],
+Cell[32164, 916, 106, 2, 35, "Print"],
+Cell[32273, 920, 1621, 47, 115, "Print"],
+Cell[33897, 969, 932, 26, 88, "Print"],
+Cell[34832, 997, 105, 2, 35, "Print"],
+Cell[34940, 1001, 39, 1, 35, "Print"],
+Cell[34982, 1004, 1216, 21, 116, "Print"],
+Cell[36201, 1027, 105, 2, 35, "Print"],
+Cell[36309, 1031, 903, 25, 88, "Print"],
+Cell[37215, 1058, 55, 1, 35, "Print"],
+Cell[37273, 1061, 41, 1, 35, "Print"],
+Cell[37317, 1064, 249, 4, 65, "Print"],
+Cell[37569, 1070, 55, 1, 35, "Print"],
+Cell[37627, 1073, 41, 1, 35, "Print"],
+Cell[37671, 1076, 335, 5, 65, "Print"],
+Cell[38009, 1083, 55, 1, 35, "Print"],
+Cell[38067, 1086, 41, 1, 35, "Print"],
+Cell[38111, 1089, 229, 3, 65, "Print"],
+Cell[38343, 1094, 55, 1, 35, "Print"],
+Cell[38401, 1097, 41, 1, 35, "Print"],
+Cell[38445, 1100, 223, 3, 65, "Print"],
+Cell[38671, 1105, 105, 2, 35, "Print"],
+Cell[38779, 1109, 932, 26, 88, "Print"],
+Cell[39714, 1137, 105, 2, 35, "Print"],
+Cell[39822, 1141, 39, 1, 35, "Print"],
+Cell[39864, 1144, 1216, 21, 116, "Print"],
+Cell[41083, 1167, 105, 2, 35, "Print"],
+Cell[41191, 1171, 903, 25, 88, "Print"],
+Cell[42097, 1198, 55, 1, 35, "Print"],
+Cell[42155, 1201, 41, 1, 35, "Print"],
+Cell[42199, 1204, 249, 4, 65, "Print"],
+Cell[42451, 1210, 55, 1, 35, "Print"],
+Cell[42509, 1213, 41, 1, 35, "Print"],
+Cell[42553, 1216, 335, 5, 65, "Print"],
+Cell[42891, 1223, 55, 1, 35, "Print"],
+Cell[42949, 1226, 41, 1, 35, "Print"],
+Cell[42993, 1229, 229, 3, 65, "Print"],
+Cell[43225, 1234, 55, 1, 35, "Print"],
+Cell[43283, 1237, 41, 1, 35, "Print"],
+Cell[43327, 1240, 223, 3, 65, "Print"],
+Cell[43553, 1245, 103, 2, 35, "Print"],
+Cell[43659, 1249, 103, 2, 35, "Print"],
+Cell[43765, 1253, 148, 2, 60, "Print"],
+Cell[43916, 1257, 79, 1, 35, "Print"],
+Cell[43998, 1260, 70, 1, 35, "Print"],
+Cell[44071, 1263, 70457, 971, 254, "Print"],
+Cell[114531, 2236, 98, 2, 35, "Print"],
+Cell[114632, 2240, 91, 1, 35, "Print"],
+Cell[114726, 2243, 65, 1, 35, "Print"],
+Cell[114794, 2246, 98, 2, 35, "Print"],
+Cell[114895, 2250, 78, 1, 35, "Print"],
+Cell[114976, 2253, 99, 2, 35, "Print"],
+Cell[115078, 2257, 62, 1, 35, "Print"],
+Cell[115143, 2260, 73, 1, 35, "Print"],
+Cell[115219, 2263, 83, 1, 35, "Print"],
+Cell[115305, 2266, 106, 2, 35, "Print"],
+Cell[115414, 2270, 269, 5, 35, "Print"],
+Cell[115686, 2277, 111, 2, 35, "Print"]
+}, Open  ]]
+}
+]
+*)
+
+
+
+(*******************************************************************
+End of Mathematica Notebook file.
+*******************************************************************)
+
